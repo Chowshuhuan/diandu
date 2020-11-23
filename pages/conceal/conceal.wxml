@@ -1,0 +1,2 @@
+<!--pages/conceal/conceal.wxml-->
+<web-view src="{{postUrl}}/yszc.html"></web-view>

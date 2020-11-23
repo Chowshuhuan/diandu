@@ -1,0 +1,24 @@
+<view class="forget">
+  <form bindsubmit="formSubmit">
+    <!-- 手机号输入框 -->
+    <view class="infoBox">
+      <text class="baliu">+86</text>
+      <input class="num" name="+86" placeholder="请输入手机号" type="number" />
+    </view>
+    <!-- 密码输入框 -->
+    <view class="infoBox">
+      <text class="code2">验证码</text>
+      <input class="code" name="验证码" placeholder="请输入密码" name="pwd" />
+      <button class="getCode">获取验证码</button>
+    </view>
+    <view class="infoBox">
+      <text class="code2">输入密码</text>
+      <input class="code" name="验证码" placeholder="输入密码（9-20位英文字母和数字）" name="pwd" />
+    </view>
+    <view class="infoBox">
+      <text class="code2">再次输入密码</text>
+      <input class="code" name="验证码" placeholder="与设置密码一致" name="pwd" />
+    </view>
+    <button form-type='submit' class="mt40">登录</button>
+  </form>
+</view>

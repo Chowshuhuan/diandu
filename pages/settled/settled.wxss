@@ -1,0 +1,46 @@
+/* pages/settled/settled.wxss */
+.userInfo{
+  background: #F5F5F5;
+}
+.imgBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40rpx;
+  height: 142rpx;
+  background: #fff;
+  font-size: 30rpx;
+  color: #333333;
+}
+.userInfo .imgBox {
+  padding: 0;
+  height: 98rpx;
+  border-bottom: 1px solid #E6E6E6;
+  color: #333333;
+  font-size: 30rpx;
+  box-shadow: unset;
+  margin-top: unset;
+}
+.shenqing{
+  padding-left: 20rpx;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.return {
+  width: 14rpx;
+  height: 20rpx;
+  padding-right: 20rpx;
+}
+.personInfo{
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 20rpx 20rpx 0 20rpx;
+}
+.person{
+  color: #333;
+  font-weight: bold;
+  font-size: 30rpx;
+}

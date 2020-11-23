@@ -1,0 +1,12 @@
+<view class="userInfo">
+		<navigator class="imgBox" url="/pages/user/user">
+			<text class="shenqing">申请身份</text>
+			<view class="flex">
+				<input value="" style="text-align:right;padding-right:10px" placeholder="请选择" ></input>
+				<image class="return" src="/images/user/she.png" />
+			</view>
+    </navigator>
+    <view class="personInfo">
+      <text class="person">个人信息</text>
+    </view>
+	</view>

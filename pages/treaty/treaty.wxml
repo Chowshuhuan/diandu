@@ -1,0 +1,2 @@
+<!--pages/treaty/treaty.wxml-->
+<web-view src="{{postUrl}}/yhxy.html"></web-view>

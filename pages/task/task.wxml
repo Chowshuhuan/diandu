@@ -1,0 +1,82 @@
+<view class="container">
+   <view class="top">
+      <image class="img" src="../../images/index/footer/banner.png"></image>
+      <view class="search">
+         <view class="section">
+            <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+               <view class="picker">
+                  全部
+               </view>
+               <image class="place" src="../../images/index/footer/4.png"></image>
+            </picker>
+         </view>
+         <input type="text" confirm-type="search" placeholder="搜索职位/公司" />
+         <image class="searchLogo" src="../../images/index/footer/5.png" alt=""></image>
+      </view>
+   </view>
+   <view class="content">
+      <view class="list">
+         <view class="left">
+            <view class="position">经理助理</view>
+            <view class="salary">4000-6000</view>
+            <view class="welfare">
+               <text class="physical">免费体检</text>
+               <text class="work">加班福利</text>
+               <text class="staff">员工旅游</text>
+               <text class="pack">包吃住</text>
+            </view>
+            <view class="locale">
+               <text>工作点：</text>
+               <text>上海浦东新区</text>
+               <text>三林</text>
+            </view>
+         </view>
+         <view class="right">
+            <view class="num">50人</view>
+            <view class="time">11-24</view>
+         </view>
+      </view>
+      <view class="list">
+         <view class="left">
+            <view class="position">经理助理</view>
+            <view class="salary">4000-6000</view>
+            <view class="welfare">
+               <text class="physical">免费体检</text>
+               <text class="work">加班福利</text>
+               <text class="staff">员工旅游</text>
+               <text class="pack">包吃住</text>
+            </view>
+            <view class="locale">
+               <text>工作点：</text>
+               <text>上海浦东新区</text>
+               <text>三林</text>
+            </view>
+         </view>
+         <view class="right">
+            <view class="num">50人</view>
+            <view class="time">11-24</view>
+         </view>
+      </view>
+      <view class="list">
+         <view class="left">
+            <view class="position">经理助理</view>
+            <view class="salary">4000-6000</view>
+            <view class="welfare">
+               <text class="physical">免费体检</text>
+               <text class="work">加班福利</text>
+               <text class="staff">员工旅游</text>
+               <text class="pack">包吃住</text>
+            </view>
+            <view class="locale">
+               <text>工作点：</text>
+               <text>上海浦东新区</text>
+               <text>三林</text>
+            </view>
+         </view>
+         <view class="right">
+            <view class="num">50人</view>
+            <view class="time">11-24</view>
+         </view>
+      </view>
+   </view>
+</view>
