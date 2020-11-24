@@ -1,0 +1,21 @@
+/* pages/basicInfo/basicInfo.wxss */
+.basicInfo {
+  font-family: PingFang SC;
+  padding: 25rpx 25rpx;
+}
+
+.infoTit {
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.jobInfo {
+  margin-top: 20rpx;
+}
+
+.jobTit {
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}

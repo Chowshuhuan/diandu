@@ -1,0 +1,101 @@
+<!--pages/jobInfo/jobInfo.wxml-->
+<view class="job">
+  <view class="tit">
+    <view class="top">
+      <text class="work">装卸工</text>
+      <text class="salary">7k-8k</text>
+    </view>
+    <view class="bottom">
+      <text class="bottom1">100人</text>
+      <text class="bottom2">五险一金</text>
+      <text class="bottom3">定期体检</text>
+      <text class="bottom4">上海 浦东</text>
+    </view>
+  </view>
+  <!-- 职位详情 -->
+  <view class="info">
+    <view class="infoTit">
+      <text>职位详情</text>
+    </view>
+    <view class="infoAll">
+      <view class="sex">
+        性别：男
+      </view>
+      <view class="age">
+        年龄：18-38岁
+      </view>
+      <view class="content">
+        工作内容：
+      </view>
+      <view class="contentInfo">
+        在线解答科技咨询；受理客户的投诉，建议及意见等，做好相关记录及反馈工
+        作，及时跟进处理结果，与客户进行及时的沟通；
+        受理客户的投诉，建议及意见等，做好相关记录及反馈工
+        作，及时跟进处理结果，与客户进行及时的沟通；
+      </view>
+    </view>
+
+  </view>
+  <!-- 工作环境 -->
+  <view class="environment">
+    <view class="workTit">
+      <text>工作环境</text>
+    </view>
+    <view class="swiper">
+      <swiper autoplay="true" indicator-dots="true" circular="true">
+        <block wx:for="{{background}}">
+          <swiper-item class="swiper2">
+            <image class="bannerImg" src="{{item}}"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <!-- 公司名称 -->
+  <view class="name">
+    <view class="company">
+      <text class="companyName">公司名称</text>
+    </view>
+    <view>
+      <text class="companyName1">上海鱼泡泡信息科技有限公司</text>
+    </view>
+  </view>
+  <!-- 公司地址 -->
+  <view class="place">
+    <view class="place2">
+      <text class="place3">公司地址</text>
+    </view>
+    <view>
+      <text class="place4">上海鱼静安区嘉里中心688号28F</text>
+    </view>
+  </view>
+  <!-- word下载 -->
+  <view class="word">
+    <image class="wordImg" src="../../images/index/footer/6.png"></image>
+    <view>
+      <text>word 下载</text>
+    </view>
+  </view>
+  <!-- 底部 -->
+  <view class="fixedbox">
+		<view style="display:flex;justify-content: space-between;width:150rpx">
+			<view class="left" bindtap="fenxiang">
+				<image src="../../images/index/footer/30.png"></image>
+				<view>分享</view>
+			</view>
+			<view class="left" bindtap="shoucang">
+				<image src="../../images/index/footer/29.png"></image>
+				<view>收藏</view>
+			</view>
+			<!-- <view class="left" wx:else bindtap="shoucangdel">
+				<image src="/images/detail/sced.png"></image>
+				<view style="color:#5CCBC5;">取消</view>
+			</view> -->
+	 </view>
+	<view style="display:flex;justify-content: space-between;width:450rpx">
+	 	<button class="right" open-type="getPhoneNumber" bindgetphonenumber="makePhoneCall" style="margin-left:20rpx"  style="margin-right:20rpx">
+	 			输送人才
+	 	</button>
+	 </view>
+	</view>
+</view>

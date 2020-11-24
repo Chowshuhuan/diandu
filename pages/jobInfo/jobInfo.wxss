@@ -1,0 +1,154 @@
+/* pages/jobInfo/jobInfo.wxss */
+.job{
+  background: #fff;
+  font-family: PingFang SC;
+  padding-bottom: 120rpx;
+}
+.tit{
+  /* height: 200rpx; */
+  background: #f5f5f5;
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+}
+.top{
+  font-size: 36rpx;
+  font-weight: bold;
+  position: relative;
+}
+.salary{
+  color: #3FCB56;
+  position: absolute;
+  right: 20rpx;
+}
+.bottom{
+  margin-top: 30rpx;
+}
+.bottom1,
+.bottom2,
+.bottom3,
+.bottom4{
+  background: #B2EABB;
+  border-radius: 20rpx;
+  padding: 10rpx 10rpx;
+  color: #fff;
+  margin-right: 10rpx;
+  font-size: 24rpx;
+}
+/* 职位详情 */
+.info{
+  /* height: 500rpx; */
+  margin-top: 30rpx;
+  background: #f5f5f5;
+  padding:40rpx 20rpx;
+  box-sizing: border-box;
+}
+.infoTit,
+.workTit{
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+}
+.infoAll{
+  font-size: 29rpx;
+}
+.sex,
+.age,
+.content{
+  margin-bottom: 15rpx;
+}
+/* 工作环境 */
+.environment{
+  background: #f5f5f5;
+  margin-top: 30rpx;
+  padding:40rpx 20rpx;
+}
+.swiper2{
+  border-radius: 20rpx;
+}
+.bannerImg{
+  width: 100%;
+  height: 100%;
+}
+/* 公司名称 */
+.name{
+  /* background: #f5f5f5; */
+  margin-top: 30rpx;
+  padding:20rpx 20rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+.company,
+.place2{
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 20rpx;
+}
+.companyName1{
+  font-size: 28rpx;
+}
+/* 公司地址 */
+.place{
+  padding:20rpx 20rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+/* word下载 */
+.word{
+  padding: 20rpx 20rpx;
+  font-size: 26rpx;
+  padding-top: 30rpx;
+}
+.wordImg{
+  display: block;
+  width: 52rpx;
+  height: 60rpx;
+}
+/* 底部 */
+.fixedbox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff;
+
+}
+
+.fixedbox .left {
+  width: 60rpx;
+  height: 100rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.fixedbox .left image {
+  width: 34rpx;
+  height: 34rpx;
+  display: block;
+  margin-bottom: -20rpx;
+}
+
+.fixedbox .left view {
+  font-size: 24rpx;
+  width: 100%;
+  text-align: center;
+}
+.fixedbox .right {
+  width: 473rpx;
+  text-align: center;
+  background-color: #3FCB56;
+  color: #fff;
+  border-radius: 38rpx;
+  font-size: 36rpx;
+}
+.fixedbox .right.active {
+  border: 1px solid #C7FDFA;
+  background: rgba(199, 253, 250, 1)
+}
+
+
+

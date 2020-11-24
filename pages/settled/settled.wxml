@@ -1,12 +1,79 @@
-<view class="userInfo">
+<view class="settled">
+	<view class="userInfo">
 		<navigator class="imgBox" url="/pages/user/user">
 			<text class="shenqing">申请身份</text>
 			<view class="flex">
-				<input value="" style="text-align:right;padding-right:10px" placeholder="请选择" ></input>
+				<input value="" style="text-align:right;padding-right:10px" placeholder="请选择"></input>
 				<image class="return" src="/images/user/she.png" />
 			</view>
-    </navigator>
-    <view class="personInfo">
-      <text class="person">个人信息</text>
-    </view>
+		</navigator>
+		<view class="personInfo">
+			<text class="person">个人信息</text>
+		</view>
+		<view class="imgBox">
+			<text>姓名</text>
+			<view class="flex">
+				<input value="" style="text-align:right;padding-right:10px" placeholder="请输入真实姓名" placeholder-class="colr9"
+					value="{{userInfo.name}}" bindinput="setusername"></input>
+			</view>
+		</view>
+		<view class="imgBox">
+			<text>性别</text>
+			<view class="flex">
+				<radio-group class="radio-group" bindchange="radioChange">
+					<radio class="radio" value="1">
+						<text>男</text>
+					</radio>
+					<radio class="radio" value="2">
+						<text>女</text>
+					</radio>
+				</radio-group>
+			</view>
+		</view>
+		<view class="imgBox" open-type="navigate" url="/pages/user/modifyNickname">
+			<text>出生年月日</text>
+			<view class="flex">
+				<picker mode="date" value="{{userInfo.chusheng}}" start="1970-01-01" bindchange="changeDate">
+					<view class="tui-picker-detail">
+						请选择
+					</view>
+				</picker>
+				<image class="return" src="/images/user/she.png" />
+			</view>
+		</view>
+		<view class="imgBox">
+			<text>身份证号码</text>
+			<view class="flex">
+				<input value="" style="text-align:right;padding-right:10px" placeholder="请填写" placeholder-class="colr9"
+					value="{{userInfo.name}}" bindinput="setusername"></input>
+			</view>
+		</view>
+		<view class="imgBox">
+			<text>联系电话</text>
+			<view class="flex">
+				<input value="" style="text-align:right;padding-right:10px" placeholder="请填写" placeholder-class="colr9"
+					value="{{userInfo.name}}" bindinput="setusername"></input>
+			</view>
+		</view>
 	</view>
+	<view class="register">
+		<text class="register2">户籍所在地</text>
+	</view>
+	<view class="imgBox2" open-type="navigate" url="/pages/user/modifyNickname">
+		<text>户籍所在地</text>
+		<view class="flex">
+			<picker mode="region">
+				<view class="tui-picker-detail">
+					请选择所在地区
+				</view>
+			</picker>
+			<image class="return2" src="/images/user/she.png" />
+		</view>
+	</view>
+	<view class="imgBox3">
+			<text class="info">户籍地详细地址</text>
+			<view class="flex3">
+				<text>如：道路、门牌号、小区、楼栋号、单元室等</text>
+			</view>
+		</view>
+</view>

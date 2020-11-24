@@ -1,0 +1,13 @@
+<!--pages/basicInfo/basicInfo.wxml-->
+<view class="basicInfo">
+  <!-- 个人信息 -->
+  <view class="personInso">
+    <view class="infoTit">个人信息</view>
+  </view>
+  <!-- 求职信息 -->
+  <view class="jobInfo">
+    <view class="jobTit">
+      求职信息
+    </view>
+  </view>
+</view>

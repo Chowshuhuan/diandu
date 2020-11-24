@@ -1,0 +1,21 @@
+<!--pages/talent/talent.wxml-->
+<view class="talent">
+  <view class="search">
+    <image class="searchImg" src="../../images/index/footer/5.png"></image>
+    <input class="searchTxt" type="text" placeholder="请输入内容" />
+  </view>
+  <!-- 搜索的内容 -->
+  <view class="content">
+    <view class="info">
+      <block>
+        <view class="check">
+          <radio></radio>
+        </view>
+        <view class="name">
+          李大宝
+        </view>
+        <view class="worker">客服</view>
+      </block>
+    </view>
+  </view>
+</view>

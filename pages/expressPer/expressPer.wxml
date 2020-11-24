@@ -1,0 +1,72 @@
+<!--pages/expressPer/expressPer.wxml-->
+<view class="express">
+  <view class="search1">
+    <view class="search2">
+      <image class="searchImg" src="../../images/index/footer/5.png"></image>
+      <input class="searchTxt" confirm-type="search" placeholder-style="color:#333;font-size:24rpx;font-weight:600"
+        type="text" placeholder="搜索" />
+    </view>
+  </view>
+  <!-- 筛选按钮 -->
+  <view class="searchBtns">
+    <view class="btn1" bindtap="checkWork">
+      <text>工种</text>
+      <image class="btnImg" src="../../images/index/footer/2.png"></image>
+    </view>
+    <view class="btn2" bindtap="checkSex">
+      <text>性别</text>
+      <image class="btnImg" src="../../images/index/footer/1.png"></image>
+    </view>
+    <view class="btn3" bindtap="checkAge">
+      <text>年龄</text>
+      <image class="btnImg" src="../../images/index/footer/4.png"></image>
+    </view>
+  </view>
+  <!-- 点击显示工种的内容 -->
+  <view class="work" wx:if="{{showWork}}">
+     <block>
+      <text>不限</text>
+      <text>秘书</text>
+      <text>司机</text>
+      <text>人事</text>
+     </block>
+  </view>
+  <!-- 选择性别 -->
+  <view class="sex" wx:if="{{showSex}}">
+     <block>
+      <view>不限</view>
+      <view>男</view>
+      <view>女</view>
+     </block>
+  </view>
+  <!-- 点击显示年龄 -->
+  <view class="age" wx:if="{{showAge}}">
+     <block>
+      <text>不限</text>
+      <text>18岁以上</text>
+      <text>18-23</text>
+      <text>24-27</text>
+      <text>27-30</text>
+      <text>30-33</text>
+      <text>33-36</text>
+     </block>
+  </view>
+  <!-- 查询的内容 -->
+  <view class="content">
+    <view class="info">
+      <block>
+        <view class="check">
+          <radio></radio>
+        </view>
+        <view class="name">
+          李大宝
+        </view>
+        <view class="worker">客服</view>
+      </block>
+    </view>
+  </view>
+  <!-- 确认输送按钮 -->
+  <view class="footer">
+    <text>输送(5)</text>
+  </view>
+</view>

@@ -1,0 +1,139 @@
+/* pages/expressPer/expressPer.wxss */
+.express{
+  padding-top: 120rpx;
+}
+.search1{
+  background: #fff;
+  padding-top: 30rpx;
+  padding-bottom: 50rpx;
+}
+.search2{
+  position: relative;
+}
+.searchTxt{
+  display: block;
+  width: 650rpx;
+  height: 60rpx;
+  background: #f5f5f5;
+  border-radius: 30rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  padding-left: 80rpx;
+  color: #999999;
+}
+.searchImg{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 7%;
+  display: block;
+  width: 24rpx;
+  height: 24rpx;
+}
+/* 查询内容 */
+.info{
+  height: 100rpx;
+  /* background: #f5f5f5; */
+  padding: 20rpx 20rpx;
+  border-bottom: 1rpx solid #F0F0F0;
+  position: relative;
+}
+.check{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 40rpx;
+}
+.name{
+  font-family: PingFang SC;
+  color: #333333;
+  font-size: 30rpx;
+  padding: 10rpx 0 10rpx 80rpx;
+  font-weight: bold;
+}
+.worker{
+  color: #999999;
+  font-size: 26rpx;
+  padding-left: 80rpx;
+}
+/* 筛选按钮 */
+.searchBtns{
+  height: 80rpx;
+  background: #f5f5f5;
+  padding: 20rpx 20rpx;
+  position: relative;
+}
+.btn1{
+  position: absolute;
+  left: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn2{
+  position: absolute;
+  left: 45%;
+  transform: translateX(-50%);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn3{
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btnImg{
+  display: inline-block;
+  width: 22rpx;
+  height: 15rpx;
+  margin-left: 10rpx;
+}
+/* 工种 */
+.work,
+.age{
+  height: 200rpx;
+  padding: 25rpx 25rpx;
+  box-sizing: border-box;
+  /* background: #f5f5f5; */
+}
+.work text,
+.age text{
+  text-align: center;
+  background: #3FCB56;
+  display: inline-block;
+  width: 100rpx;
+  padding: 10rpx 10rpx;
+  color: #fff;
+  margin: 10rpx 10rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+}
+.sex{
+  height: 200rpx;
+  text-align: center;
+}
+.sex view{
+  padding: 15rpx 15rpx;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+.sex view:nth-child(3){
+  border-bottom: none;
+}
+.footer{
+  width: 100%;
+  height: 80rpx;
+  padding: 20rpx 20rpx;
+  position: fixed;
+  bottom: 0;
+}
+.footer text{
+  display: block;
+  width: 700rpx;
+  background: #3FCB56;
+  height: 80rpx;
+  border-radius: 40rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #fff;
+  font-size: 32rpx;
+}
