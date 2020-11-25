@@ -16,6 +16,15 @@ Page({
     })
   },
   onLoad: function () {
+    wx.login({
+      success (res) {
+        if (res.code) {
+          console.log(res.code)
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

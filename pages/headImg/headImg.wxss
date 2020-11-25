@@ -1,0 +1,110 @@
+/* pages/headImg/headImg.wxss */
+page{
+  height: 100%;
+  background: #f5f5f5;
+}
+.headImg{
+  background: #f5f5f5;
+}
+.right{
+  padding-top: 40rpx;
+  padding-left: 25rpx;
+  position: relative;
+  background: #fff;
+  height: 160rpx;
+}
+.header{
+  height: 143rpx;
+  width: 143rpx;
+  position: absolute;
+  right: 80rpx;
+  top: 40rpx;
+}
+.shifan{
+
+}
+.icon1,
+.icon2{
+  width: 28rpx;
+  height: 28rpx;
+}
+.rightTxt{
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-left: 20rpx;
+  padding-bottom: 30rpx;
+}
+.update{
+  font-family: PingFang SC Medium;
+  font-size: 26rpx;
+  padding: 20rpx;
+}
+.wrong{
+  padding-top: 25rpx;
+  padding-left: 30rpx;
+  background: #fff;
+}
+.img{
+  padding-top: 40rpx;
+}
+.img1,
+.img2,
+.img3,
+.img4{
+  width: 143rpx;
+  height: 143rpx;
+  margin-left: 45rpx;
+}
+.img1{
+  margin: 0;
+}
+.text{
+  font-family: PingFang SC Medium;
+  font-size: 24rpx;
+  position: relative;
+  height: 60rpx;
+}
+.txt1{
+  position: absolute;
+  left: 30rpx;
+}
+.txt2{
+  position: absolute;
+  left: 30%;
+}
+.txt3{
+  position: absolute;
+  left: 55%;
+}
+.txt4{
+  position: absolute;
+  left: 80%;
+}
+.check{
+  margin-top: 20rpx;
+  background: #fff;
+}
+.photoGraph{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFang SC Bold;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+.picture{
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFang SC Bold;
+}
+.cancel{
+  background: #fff;
+  margin-top: 20rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-family: PingFang SC Bold;
+}

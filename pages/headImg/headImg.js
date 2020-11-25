@@ -1,29 +1,49 @@
+// pages/headImg/headImg.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    region: [],
+    src: '../../images/index/footer/15.png'
   },
-  bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
+  // 取消
+  cancel: function () {
+    
   },
-    /**
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.login({
-      success (res) {
-        if (res.code) {
-          //发起网络请求
-         console.log(res.code)
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
+
+  },
+  takePhoto() {
+    var that = this
+    wx.chooseImage({
+      count:9,
+      sizeType:['original','compressed'],
+      sourceType:['camera'],
+      success:function(res){
+        that.setData({
+         src:res.tempFilePaths[0]
+        })
+        console.log(res.tempFilePaths[0])
       }
     })
   },
-
+  checkPhoto() {
+    var that = this
+    wx.chooseImage({
+      count:9,
+      sizeType:['original','compressed'],
+      sourceType:['album'],
+      success:function(res){
+        that.setData({
+          src:res.tempFilePaths[0]
+         })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

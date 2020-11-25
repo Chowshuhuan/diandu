@@ -1,29 +1,37 @@
+// pages/QRCode/QRCode.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    region: [],
+    src: '../../images/index/footer/3.png',
+    name: '赵钱孙李',
+    mobile: '186****8999',
+    codeImg: '../../images/index/footer/35.png'
   },
-  bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
-  },
-    /**
+
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.login({
-      success (res) {
-        if (res.code) {
-          //发起网络请求
-         console.log(res.code)
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
+
+  },
+  saveCode: function () {
+    let that = this;
+    wx.saveImageToPhotosAlbum({
+      filePath: that.data.codeImg,
+      success: function (data) {
+        console.log(data)
+        wx.showToast({
+          title: '图片保存成功',
+          icon: 'success',
+          duration: 2000
+        })
       }
     })
-  },
 
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

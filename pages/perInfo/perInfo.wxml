@@ -1,0 +1,49 @@
+<!--pages/perInfo/perInfo.wxml-->
+<view class="perInfo">
+  <view class="headInfo" bindtap="headImg">
+    <text class="headTit">头像</text>
+    <image class="headImg" src="../../images/index/footer/3.png"></image>
+    <image class="headRight" src="../../images/user/she.png"></image>
+  </view>
+  <view class="box">
+    <text class="left">姓名</text>
+    <text class="right">赵钱孙李</text>
+  </view>
+  <view class="box">
+    <text class="left">编号</text>
+    <text class="right">GG12323</text>
+  </view>
+  <view class="box">
+    <text class="left">联系电话</text>
+    <text class="right">13656555666</text>
+  </view>
+  <view class="box">
+    <text class="left">身份</text>
+    <view class="boxRight">
+      <text class="partner">县级合伙人</text>
+      <text class="level">二级</text>
+    </view>
+  </view>
+  <view class="box">
+    <text class="left">区域</text>
+    <text class="right">江苏省 苏州市 吴中区</text>
+  </view>
+  <view class="box">
+    <text class="left">所属上级</text>
+    <view class="boxRight2">
+      <text class="partner2">Monster</text>
+      <text class="level2">城市合伙人</text>
+    </view>
+  </view>
+  <view class="box3">
+    <text class="left3">详细地址</text>
+    <text class="right3">
+      江苏省 苏州市 吴中区 江苏省苏州市吴中区郭巷保利居上21幢2单元 2708
+    </text>
+  </view>
+  <!-- 我的二维码 -->
+  <view class="headInfo2" bindtap="QRCode">
+    <text class="headTit">我的二维码</text>
+    <image class="headRight" src="../../images/user/she.png"></image>
+  </view>
+</view>

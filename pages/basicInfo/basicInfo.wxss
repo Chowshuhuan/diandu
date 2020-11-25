@@ -1,9 +1,13 @@
 /* pages/basicInfo/basicInfo.wxss */
 .basicInfo {
   font-family: PingFang SC;
-  padding: 25rpx 25rpx;
+  background: #f5f5f5;
+  padding-bottom: 100rpx;
 }
-
+.personInso{
+  padding: 25rpx 25rpx;
+  background: #fff;
+}
 .infoTit {
   font-size: 30rpx;
   color: #333333;
@@ -12,10 +16,176 @@
 
 .jobInfo {
   margin-top: 20rpx;
+  background: #fff;
+  padding: 25rpx 25rpx;
 }
 
 .jobTit {
   font-size: 30rpx;
   color: #333333;
   font-weight: bold;
+}
+.imgBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  background: #fff;
+  color: #333333;
+  font-weight: bold;
+  border-bottom: 2rpx solid #f0f0f0;
+}
+.userInfo .imgBox {
+  padding: 0;
+  height: 98rpx;
+  border-bottom: 1px solid #E6E6E6;
+  color: #333333;
+  font-size: 28rpx;
+  box-shadow: unset;
+  margin-top: unset;
+  padding-left: 20rpx;
+}
+.shenqing{
+  padding-left: 0;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.return {
+  width: 14rpx;
+  height: 20rpx;
+  padding-right: 20rpx;
+}
+.personInfo{
+  background: #fff;
+  margin-top: 20rpx;
+  padding: 20rpx 20rpx 0 20rpx;
+}
+.person{
+  color: #333;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+/* 性别选择按钮 */
+.radio {
+  margin-left: 20rpx;
+  transform: scale(0.8);
+}
+
+.radio text {
+  font-size: 30rpx;
+  margin-left: 10rpx;
+  color: #333333;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.tui-picker-detail{
+  padding-right: 20rpx;
+  color: #999999;
+}
+.register{
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 20rpx 20rpx 0 20rpx;
+}
+.register2{
+  color: #333;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.imgBox2{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30rpx;
+  background: #fff;
+  color: #333333;
+  font-weight: bold;
+  height: 110rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+  font-size: 28rpx;
+}
+.return2{
+  padding-right: 20rpx;
+  width: 14rpx;
+  height: 20rpx;
+}
+.imgBox3{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fff;
+  padding-top: 20rpx;
+}
+.info{
+  display: inline-block;
+  width: 220rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  padding-left: 30rpx;
+}
+.flex3{
+  color: #999999;
+  font-size: 24rpx;
+  padding-right: 20rpx;
+}
+.check{
+  height: 100%;
+}
+.work{
+  height: 200rpx;
+  padding: 25rpx 25rpx;
+  box-sizing: border-box;
+  /* background: #f5f5f5; */
+}
+.work text{
+  text-align: center;
+  background: #3FCB56;
+  display: inline-block;
+  width: 100rpx;
+  padding: 10rpx 10rpx;
+  color: #fff;
+  margin: 10rpx 10rpx;
+  border-radius: 40rpx;
+  font-size: 24rpx;
+}
+.content{
+  height: 200rpx;
+  background: #f5f5f5;
+  padding: 20rpx;
+}
+.content text{
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 600;
+}
+.content textarea{
+  padding-top:20rpx;
+  padding-left: 30rpx;
+}
+.footer{
+  height: 100rpx;
+  background: #f5f5f5;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 20rpx;
+}
+.add{
+  display: block;
+  background: #3FCB56;
+  color: #FFF;
+  width: 80%;
+  border-radius: 40rpx;
+  text-align: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: auto;
 }

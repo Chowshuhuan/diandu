@@ -1,0 +1,40 @@
+<!--pages/headImg/headImg.wxml-->
+<view class="headImg">
+  <!--   正确示范 -->
+  <view class="right">
+    <view class="shifan">
+      <image class="icon1" src="../../images/index/footer/33.png"></image>
+      <text class="rightTxt">正确示范</text>
+    </view>
+    <view class="update">上传真实照片，更容易赢得好感</view>
+    <image class="header" src="{{src}}"></image>
+  </view>
+  <!-- 错误示范 -->
+  <view class="wrong">
+    <view class="shifan">
+      <image class="icon2" src="../../images/index/footer/34.png"></image>
+      <text class="rightTxt">错误示范</text>
+    </view>
+    <view class="img">
+      <image class="img1" src="../../images/index/footer/31.png"></image>
+      <image class="img2" src="../../images/index/footer/32.png"></image>
+      <image class="img3" src="../../images/index/footer/13.png"></image>
+      <image class="img4" src="../../images/index/footer/16.png"></image>
+    </view>
+    <view class="text">
+      <text class="txt1">非人物照 </text>
+      <text class="txt2">五官遮挡 </text>
+      <text class="txt3">五官不清 </text>
+      <text class="txt4">衣着不当 </text>
+    </view>
+  </view>
+  <!-- 拍照 相册选择 -->
+  <view class="check">
+    <view class="photoGraph" bindtap="takePhoto">拍照</view>
+    <view class="picture" bindtap="checkPhoto">从手机相册选择</view>
+  </view>
+  <!-- 取消 -->
+  <view class="cancel" bindtap="cancel">
+    取消
+  </view>
+</view>

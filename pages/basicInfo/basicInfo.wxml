@@ -3,11 +3,127 @@
   <!-- 个人信息 -->
   <view class="personInso">
     <view class="infoTit">个人信息</view>
+    <view class="imgBox">
+      <text>姓名</text>
+      <view class="flex">
+        <input value="" style="text-align:right;padding-right:10px" placeholder="请填写" placeholder-class="colr9"
+          value="{{userInfo.name}}" bindinput="setusername"></input>
+      </view>
+    </view>
+    <view class="imgBox">
+      <text>性别</text>
+      <view class="flex">
+        <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" value="1">
+            <text>男</text>
+          </radio>
+          <radio class="radio" value="2">
+            <text>女</text>
+          </radio>
+        </radio-group>
+      </view>
+    </view>
+    <view class="imgBox">
+      <text>身份证号码</text>
+      <view class="flex">
+        <input value="" style="text-align:right;padding-right:10px" placeholder="请填写" placeholder-class="colr9"
+          value="{{userInfo.name}}" bindinput="setusername"></input>
+      </view>
+    </view>
+    <view class="imgBox" open-type="navigate" url="/pages/user/modifyNickname">
+      <text>出生年月日</text>
+      <view class="flex">
+        <picker mode="date" value="{{userInfo.chusheng}}" start="1970-01-01" bindchange="changeDate">
+          <view class="tui-picker-detail">
+            请选择
+          </view>
+        </picker>
+        <image class="return" src="/images/user/she.png" />
+      </view>
+    </view>
+    <view class="imgBox">
+      <text>年龄</text>
+      <view class="flex">
+        <input value="" style="text-align:right;padding-right:10px" placeholder="未知" placeholder-class="colr9"
+          value="{{userInfo.name}}"></input>
+      </view>
+    </view>
+    <view class="imgBox">
+      <text>联系电话</text>
+      <view class="flex">
+        <input value="" style="text-align:right;padding-right:10px" placeholder="请填写" placeholder-class="colr9"
+          value="{{userInfo.name}}" bindinput="setusername"></input>
+      </view>
+    </view>
+    <view class="imgBox" open-type="navigate" url="/pages/user/modifyNickname">
+      <text>户籍所在地</text>
+      <view class="flex">
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="tui-picker-detail">
+            请选择
+          </view>
+        </picker>
+        <image class="return" src="/images/user/she.png" />
+      </view>
+    </view>
+
   </view>
   <!-- 求职信息 -->
   <view class="jobInfo">
     <view class="jobTit">
       求职信息
     </view>
+    <view class="imgBox">
+      <text>曾经工作岗位</text>
+      <view class="flex">
+        <input value="" style="text-align:right;padding-right:10px" placeholder="请填写" placeholder-class="colr9"
+          value="{{userInfo.name}}" bindinput="setusername"></input>
+      </view>
+    </view>
+    <view class="imgBox">
+      <text>期望工资</text>
+      <view class="flex">
+        <input value="" style="text-align:right;" placeholder="请填写" placeholder-class="colr9" value="{{userInfo.name}}"
+          bindinput="setusername"></input>
+      </view>
+      <text>元/每月</text>
+    </view>
+    <view class="imgBox">
+      <text>期望岗位</text>
+      <view class="flex check" bindtap="checkWork">
+        <view class="tui-picker-detail">
+          请选择
+        </view>
+        <image class="return" src="/images/user/she.png" />
+      </view>
+    </view>
+    <!-- 弹出岗位 -->
+    <view class="work" wx:if="{{showWork}}">
+      <block>
+        <text>不限</text>
+        <text>秘书</text>
+        <text>司机</text>
+        <text>人事</text>
+      </block>
+    </view>
+    <view class="imgBox">
+      <text>有无重大病史</text>
+      <view class="flex">
+        <radio-group wx:key="name" class="radio-group" bindchange="radioChange1">
+          <radio class="radio" wx:key="index" wx:for="{{illRadio}}" value="{{item.name}}" checked="{{item.checked}}">
+            <text>{{item.text}}</text>
+          </radio>
+        </radio-group>
+      </view>
+    </view>
+    <!-- 病史内容 -->
+      <view class="content"  wx:if="{{showIll}}">
+      <text>详细病史</text>
+      <textarea bindblur="bindTextAreaBlur" value="{{illContent}}" auto-height placeholder="如：心脏病、癫痫、手术等" />
+    </view>
+  </view>
+  <!-- 提交按钮 -->
+  <view class="footer">
+    <view class="add">提交</view>
   </view>
 </view>

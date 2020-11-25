@@ -1,0 +1,104 @@
+/* pages/perInfo/perInfo.wxss */
+.perInfo{
+  padding-left: 30rpx;
+}
+.headInfo{
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+  height: 140rpx;
+  line-height: 140rpx;
+}
+.headTit{
+  font-family: PingFang-SC-Medium;
+  font-size: 30rpx;
+}
+.headImg{
+  position: absolute;
+  right: 70rpx;
+  top: 20rpx;
+  height: 98rpx;
+  width: 98rpx;
+}
+.headRight{
+  width: 14rpx;
+  height: 25rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.box{
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+}
+.left{
+  font-weight: PingFang-SC-Medium;
+  font-size: 30rpx;
+}
+.right{
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+}
+.boxRight{
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+}
+.partner{
+  font-family: PingFang-SC-Medium;
+  padding-right: 10rpx;
+}
+.level{
+  display: inline-block;
+  background: #9FE5AA;
+  color: #fff;
+  width: 72rpx;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 30rpx;
+  padding: 0 25rpx;
+}
+.boxRight2{
+  position: absolute;
+  right: 30rpx;
+  top:0;
+}
+.partner2{
+  padding-right: 15rpx;
+}
+.level2{
+  display: inline-block;
+  background: #9FE5AA;
+  color: #fff;
+  height: 50rpx;
+  text-align: center;
+  line-height: 50rpx;
+  padding: 0 20rpx;
+  border-radius: 30rpx;
+}
+.right2{
+  font-size: 24rpx;
+}
+.box3{
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+  height: 130rpx;
+}
+
+.right3{
+  font-family:PingFang-SC-Medium;
+  font-size: 24rpx;
+  display: inline-block;
+  width: 500rpx;
+  padding-left: 55rpx;
+}
+.headInfo2{
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+  height: 90rpx;
+  line-height: 90rpx;
+}

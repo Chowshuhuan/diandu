@@ -1,20 +1,29 @@
 {
   "pages":[
-    "pages/basicInfo/basicInfo",
+    "pages/family/family",
+
     "pages/personal/personal",
-    "pages/index/index",
-    "pages/user/user",
-    "pages/settled/settled",
+
+    "pages/basicInfo/basicInfo",
+
+    "pages/balance/balance",
+    "pages/headImg/headImg",
+
+    "pages/perInfo/perInfo",
+    "pages/QRCode/QRCode", 
     "pages/login/login",
+    "pages/task/task",
+    "pages/index/index",
+    "pages/expressPer/expressPer",
+    "pages/talent/talent",
+    "pages/settled/settled",
+    "pages/search/search",
+    "pages/user/user",
     "pages/mobile/mobile",
     "pages/register/register",
-    "pages/expressPer/expressPer",
     "pages/city/city",
-    "pages/talent/talent",
     "pages/jobInfo/jobInfo",
-    "pages/search/search",
     "pages/forget/forget",
-    "pages/task/task",
     "pages/treaty/treaty",
     "pages/conceal/conceal"
   ],
@@ -32,13 +41,13 @@
         "pagePath": "pages/task/task",
         "text": "任务",
         "iconPath": "/images/index/footer/task.png",
-        "selectedIconPath": "/images/index/footer/26.png"
+        "selectedIconPath": "/images/index/footer/taskActive.png"
       },
       {
         "pagePath": "pages/personal/personal",
         "text": "个人中心",
         "iconPath": "/images/index/footer/my.png",
-        "selectedIconPath": "/images/index/footer/25.png"
+        "selectedIconPath": "/images/index/footer/myActive.png"
       }
     ]
   },

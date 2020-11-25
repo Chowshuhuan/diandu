@@ -1,0 +1,60 @@
+<!--pages/balance/balance.wxml-->
+<view class="balance">
+  <view class="top">
+    <view class="top1">全年合计金额(元)</view>
+    <view class="top2">{{price}}</view>
+    <view class="top3">已提现金额</view>
+    <view class="top4">{{price1}}</view>
+  </view>
+  <view class="content">
+    <view>
+      <text>2020.10</text>
+      <image class="checkIcon" src="../../images/index/footer/4.png"></image>
+    </view>
+    <view class="month">
+      <view class="monthTop">
+        <text class="month1">{{month}}</text>
+        <text>月</text>
+      </view>
+      <view class="monthBot">
+        <view class="left">
+          <text class="tixian">已提现</text>
+          <text class="money">{{money}}</text>
+        </view>
+        <view class="right">
+          <text class="income">本月收入</text>
+          <text>{{income}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="city">
+    <view class="city1">
+      <view class="target" bindtap="showInfo">
+        <image class="cityImg" src="../../images/index/footer/2.png"></image>
+        <text class="cityPlace">台湾县</text>
+      </view>
+      <view class="cityMoney">+￥200.20</view>
+      <view class="out" wx:if="{{showInfo}}">
+        <view class="info">
+          <view class="infoList">
+            <text>老乡驿站</text>
+            <view class="cityMoney2">+￥200.20</view>
+          </view>
+        </view>
+        <view class="info">
+          <view class="infoList">
+            <text>老乡驿站</text>
+            <view class="cityMoney2">+￥200.20</view>
+          </view>
+        </view>
+        <view class="info">
+          <view class="infoList">
+            <text>老乡驿站</text>
+            <view class="cityMoney2">+￥200.20</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

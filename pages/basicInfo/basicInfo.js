@@ -5,7 +5,52 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    region: [],
+    showWork:false,
+    showText:false,
+    showIll:false,
+    // 病史选择框
+    illRadio:[{
+      name:'有',
+      checked:false,
+      text:'有',
+      value:1
+    },{
+      name:'无',
+      checked:false,
+      text:'无',
+      value:2
+    }],
+    // 病史详细内容
+    illContent:''
+  },
+  bindRegionChange: function (e) {
+    this.setData({
+      region: e.detail.value
+    })
+  },
+  // 显示期望岗位
+  checkWork:function(e) {
+    this.setData({
+      showWork: this.data.showWork ? false : true,
+    })
+  },
+  // 详细病史的显示隐藏
+  radioChange1: function (e) {
+    let pages1 = e.detail.value;
+    this.setData({
+      seleted: "选中的value：" + pages1
+    })
+    console.log('radio发生change事件，携带value值为：', e.detail.value)
+    if(e.detail.value =='有'){
+      this.setData({
+        showIll: true
+      })
+    }else{
+      this.setData({
+        showIll: false
+      })
+    }
   },
 
   /**

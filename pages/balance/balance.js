@@ -1,29 +1,30 @@
+// pages/balance/balance.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    region: [],
+    price:'444444',
+    price1:'343434',
+    month:'10',
+    money:'￥200.05',
+    income:'￥454',
+    showInfo:false
   },
-  bindRegionChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      region: e.detail.value
-    })
-  },
-    /**
+
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.login({
-      success (res) {
-        if (res.code) {
-          //发起网络请求
-         console.log(res.code)
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
-  },
 
+  },
+ // 显示期望岗位
+ showInfo:function(e) {
+  this.setData({
+    showInfo: this.data.showInfo ? false : true,
+  })
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,3 +1,55 @@
-<view>
-个人中心
+<view class="person">
+  <view class="profile">
+    <view class="logo" bindtap="toInfo">
+      <image src="../../images/index/footer/31.png"></image>
+    </view>
+    <!-- 姓名 电话 -->
+    <view class="info">
+      <view class="name">赵钱孙李</view>
+      <view class="number">186****7545</view>
+    </view>
+    <view class="jiantou">
+     <image class="arrowhead" src="../../images/user/she.png"></image>
+    </view>
+  </view>
+  <!-- 结算金额 -->
+  <view class="price" bindtap="toBalance">
+     <view class="money">待结算金额(元)</view>
+     <view class="figure">500.00</view>
+  </view>
+  <!-- 工时相关 -->
+  <view class="information">
+    <view class="box">
+      <text class="month">本月工时</text>
+      <text class="personNum">1110人</text>
+      <image src="../../images/user/she.png"></image>
+    </view>
+    <view class="box">
+      <text class="month">在职人数</text>
+      <text class="personNum">222人</text>
+      <image src="../../images/user/she.png"></image>
+    </view>
+    <view class="box">
+      <text class="month">离职人数</text>
+      <text class="personNum">10人</text>
+      <image src="../../images/user/she.png"></image>
+    </view>
+    <view class="box">
+      <text class="month">待入职人数</text>
+      <text class="personNum">20人</text>
+      <image src="../../images/user/she.png"></image>
+    </view>
+  </view>
+  <!-- 待办事项 -->
+  <view class="needDealt">
+    <view class="box">
+      <text class="month">待办事项</text>
+      <view class="doNum">2</view>
+      <image src="../../images/user/she.png"></image>
+    </view>
+    <view class="box" bindtap="toFamily">
+      <text class="month">族群</text>
+      <image src="../../images/user/she.png"></image>
+    </view>
+  </view>
 </view>
