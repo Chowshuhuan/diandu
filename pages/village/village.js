@@ -1,4 +1,4 @@
-// pages/family/family.js
+// pages/villAge/villAge.js
 Page({
 
   /**
@@ -6,7 +6,6 @@ Page({
    */
   data: {
     showInfo:false,
-    src:'../../images/index/footer/36.png',
     list:[{
       name:'那个村'
     },{
@@ -15,17 +14,12 @@ Page({
       name:'这户人'
     }]
   },
-  checkShow:function(e) {
-    this.setData({
-      showInfo: this.data.showInfo ? false : true,
-      src: this.data.showInfo  ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png',
-    })
-  },
   toVillage:function() {
     wx.navigateTo({
-      url: '../village/village',
+      url: '../villageDown/villageDown',
     })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */

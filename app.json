@@ -1,17 +1,22 @@
 {
   "pages":[
-    "pages/family/family",
-
+    "pages/mobile/mobile",
+    "pages/login/login",
+    "pages/intoWork/intoWork",
+    "pages/leave/leave",
+    "pages/employ/employ",
     "pages/personal/personal",
-
+    "pages/workHour/workHour",
+    "pages/applyInfo/applyInfo",
+    "pages/matter/matter",
+    "pages/perInfo/perInfo",
+    "pages/villageDown/villageDown",
+    "pages/village/village",
+    "pages/family/family",
     "pages/basicInfo/basicInfo",
-
     "pages/balance/balance",
     "pages/headImg/headImg",
-
-    "pages/perInfo/perInfo",
     "pages/QRCode/QRCode", 
-    "pages/login/login",
     "pages/task/task",
     "pages/index/index",
     "pages/expressPer/expressPer",
@@ -19,7 +24,6 @@
     "pages/settled/settled",
     "pages/search/search",
     "pages/user/user",
-    "pages/mobile/mobile",
     "pages/register/register",
     "pages/city/city",
     "pages/jobInfo/jobInfo",

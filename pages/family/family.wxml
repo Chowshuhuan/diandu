@@ -12,6 +12,11 @@
     <view></view>
   </view>
   <view class="placeInfo">
-     <view class="topTit">眉山市</view>
+    <view class="topTit" bindtap="checkShow">眉山市
+      <image class="icon" src="{{src}}"></image>
+    </view>
+    <view class="bottom" wx-if="{{showInfo}}" wx:for="{{list}}" wx:key="index">
+      <view class="place" bindtap="toVillage">{{item.name}}</view>
+    </view>
   </view>
 </view>

@@ -1,0 +1,28 @@
+<!--pages/employ/employ.wxml-->
+<view class="empoly">
+  <!--  时间筛选 -->
+  <view class="top">
+    <view class="left">
+      <text>2020.11</text>
+      <image src="../../images/index/footer/4.png" class="down"></image>
+    </view>
+    <image class="searchIcon" src="../../images/index/footer/5.png"></image>
+  </view>
+  <!-- 表格内容 -->
+  <view class='table-module'>
+    <!-- 右侧表格滚动 -->
+    <scroll-view class="scroll-box" scroll-x="true">
+      <view class="scroll-view-item" wx:for="{{fruitList}}" wx:for-index="bigindex" wx:key="{{index}}">
+        <view class='company-name'>{{item.name}}</view>
+        <view wx:for="{{item.list}}" wx:for-item="cell" data-bigindex="{{bigindex}}" data-index='{{index}}'
+          class='price-box' wx:key="{{index2}}">
+          <view class="price">{{cell.price}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 下载明细 -->
+  <view class="footer">
+    <text class="downLoad">下载明细</text>
+  </view>
+</view>

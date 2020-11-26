@@ -19,22 +19,22 @@
   </view>
   <!-- 工时相关 -->
   <view class="information">
-    <view class="box">
+    <view class="box" bindtap="toWorkHour">
       <text class="month">本月工时</text>
       <text class="personNum">1110人</text>
       <image src="../../images/user/she.png"></image>
     </view>
-    <view class="box">
+    <view class="box" bindtap="toEmploy">
       <text class="month">在职人数</text>
       <text class="personNum">222人</text>
       <image src="../../images/user/she.png"></image>
     </view>
-    <view class="box">
+    <view class="box" bindtap="toLeave">
       <text class="month">离职人数</text>
       <text class="personNum">10人</text>
       <image src="../../images/user/she.png"></image>
     </view>
-    <view class="box">
+    <view class="box" bindtap="toIntoWork">
       <text class="month">待入职人数</text>
       <text class="personNum">20人</text>
       <image src="../../images/user/she.png"></image>
@@ -42,7 +42,7 @@
   </view>
   <!-- 待办事项 -->
   <view class="needDealt">
-    <view class="box">
+    <view class="box"  bindtap="toMaster">
       <text class="month">待办事项</text>
       <view class="doNum">2</view>
       <image src="../../images/user/she.png"></image>

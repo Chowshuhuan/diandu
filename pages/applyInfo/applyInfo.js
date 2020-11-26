@@ -1,30 +1,46 @@
-// pages/family/family.js
+// pages/applyInfo/applyInfo.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showInfo:false,
-    src:'../../images/index/footer/36.png',
-    list:[{
-      name:'那个村'
-    },{
-      name:'这家店'
-    },{
-      name:'这户人'
-    }]
+    max: 200,
+    currentWordNumber: 0,
+    // 显示模态框
+    showModal: false
   },
-  checkShow:function(e) {
+  // 点击驳回按钮
+  reject: function () {
     this.setData({
-      showInfo: this.data.showInfo ? false : true,
-      src: this.data.showInfo  ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png',
+      showModal: true
     })
   },
-  toVillage:function() {
-    wx.navigateTo({
-      url: '../village/village',
-    })
+  hideModal: function () {
+    this.setData({
+      showModal: false
+    });
+  },
+  /**
+   * 对话框取消按钮点击事件
+   */
+  onCancel: function () {
+    this.hideModal();
+  },
+  /**
+   * 对话框确认按钮点击事件
+   */
+  onConfirm: function () {
+    this.hideModal();
+  },
+  // 计算驳回内容的字数
+  inputs: function (e) {
+    var value = e.detail.value;
+    // 获取输入框内容的长度
+    var len = parseInt(value.length);
+    this.setData({
+      currentWordNumber: len //当前字数 
+    });
   },
   /**
    * 生命周期函数--监听页面加载

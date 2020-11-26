@@ -1,31 +1,41 @@
-// pages/family/family.js
+// pages/workHour/workHour.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    showInfo:false,
-    src:'../../images/index/footer/36.png',
-    list:[{
-      name:'那个村'
-    },{
-      name:'这家店'
-    },{
-      name:'这户人'
-    }]
+    listData: [{
+        "code": "01",
+        "name": "chow",
+        "card": "410012199902035412",
+        "unit":"腾讯软件",
+        "hour":"2200"
+      },
+      {
+        "code": "02",
+        "name": "monster",
+        "card": "121212121212121212",
+        "unit":"百度",
+        "hour":"1100"
+      },
+      {
+        "code": "03",
+        "name": "dream",
+        "card": "362323232332323232",
+        "unit":"字节跳动",
+        "hour":"3300"
+      },
+      {
+        "code": "04",
+        "name": "chow",
+        "card": "454541515515151151",
+        "unit":"甲骨文",
+        "hour":"450"
+      }
+    ]
   },
-  checkShow:function(e) {
-    this.setData({
-      showInfo: this.data.showInfo ? false : true,
-      src: this.data.showInfo  ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png',
-    })
-  },
-  toVillage:function() {
-    wx.navigateTo({
-      url: '../village/village',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
