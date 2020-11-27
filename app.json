@@ -1,7 +1,24 @@
 {
   "pages":[
-    "pages/mobile/mobile",
+    "pages/task/task",
+
+    "pages/jobInfo/jobInfo",
+
+
+
+
+
+
     "pages/login/login",
+
+
+
+    "pages/mobile/mobile",
+
+    "pages/forget/forget",
+
+    "pages/register/register",
+
     "pages/intoWork/intoWork",
     "pages/leave/leave",
     "pages/employ/employ",
@@ -17,17 +34,13 @@
     "pages/balance/balance",
     "pages/headImg/headImg",
     "pages/QRCode/QRCode", 
-    "pages/task/task",
     "pages/index/index",
     "pages/expressPer/expressPer",
     "pages/talent/talent",
     "pages/settled/settled",
     "pages/search/search",
     "pages/user/user",
-    "pages/register/register",
     "pages/city/city",
-    "pages/jobInfo/jobInfo",
-    "pages/forget/forget",
     "pages/treaty/treaty",
     "pages/conceal/conceal"
   ],

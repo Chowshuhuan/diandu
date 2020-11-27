@@ -39,6 +39,8 @@ Page({
                 openid: res.data.data.openid,
                 session_key: res.data.data.session_key
               })
+              wx.setStorageSync('openid', res.data.data.openid)
+              wx.setStorageSync('session_key', res.data.data.session_key)
             }
           })
         } else {
@@ -74,24 +76,49 @@ Page({
     }
   },
   getPhoneNumber(e) {
-    this.setData({
+    let that = this
+    that.setData({
       iv: e.detail.iv,
       encrypted_data: e.detail.encryptedData
     })
+    wx.setStorageSync('iv', e.detail.iv)
+    wx.setStorageSync('encrypted_data', e.detail.encrypted_data)
+
     let data = {
-      openid: this.data.openid,
-      iv: encodeURIComponent(this.data.iv),
-      encrypted_data: encodeURIComponent(this.data.encrypted_data),
-      session_key: this.data.session_key,
+      openid: that.data.openid,
+      iv: encodeURIComponent(that.data.iv),
+      encrypted_data: encodeURIComponent(that.data.encrypted_data),
+      session_key: that.data.session_key,
     }
     api.getMobileByOpenid(data).then(res => {
       console.log(res.data)
       if (res.data.code == 200) {
-        this.setData({
-          mobile: res.data.data.phone.phoneNumber
+        that.setData({
+          mobile: res.data.data.phoneNumber
         })
-        wx.switchTab({
-          url: '../task/task',
+        let data = {
+          type: '1',
+          openid: that.data.openid,
+          mobile: that.data.mobile,
+          password: '',
+          sms_code: '',
+          sms_code_key: '',
+          attr: ''
+        }
+        api.login(data).then(res => {
+          if (res.data.code == 200) {
+            wx.setStorageSync('token', res.data.data.token)
+            wx.setStorageSync('type', res.data.data.type)
+            wx.setStorageSync('user_id', res.data.data.user_id)
+            wx.showToast({
+              title: res.data.msg,
+              icon: 'none',
+              duration: 1000
+            })
+            wx.switchTab({
+              url: '../task/task',
+            })
+          }
         })
       } else {
         wx.showToast({
@@ -102,28 +129,6 @@ Page({
       }
     })
   },
-  // getUserInfo: function (e) {
-  //   // app.globalData.userInfo = e.detail.userInfo
-  //   app.globalData.userInfo = e.userInfo
-  //   this.setData({
-  //     userInfo: e.userInfo,
-  //     hasUserInfo: true,
-  //     iv: e.detail.iv,
-  //     encrypted_data: e.detail.encryptedData
-  //   })
-  //   let data = {
-  //     openid: this.data.openid,
-  //     iv: encodeURIComponent(this.data.iv),
-  //     encrypted_data: encodeURIComponent(this.data.encrypted_data),
-  //     session_key: this.data.session_key,
-  //   }
-  //   api.getMobileByOpenid(data).then(res => {
-  //     console.log(res)
-  //   })
-  //   // wx.switchTab({
-  //   //   url: '../task/task',
-  //   // })
-  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

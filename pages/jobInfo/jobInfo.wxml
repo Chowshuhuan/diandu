@@ -1,15 +1,15 @@
 <!--pages/jobInfo/jobInfo.wxml-->
-<view class="job">
+<view class="job" >
   <view class="tit">
     <view class="top">
-      <text class="work">装卸工</text>
-      <text class="salary">7k-8k</text>
+      <text class="work">{{list.work_name}}</text>
+      <text class="salary">{{list.pay_min}}-{{list.pay_max}}</text>
     </view>
     <view class="bottom">
-      <text class="bottom1">100人</text>
-      <text class="bottom2">五险一金</text>
-      <text class="bottom3">定期体检</text>
-      <text class="bottom4">上海 浦东</text>
+      <text class="bottom1">{{list.recruit_num}}人</text>
+      <!-- <text class="bottom2" >{{item}}</text> -->
+      <text class="bottom3">{{list.welfare_name}}</text>
+      <!-- <text class="bottom4">上海 浦东</text> -->
     </view>
   </view>
   <!-- 职位详情 -->
@@ -19,19 +19,16 @@
     </view>
     <view class="infoAll">
       <view class="sex">
-        性别：男
+        性别：{{list.sex}}
       </view>
       <view class="age">
-        年龄：18-38岁
+        年龄：{{list.age_min}}-{{list.age_max}}岁
       </view>
       <view class="content">
         工作内容：
       </view>
       <view class="contentInfo">
-        在线解答科技咨询；受理客户的投诉，建议及意见等，做好相关记录及反馈工
-        作，及时跟进处理结果，与客户进行及时的沟通；
-        受理客户的投诉，建议及意见等，做好相关记录及反馈工
-        作，及时跟进处理结果，与客户进行及时的沟通；
+       {{list.work_desc}}
       </view>
     </view>
 
@@ -57,7 +54,7 @@
       <text class="companyName">公司名称</text>
     </view>
     <view>
-      <text class="companyName1">上海鱼泡泡信息科技有限公司</text>
+      <text class="companyName1">{{list.company_name}}</text>
     </view>
   </view>
   <!-- 公司地址 -->
@@ -66,7 +63,7 @@
       <text class="place3">公司地址</text>
     </view>
     <view>
-      <text class="place4">上海鱼静安区嘉里中心688号28F</text>
+      <text class="place4">{{list.address_details}}</text>
     </view>
   </view>
   <!-- word下载 -->

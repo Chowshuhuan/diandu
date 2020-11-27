@@ -1,6 +1,9 @@
+
 .container {
   padding: 0;
   font-family: PingFang SC;
+  padding-top: 400rpx;
+  background: #01A583;
 }
 
 view {
@@ -9,6 +12,9 @@ view {
 
 .top {
   height: 400rpx;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 
 .img {
@@ -26,11 +32,11 @@ view {
 }
 
 .section {
-  width: 120rpx;
+  width: 180rpx;
   height: 80rpx;
   background: #fff;
   position: absolute;
-  left: 13.5%;
+  left: 5%;
   top: 0;
   color: #333333;
 }
@@ -42,6 +48,7 @@ view {
   color: #333333;
   text-align: left;
   padding-left: 20rpx;
+  padding-right: 20rpx;
 }
 
 .place {
@@ -78,6 +85,7 @@ input {
 
 .content {
   background: #01A583;
+  height: 100%;
 }
 
 .list {
