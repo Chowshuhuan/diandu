@@ -1,46 +1,64 @@
 // pages/workHour/workHour.js
+let app = getApp()
+const api = app.globalData.api;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    listData: [{
-        "code": "01",
-        "name": "chow",
-        "card": "410012199902035412",
-        "unit":"腾讯软件",
-        "hour":"2200"
-      },
-      {
-        "code": "02",
-        "name": "monster",
-        "card": "121212121212121212",
-        "unit":"百度",
-        "hour":"1100"
-      },
-      {
-        "code": "03",
-        "name": "dream",
-        "card": "362323232332323232",
-        "unit":"字节跳动",
-        "hour":"3300"
-      },
-      {
-        "code": "04",
-        "name": "chow",
-        "card": "454541515515151151",
-        "unit":"甲骨文",
-        "hour":"450"
-      }
-    ]
+    list: [],
+    date: '2010-09',
   },
-
+  getList: function (e) {
+    let data = {
+      time: this.data.date,
+      is_download: '',
+      page: '',
+      limit: '',
+      Authorization: wx.getStorageSync('token')
+    }
+    api.workHour(data).then(res => {
+      console.log(res.data)
+      if (res.data.code == 200) {
+        if(res.data.data.data.length == 0){
+          wx.showToast({
+            title: '本月工时列表为空',
+            icon: 'none',
+            duration: 1500
+          })
+          this.setData({
+            list: []
+          })
+        }else{
+          this.setData({
+            list: res.data.data.data
+          })
+        }
+      }
+    })
+  },
+   // 选择时间
+   bindDateChange: function(e) {
+    let s1 = e.detail.value.substring(0,e.detail.value.length-3)
+     this.setData({
+       date: s1
+     })
+     this.getList()
+   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let timestamp = Date.parse(new Date())
+    let date = new Date(timestamp)
+    let Y = date.getFullYear()
+    //获取月份  
+    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
+    this.setData({
+      date:JSON.stringify(Y)+'-'+M
+    })
+    this.getList()
   },
 
   /**

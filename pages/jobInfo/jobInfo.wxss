@@ -1,32 +1,38 @@
 /* pages/jobInfo/jobInfo.wxss */
-.job{
+.job {
   background: #fff;
   font-family: PingFang SC;
   padding-bottom: 120rpx;
-}
-.tit{
-  /* height: 200rpx; */
   background: #f5f5f5;
+}
+
+.tit {
+  /* height: 200rpx; */
+  background: #fff;
   padding: 30rpx 30rpx;
   box-sizing: border-box;
 }
-.top{
+
+.top {
   font-size: 36rpx;
   font-weight: bold;
   position: relative;
 }
-.salary{
+
+.salary {
   color: #3FCB56;
   position: absolute;
   right: 20rpx;
 }
-.bottom{
+
+.bottom {
   margin-top: 30rpx;
 }
+
 .bottom1,
 .bottom2,
 .bottom3,
-.bottom4{
+.bottom4 {
   background: #B2EABB;
   border-radius: 20rpx;
   padding: 10rpx 10rpx;
@@ -34,73 +40,91 @@
   margin-right: 10rpx;
   font-size: 24rpx;
 }
+
 /* 职位详情 */
-.info{
+.info {
   /* height: 500rpx; */
   margin-top: 30rpx;
-  background: #f5f5f5;
-  padding:40rpx 20rpx;
+  background: #fff;
+  padding: 40rpx 20rpx;
   box-sizing: border-box;
 }
+
 .infoTit,
-.workTit{
+.workTit {
   font-size: 30rpx;
   font-weight: bold;
   padding-bottom: 30rpx;
 }
-.infoAll{
+
+.infoAll {
   font-size: 29rpx;
 }
+
 .sex,
 .age,
-.content{
+.content {
   margin-bottom: 15rpx;
 }
+
 /* 工作环境 */
-.environment{
-  background: #f5f5f5;
+.environment {
+  background: #fff;
   margin-top: 30rpx;
-  padding:40rpx 20rpx;
+  padding: 40rpx 20rpx;
 }
-.swiper2{
+
+.swiper2 {
   border-radius: 20rpx;
 }
-.bannerImg{
+
+.bannerImg {
   width: 100%;
   height: 100%;
 }
+
 /* 公司名称 */
-.name{
+.name {
   /* background: #f5f5f5; */
   margin-top: 30rpx;
-  padding:20rpx 20rpx;
+  padding: 20rpx 20rpx;
   border-bottom: 2rpx solid #F0F0F0;
+  background: #fff;
+
 }
+
 .company,
-.place2{
+.place2 {
   font-size: 30rpx;
   font-weight: bold;
   padding-bottom: 20rpx;
 }
-.companyName1{
+
+.companyName1 {
   font-size: 28rpx;
 }
+
 /* 公司地址 */
-.place{
-  padding:20rpx 20rpx;
+.place {
+  padding: 20rpx 20rpx;
   border-bottom: 2rpx solid #F0F0F0;
+  background: #fff;
 }
+
 /* word下载 */
-.word{
+.word {
   padding: 20rpx 20rpx;
   font-size: 26rpx;
   padding-top: 30rpx;
+  background: #fff;
 }
-.wordImg{
+
+.wordImg {
   display: block;
   width: 52rpx;
   height: 60rpx;
 }
+
 /* 底部 */
 .fixedbox {
   position: fixed;
@@ -137,6 +161,7 @@
   width: 100%;
   text-align: center;
 }
+
 .fixedbox .right {
   width: 473rpx;
   text-align: center;
@@ -145,10 +170,248 @@
   border-radius: 38rpx;
   font-size: 36rpx;
 }
+
 .fixedbox .right.active {
   border: 1px solid #C7FDFA;
   background: rgba(199, 253, 250, 1)
 }
 
+/* 收藏的颜色 */
+.collect {
+  color: #3FCB56;
+}
 
+/* 二维码转发的弹框 */
+my-code {
+  height: 400rpx;
+  width: 400rpx;
+}
 
+/* pages/jobInfo/jobInfo.wxss */
+.job {
+  background: #fff;
+  font-family: PingFang SC;
+  padding-bottom: 120rpx;
+  background: #f5f5f5;
+}
+
+.tit {
+  /* height: 200rpx; */
+  background: #fff;
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.top {
+  font-size: 36rpx;
+  font-weight: bold;
+  position: relative;
+}
+
+.salary {
+  color: #3FCB56;
+  position: absolute;
+  right: 20rpx;
+}
+
+.bottom {
+  margin-top: 30rpx;
+}
+
+.bottom1,
+.bottom2,
+.bottom3,
+.bottom4 {
+  background: #B2EABB;
+  border-radius: 20rpx;
+  padding: 10rpx 10rpx;
+  color: #fff;
+  margin-right: 10rpx;
+  font-size: 24rpx;
+}
+
+/* 职位详情 */
+.info {
+  /* height: 500rpx; */
+  margin-top: 30rpx;
+  background: #fff;
+  padding: 40rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.infoTit,
+.workTit {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+}
+
+.infoAll {
+  font-size: 29rpx;
+}
+
+.sex,
+.age,
+.content {
+  margin-bottom: 15rpx;
+}
+
+/* 工作环境 */
+.environment {
+  background: #fff;
+  margin-top: 30rpx;
+  padding: 40rpx 20rpx;
+}
+
+.swiper2 {
+  border-radius: 20rpx;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 公司名称 */
+.name {
+  /* background: #f5f5f5; */
+  margin-top: 30rpx;
+  padding: 20rpx 20rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+.company,
+.place2 {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 20rpx;
+}
+
+.companyName1 {
+  font-size: 28rpx;
+}
+
+/* 公司地址 */
+.place {
+  padding: 20rpx 20rpx;
+  border-bottom: 2rpx solid #F0F0F0;
+}
+
+/* word下载 */
+.word {
+  padding: 20rpx 20rpx;
+  font-size: 26rpx;
+  padding-top: 30rpx;
+}
+
+.wordImg {
+  display: block;
+  width: 52rpx;
+  height: 60rpx;
+}
+
+/* 底部 */
+.fixedbox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 120rpx;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fff;
+
+}
+
+.fixedbox .left {
+  width: 60rpx;
+  height: 100rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.fixedbox .left image {
+  width: 34rpx;
+  height: 34rpx;
+  display: block;
+  margin-bottom: -20rpx;
+}
+
+.fixedbox .left view {
+  font-size: 24rpx;
+  width: 100%;
+  text-align: center;
+}
+
+.fixedbox .right {
+  width: 473rpx;
+  text-align: center;
+  background-color: #3FCB56;
+  color: #fff;
+  border-radius: 38rpx;
+  font-size: 36rpx;
+}
+
+.fixedbox .right.active {
+  border: 1px solid #C7FDFA;
+  background: rgba(199, 253, 250, 1)
+}
+
+/* 收藏的颜色 */
+.collect {
+  color: #3FCB56;
+}
+
+/* 遮罩层颜色 */
+.zhezhao {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 998;
+  left: 0;
+  top: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+
+}
+.codeContent{
+  position: fixed;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 10%;
+  z-index: 999;
+  width: 80%;
+  height: 600rpx;
+  background: #fff;
+}
+.codeImg{
+  padding-top:60rpx ;
+  text-align: center;
+}
+.codeImage{
+  width: 213rpx;
+  height: 213rpx;
+}
+.txt{
+  /* font-family: PingFang SC Medium; */
+  font-size: 32rpx;
+  color: #333;
+  text-align: center;
+  padding-top: 20rpx;
+}
+.btn{
+  background: #3FCB56;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  color: #fff;
+  border-radius: 10rpx;
+  margin-top: 40rpx;
+  width: 80%;
+  margin-left: 10%;
+}

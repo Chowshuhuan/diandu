@@ -2,7 +2,7 @@
 <view class="balance">
   <view class="top">
     <view class="top1">全年合计金额(元)</view>
-    <view class="top2">{{price}}</view>
+    <view class="top2">{{all}}</view>
     <view class="top3">已提现金额</view>
     <view class="top4">{{price1}}</view>
   </view>

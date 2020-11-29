@@ -1,0 +1,11 @@
+<view class="{{show ? 'weui-show' :'weui-hidden'}}">
+	<view class="weui-mask init" wx:if="{{mask}}" bindtap="close" data-type="tap"></view>
+	<view class="weui-half-screen-dialog {{extClass}}">
+		<view class="weui-half-screen-dialog__bd">
+			<view class="fenxiang"  bindtap="shengcheng"><image src="../../images/detail/pyq.png"></image> 生成朋友圈分享图</view>
+			<button class="fenxiang2" open-type='share'><image src="../../images/detail/zf.png"></image> 转发给好友或群聊</button>
+
+			<view class="quxiao" bindtap="close">取消</view>
+		</view>
+	</view>
+</view>

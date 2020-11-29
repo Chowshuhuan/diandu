@@ -3,70 +3,64 @@
   <view class="search1">
     <view class="search2">
       <image class="searchImg" src="../../images/index/footer/5.png"></image>
-      <input class="searchTxt" confirm-type="search" placeholder-style="color:#333;font-size:24rpx;font-weight:600"
-        type="text" placeholder="搜索" />
+      <input bindinput="search" class="searchTxt" confirm-type="search"
+        placeholder-style="color:#333;font-size:24rpx;font-weight:600" type="text" value="{{name}}" placeholder="搜索" />
     </view>
   </view>
   <!-- 筛选按钮 -->
   <view class="searchBtns">
     <view class="btn1" bindtap="checkWork">
       <text>工种</text>
-      <image class="btnImg" src="../../images/index/footer/2.png"></image>
+      <image class="btnImg" src="{{showWork? icon: icon2}}"></image>
     </view>
     <view class="btn2" bindtap="checkSex">
       <text>性别</text>
-      <image class="btnImg" src="../../images/index/footer/1.png"></image>
+      <image class="btnImg" src="{{showSex? icon: icon2}}"></image>
     </view>
     <view class="btn3" bindtap="checkAge">
       <text>年龄</text>
-      <image class="btnImg" src="../../images/index/footer/4.png"></image>
+      <image class="btnImg" src="{{showAge? icon: icon2}}"></image>
     </view>
   </view>
   <!-- 点击显示工种的内容 -->
   <view class="work" wx:if="{{showWork}}">
-     <block>
-      <text>不限</text>
-      <text>秘书</text>
-      <text>司机</text>
-      <text>人事</text>
-     </block>
+    <block>
+      <text checked="{{item.selected}}" class="{{item.selected? 'active' : 'txt'}}" wx:for="{{workTag}}" wx:key="index"
+        bindtap="checkTag" data-id="{{item.id}}" data-index="{{index}}">{{item.tag}}</text>
+    </block>
   </view>
   <!-- 选择性别 -->
   <view class="sex" wx:if="{{showSex}}">
-     <block>
-      <view>不限</view>
-      <view>男</view>
-      <view>女</view>
-     </block>
+    <block>
+      <view class="{{sexIndex == index ? 'activeSexTxt' : 'sexTxt'}} " wx:for="{{sexList}}" wx:key="index"
+        data-id="{{item.id}}" bindtap="checkSexInfo">{{item.sex}}</view>
+      <!-- <view class="{{activeSex=='2'? activeSexTxt :sexTxt}}" bindtap="checkMan">男</view>
+      <view class="{{activeSex=='3'? activeSexTxt :sexTxt}}" bindtap="checkWoman">女</view> -->
+    </block>
   </view>
   <!-- 点击显示年龄 -->
   <view class="age" wx:if="{{showAge}}">
-     <block>
-      <text>不限</text>
-      <text>18岁以上</text>
-      <text>18-23</text>
-      <text>24-27</text>
-      <text>27-30</text>
-      <text>30-33</text>
-      <text>33-36</text>
-     </block>
+    <block>
+      <text class="{{ageIndex == item.age ? 'active' : 'txt'}}" wx:for="{{ageList}}" wx:key="index" bindtap="checkAge2"
+        data-id="{{item.id}}" data-index="{{item.age}}">{{item.age}}</text>
+    </block>
   </view>
   <!-- 查询的内容 -->
   <view class="content">
     <view class="info">
-      <block>
-        <view class="check">
-          <radio></radio>
-        </view>
-        <view class="name">
-          李大宝
-        </view>
-        <view class="worker">客服</view>
-      </block>
+      <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{list}}" wx:key="index" bindchange="checkboxChange">
+          <checkbox value="{{item.id}}" checked="{{item.checked}}" />
+          {{item.name}}
+          <view class="worker">
+            <text wx:for="{{item.work_name}}" wx:key="index">{{item}}</text>
+          </view>
+        </label>
+      </checkbox-group>
     </view>
   </view>
   <!-- 确认输送按钮 -->
   <view class="footer">
-    <text>输送(5)</text>
+    <text bindtap="expressPer">输送({{checkLength}})</text>
   </view>
 </view>

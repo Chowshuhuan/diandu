@@ -1,203 +1,79 @@
 // pages/intoWork/intoWork.js
+let app = getApp()
+const api = app.globalData.api;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    fruitList: [{
-        "name": "序号",
-        "list": [{
-            "price": "1",
-          },
-          {
-            "price": "2",
-          },
-          {
-            "price": "3",
-          },
-          {
-            "price": "4",
-          }
-
-        ],
-
-      },
-      {
-        "name": "姓名",
-        "list": [{
-            "price": "chow",
-          },
-          {
-            "price": "monster",
-          },
-
-          {
-            "price": "meng",
-          },
-          {
-            "price": "dan",
-          }
-        ]
-      }, {
-        "name": "性别",
-        "list": [{
-            "price": "男",
-          },
-          {
-            "price": "女",
-          },
-
-          {
-            "price": "男",
-          },
-          {
-            "price": "女",
-          }
-        ]
-      }, {
-        "name": "年龄",
-        "list": [{
-            "price": "24",
-          },
-          {
-            "price": "26",
-          },
-
-          {
-            "price": "29",
-          },
-          {
-            "price": "32",
-          }
-        ]
-      }, {
-        "name": "身份证号",
-        "list": [{
-            "price": "364545199510256555",
-          },
-          {
-            "price": "364545199510256555",
-          },
-
-          {
-            "price": "364545199510256555",
-          },
-          {
-            "price": "364545199510256555",
-          }
-        ]
-      },
-      {
-        "name": "联系电话",
-        "list": [{
-            "price": "15688887474",
-
-          },
-          {
-            "price": "15688887474",
-          },
-
-          {
-            "price": "15688887474",
-          },
-          {
-            "price": "15688887474",
-          }
-        ]
-      }, {
-        "name": "登记时间",
-        "list": [{
-            "price": "2020-12-11",
-          },
-          {
-            "price": "2020-12-11",
-          },
-
-          {
-            "price": "2020-12-11",
-          },
-          {
-            "price": "2020-12-11",
-          }
-        ]
-      }, {
-        "name": "期望岗位",
-        "list": [{
-            "price": "经理",
-
-          },
-          {
-            "price": "秘书",
-          },
-
-          {
-            "price": "行政",
-          },
-          {
-            "price": "总监",
-          }
-        ]
-      }, {
-        "name": "曾经工作岗位",
-        "list": [{
-            "price": "文秘",
-
-          },
-          {
-            "price": "助理",
-          },
-
-          {
-            "price": "经理",
-          },
-          {
-            "price": "CEO",
-          }
-        ]
-      }, {
-        "name": "薪资 元/月",
-        "list": [{
-            "price": "9000",
-
-          },
-          {
-            "price": "13000",
-          },
-
-          {
-            "price": "10000",
-          },
-          {
-            "price": "50500",
-          }
-        ]
-      }, {
-        "name": "有无病史",
-        "list": [{
-            "price": "无",
-
-          },
-          {
-            "price": "无",
-          },
-
-          {
-            "price": "无",
-          },
-          {
-            "price": "无",
-          }
-        ]
-      }
-    ],
+    list: [],
+    date: '2010-09',
   },
-
+  getList: function (e) {
+    let data = {
+      time: this.data.date,
+      is_download: '',
+      page: '',
+      limit: '',
+      Authorization: wx.getStorageSync('token')
+    }
+    api.waitOnJobList(data).then(res => {
+      if (res.data.code == 200) {
+        console.log(res.data.data.data)
+        if (res.data.data.data.length == 0) {
+          wx.showToast({
+            title: '本月待入职列表为空',
+            icon: 'none',
+            duration: 1500
+          })
+          this.setData({
+            list: []
+          })
+        } else {
+          res.data.data.data.forEach(v => {
+            if (v.sex == 1) {
+              v.sex = '男'
+            } else {
+              v.sex = '女'
+            }
+          })
+          res.data.data.data.forEach(v => {
+            if (v.is_ill == 0) {
+              v.is_ill = '无'
+            } else {
+              v.is_ill = '有'
+            }
+          })
+          this.setData({
+            list: res.data.data.data
+          })
+          console.log(this.data.list)
+        }
+      }
+    })
+  },
+  // 选择时间
+  bindDateChange: function (e) {
+    let s1 = e.detail.value.substring(0, e.detail.value.length - 3)
+    this.setData({
+      date: s1
+    })
+    this.getList()
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let timestamp = Date.parse(new Date())
+    let date = new Date(timestamp)
+    let Y = date.getFullYear()
+    //获取月份  
+    let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
+    this.setData({
+      date: JSON.stringify(Y) + '-' + M
+    })
+    this.getList()
   },
 
   /**

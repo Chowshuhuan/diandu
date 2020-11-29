@@ -1,12 +1,12 @@
 <view class="person">
   <view class="profile">
     <view class="logo" bindtap="toInfo">
-      <image src="../../images/index/footer/31.png"></image>
+      <image src="{{list.attr}}"></image>
     </view>
     <!-- 姓名 电话 -->
     <view class="info">
-      <view class="name">赵钱孙李</view>
-      <view class="number">186****7545</view>
+      <view class="name">{{list.name}}</view>
+      <view class="number">{{list.phone}}</view>
     </view>
     <view class="jiantou">
      <image class="arrowhead" src="../../images/user/she.png"></image>
@@ -15,28 +15,28 @@
   <!-- 结算金额 -->
   <view class="price" bindtap="toBalance">
      <view class="money">待结算金额(元)</view>
-     <view class="figure">500.00</view>
+     <view class="figure">{{list.wait_payment_money}}</view>
   </view>
   <!-- 工时相关 -->
   <view class="information">
     <view class="box" bindtap="toWorkHour">
       <text class="month">本月工时</text>
-      <text class="personNum">1110人</text>
+      <text class="personNum">{{list.work_hour}}h</text>
       <image src="../../images/user/she.png"></image>
     </view>
     <view class="box" bindtap="toEmploy">
       <text class="month">在职人数</text>
-      <text class="personNum">222人</text>
+      <text class="personNum">{{list.on_job}}人</text>
       <image src="../../images/user/she.png"></image>
     </view>
     <view class="box" bindtap="toLeave">
       <text class="month">离职人数</text>
-      <text class="personNum">10人</text>
+      <text class="personNum">{{list.leave_job}}人</text>
       <image src="../../images/user/she.png"></image>
     </view>
     <view class="box" bindtap="toIntoWork">
       <text class="month">待入职人数</text>
-      <text class="personNum">20人</text>
+      <text class="personNum">{{list.wait_job}}人</text>
       <image src="../../images/user/she.png"></image>
     </view>
   </view>
@@ -44,7 +44,7 @@
   <view class="needDealt">
     <view class="box"  bindtap="toMaster">
       <text class="month">待办事项</text>
-      <view class="doNum">2</view>
+      <view class="doNum">{{list.to_do}}</view>
       <image src="../../images/user/she.png"></image>
     </view>
     <view class="box" bindtap="toFamily">

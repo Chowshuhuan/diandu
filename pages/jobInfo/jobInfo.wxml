@@ -1,5 +1,5 @@
 <!--pages/jobInfo/jobInfo.wxml-->
-<view class="job" >
+<view class="job">
   <view class="tit">
     <view class="top">
       <text class="work">{{list.work_name}}</text>
@@ -8,7 +8,7 @@
     <view class="bottom">
       <text class="bottom1">{{list.recruit_num}}人</text>
       <!-- <text class="bottom2" >{{item}}</text> -->
-      <text class="bottom3">{{list.welfare_name}}</text>
+      <text class="bottom3" wx:for="{{welfare}}" wx:key="index">{{item}}</text>
       <!-- <text class="bottom4">上海 浦东</text> -->
     </view>
   </view>
@@ -28,7 +28,7 @@
         工作内容：
       </view>
       <view class="contentInfo">
-       {{list.work_desc}}
+        {{list.work_desc}}
       </view>
     </view>
 
@@ -37,10 +37,11 @@
   <view class="environment">
     <view class="workTit">
       <text>工作环境</text>
+
     </view>
     <view class="swiper">
       <swiper autoplay="true" indicator-dots="true" circular="true">
-        <block wx:for="{{background}}">
+        <block wx:for="{{background}}" wx:key="index">
           <swiper-item class="swiper2">
             <image class="bannerImg" src="{{item}}"></image>
           </swiper-item>
@@ -68,31 +69,50 @@
   </view>
   <!-- word下载 -->
   <view class="word">
-    <image class="wordImg" src="../../images/index/footer/6.png"></image>
+    <image class="wordImg" src="../../images/index/footer/67.png"></image>
     <view>
       <text>word 下载</text>
     </view>
   </view>
   <!-- 底部 -->
   <view class="fixedbox">
-		<view style="display:flex;justify-content: space-between;width:150rpx">
-			<view class="left" bindtap="fenxiang">
-				<image src="../../images/index/footer/30.png"></image>
-				<view>分享</view>
-			</view>
-			<view class="left" bindtap="shoucang">
-				<image src="../../images/index/footer/29.png"></image>
-				<view>收藏</view>
-			</view>
-			<!-- <view class="left" wx:else bindtap="shoucangdel">
+    <view style="display:flex;justify-content: space-between;width:150rpx">
+      <view class="left" bindtap="share">
+        <image src="../../images/index/footer/30.png"></image>
+        <view>转发</view>
+      </view>
+      <view class="left" bindtap="collect">
+        <image src="{{is_collect?'../../images/index/footer/collect.png':'../../images/index/footer/29.png'}}"></image>
+        <view class="{{is_collect?'collect':''}}">收藏</view>
+      </view>
+      <!-- <view class="left" wx:else bindtap="shoucangdel">
 				<image src="/images/detail/sced.png"></image>
 				<view style="color:#5CCBC5;">取消</view>
 			</view> -->
-	 </view>
-	<view style="display:flex;justify-content: space-between;width:450rpx">
-	 	<button class="right" open-type="getPhoneNumber" bindgetphonenumber="makePhoneCall" style="margin-left:20rpx"  style="margin-right:20rpx">
-	 			输送人才
-	 	</button>
-	 </view>
-	</view>
+    </view>
+    <view style="display:flex;justify-content: space-between;width:450rpx">
+      <button class="right"  bindtap="express" style="margin-left:20rpx"
+        style="margin-right:20rpx">
+        输送人才
+      </button>
+    </view>
+  </view>
+
+  <view class='zhezhao' wx:if="{{codeShow}}" bindtap='hiddenCode' />
+      <view class="codeContent" wx:if="{{codeShow2}}" bindbuttontap="buttontap">
+        <view class="codeImg">
+          <image class="codeImage" src="{{qrcodeURL}}"></image>
+        </view>
+        <view class="txt">
+          <view>
+            打开微信扫一扫
+          </view>
+          <view>
+            完成人才信息采集
+          </view>
+        </view>
+        <view class="btn" bindtap="saveCode">
+          保存到手机相册
+        </view>
+      </view>
 </view>

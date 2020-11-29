@@ -1,3 +1,7 @@
+const {
+  default: api
+} = require("../../utils/api")
+
 // pages/expressPer/expressPer.js
 Page({
 
@@ -7,8 +11,53 @@ Page({
   data: {
     showWork: false,
     showAge: false,
-    showSex: false
+    showSex: false,
+    id: '',
+    list: [],
+    workList: [],
+    name: '',
+    workTag: [], //工种，期望岗位
+    unitIndex: [], //工种选择的下标
+    ageIndex: '', //年龄选择的下标
+    sexIndex:'',//性别选择的下标
+    ageList: [{
+      id: 1,
+      age: '不限',
+    }, {
+      id: 2,
+      age: '18-24',
+    }, {
+      id: 3,
+      age: '24-30',
+    }, {
+      id: 4,
+      age: '30-35',
+    }, {
+      id: 5,
+      age: '35-40',
+    }, {
+      id: 6,
+      age: '40-50',
+    }, {
+      id: 7,
+      age: '50岁以上',
+    }], //年龄列表
+    icon: '../../images/index/footer/2.png', // 显示的图标
+    icon2: '../../images/index/footer/4.png', // 显示的图标
+    sex: '', //性别
+    min_age: '', //最小年龄
+    max_age: '', //最大年龄
+    work_tag: [], //工种
+    sexList:[
+      {id:0,sex:'不限'},
+      {id:1,sex:'男'},
+      {id:2,sex:'女'},
+    ],
+    activeSex:'',
+    express:[],//输送的元
+    checkLength:'0',//输送的人数
   },
+  // 显示工种
   checkWork: function (e) {
     this.setData({
       showWork: this.data.showWork ? false : true,
@@ -16,6 +65,7 @@ Page({
       showSex: false
     })
   },
+  // 显示性别
   checkSex: function (e) {
     this.setData({
       showSex: this.data.showSex ? false : true,
@@ -23,6 +73,7 @@ Page({
       showWork: false
     })
   },
+  // 形式年龄
   checkAge: function (e) {
     this.setData({
       showAge: this.data.showAge ? false : true,
@@ -30,11 +81,174 @@ Page({
       showSex: false
     })
   },
+  // 获取列表
+  getList: function (e) {
+    let data = {
+      name: this.data.name,
+      sex: this.data.sex,
+      min_age: this.data.min_age,
+      max_age: this.data.max_age,
+      Authorization: wx.getStorageSync('token'),
+      work_tag: this.data.unitIndex
+    }
+    api.staffList(data).then(res => {
+      if (res.data.code == 200) {
+        this.setData({
+          list: res.data.data
+        })
+        this.data.list.forEach(item => {
+          item.checked = false
+        })
+      } else {
+        this.setData({
+          list: []
+        })
+      }
+    })
+  },
+  // 获取工种
+  getWork: function (e) {
+    api.workTag().then(res => {
+      if (res.data.code == 200) {
+        this.setData({
+          workTag: res.data.data,
+        })
+        this.data.workTag.forEach(item => {
+          item.selected = false
+        })
+      }
+    })
+  },
+  // 搜索
+  search: function (e) {
+    this.setData({
+      name: e.detail.value
+    })
+    this.getList()
+  },
+  // 选择工种
+  checkTag: function (e) {
+    let arr = []
+    let string = "workTag[" + e.target.dataset.index + "].selected"
+    this.setData({
+      [string]: !this.data.workTag[e.target.dataset.index].selected
+    })
+    this.data.unitIndex.push(e.target.dataset.index)
+    this.data.workTag.forEach(v => {
+      if (v.selected == true) {
+        arr.push(v.id)
+      }
+    })
+    this.setData({
+      unitIndex: arr
+    })
+    this.getList()
+  },
+  // 选择性别
+  checkSexInfo(e) {
+    let index = e.currentTarget.dataset.id
+    this.setData({
+      sexIndex: index,
+      sex:JSON.stringify(index)
+    })
+    this.getList()
+  },
+  // 选择年龄
+  checkAge2(e) {
+    let index = e.target.dataset.index;
+    this.setData({
+      ageIndex: index,
+    })
+    switch (e.currentTarget.dataset.index) {
+      case '不限':
+        this.setData({
+          min_age: '',
+          max_age: ''
+        })
+        break;
+      case '18-24':
+        this.setData({
+          min_age: '18',
+          max_age: '24'
+        })
+        break;
+      case '24-30':
+        this.setData({
+          min_age: '24',
+          max_age: '30'
+        })
+        break;
+      case '30-35':
+        this.setData({
+          min_age: '30',
+          max_age: '35'
+        })
+        break;
+      case '35-40':
+        this.setData({
+          min_age: '35',
+          max_age: '40'
+        })
+        break;
+      case '40-50':
+        this.setData({
+          min_age: '40',
+          max_age: '50'
+        })
+        break;
+      case '50岁以上':
+        this.setData({
+          min_age: '50',
+          max_age: ''
+        })
+        break;
+    }
+    this.getList()
+  },
+ //选中员工box
+ checkboxChange:function(e){
+   this.setData({
+    express:e.detail.value,
+    checkLength:JSON.stringify(e.detail.value.length)
+   })
+ },
+//  输送
+expressPer:function(e){
+   let data = {
+    task_id: wx.getStorageSync('optionsId'),
+    // task_id:'5',
+    staff_id:this.data.express,
+    Authorization:  wx.getStorageSync('token'),
+   }
+  api.sendStaff(data).then(res =>{
+    console.log(res.data)
+    if(res.data.code == 200){
+      wx.showToast({
+        title: res.data.msg,
+        icon: 'none',
+        duration: 2000
+      })
+      // this.getList()
+    }else {
+      wx.showToast({
+        title: res.data.msg,
+        icon: 'none',
+        duration: 2000
+      })
+    }
+  })
+},
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
+    let that = this
+    that.setData({
+      id: options.id
+    })
+    that.getList()
+    that.getWork()
   },
 
   /**

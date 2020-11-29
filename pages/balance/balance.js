@@ -1,4 +1,6 @@
 // pages/balance/balance.js
+let app = getApp()
+const api = app.globalData.api;
 Page({
 
   /**
@@ -10,14 +12,36 @@ Page({
     month:'10',
     money:'￥200.05',
     income:'￥454',
-    showInfo:false
+    showInfo:false,
+    list:{},
+    area:[],//地址
+    all:'',//合计
+    took:'',//已提现
   },
-
+  // g获取列表
+  getList:function(e){
+     let data = {
+       time:'',
+       Authorization: wx.getStorageSync('token')
+     }
+     api.waitPay(data).then(res => {
+       console.log(res.data)
+       if(res.data.code == 200) {
+         this.setData({
+           list:res.data.data.info,
+           all:res.data.data.all,
+           area:res.data.data.yizhan
+         })
+       }else{
+         
+       }
+     })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.getList()
   },
  // 显示期望岗位
  showInfo:function(e) {

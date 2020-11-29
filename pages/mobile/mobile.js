@@ -23,9 +23,9 @@ Page({
       this.setData({
         phoneTrue: false
       })
-      if (phone.length >= 11) {
+      if (phone.length != 11) {
         wx.showToast({
-          title: '请输入正确的11位手机号',
+          title: '请输入11位正确的手机号',
           icon: 'none',
           duration: 1000
         })
@@ -40,14 +40,6 @@ Page({
   // 点击获取验证码
   toGetCode: function (e) {
     let that = this
-    if (that.data.mobile == '' || that.data.mobile.length < 11) {
-      wx.showToast({
-        title: '请输入正确的手机号',
-        icon: 'none',
-        duration: 1000
-      })
-      return false
-    }
     let data = {
       mobile: that.data.mobile
     }
@@ -91,10 +83,10 @@ Page({
   formSubmit: function (e) {
     let that = this
     let phone = e.detail.value.phone
-    let code = e.detail.value.code
-    if (phone == '' || phone.length < 11) {
+    console.log(phone)
+    if (phone = '' || phone.length != 11) {
       wx.showToast({
-        title: '请输入正确的11位手机号',
+        title: '请输入13',
         icon: 'none',
         duration: 1000
       })
@@ -121,13 +113,13 @@ Page({
         wx.setStorageSync('token', res.data.data.token)
         wx.setStorageSync('type', res.data.data.type)
         wx.setStorageSync('user_id', res.data.data.user_id)
+        wx.switchTab({
+          url: '../index/index'
+        })
         wx.showToast({
           title: '登录成功',
           icon: 'none',
           duration: 1000
-        })
-        wx.navigateTo({
-          url: '../task/task'
         })
       }
     })

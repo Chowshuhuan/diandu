@@ -1,46 +1,41 @@
 {
   "pages":[
-    "pages/task/task",
-
-    "pages/jobInfo/jobInfo",
-
-
-
-
-
-
-    "pages/login/login",
-
-
-
-    "pages/mobile/mobile",
-
-    "pages/forget/forget",
-
-    "pages/register/register",
-
     "pages/intoWork/intoWork",
-    "pages/leave/leave",
-    "pages/employ/employ",
-    "pages/personal/personal",
-    "pages/workHour/workHour",
-    "pages/applyInfo/applyInfo",
-    "pages/matter/matter",
-    "pages/perInfo/perInfo",
-    "pages/villageDown/villageDown",
-    "pages/village/village",
+
     "pages/family/family",
-    "pages/basicInfo/basicInfo",
+
+    "pages/personal/personal",
+
+    "pages/leave/leave",
+
+    "pages/workHour/workHour",
+
     "pages/balance/balance",
-    "pages/headImg/headImg",
-    "pages/QRCode/QRCode", 
+
+
+    "pages/employ/employ",
+
+
+
+    "pages/perInfo/perInfo",
+
     "pages/index/index",
     "pages/expressPer/expressPer",
+    "pages/login/login",
+    "pages/city/city",
+    "pages/mobile/mobile",
+    "pages/forget/forget",
+    "pages/register/register",
+    "pages/applyInfo/applyInfo",
+    "pages/matter/matter",
+    "pages/villageDown/villageDown",
+    "pages/village/village",
+    "pages/basicInfo/basicInfo",
+    "pages/headImg/headImg",
+    "pages/QRCode/QRCode", 
     "pages/talent/talent",
     "pages/settled/settled",
     "pages/search/search",
-    "pages/user/user",
-    "pages/city/city",
     "pages/treaty/treaty",
     "pages/conceal/conceal"
   ],
@@ -55,7 +50,7 @@
     "color": "#333333",
     "selectedColor": "#01A583",
     "list": [{
-        "pagePath": "pages/task/task",
+        "pagePath": "pages/index/index",
         "text": "任务",
         "iconPath": "/images/index/footer/task.png",
         "selectedIconPath": "/images/index/footer/taskActive.png"

@@ -38,6 +38,7 @@ App({
   globalData: {
     // postUrl: "https://ezhao.bonnidee.cn",
     postUrl : "http://192.168.10.48:8082",
-    api: api
+    api: api,
+    // userInfo:{}
   }
 })

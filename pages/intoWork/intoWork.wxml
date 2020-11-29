@@ -2,21 +2,45 @@
 <view class="empoly">
   <!--  时间筛选 -->
   <view class="top">
-    <view class="left">
-      <text>2020.11</text>
-      <image src="../../images/index/footer/4.png" class="down"></image>
+    <view class="section">
+      <picker mode="date" value="{{date}}" start="2010-09" end="2030-09" bindchange="bindDateChange">
+        <view class="picker">
+          {{date}}
+        </view>
+        <image src="../../images/index/footer/4.png" class="down"></image>
+      </picker>
     </view>
-    <image class="searchIcon" src="../../images/index/footer/5.png"></image>
   </view>
   <!-- 表格内容 -->
   <view class='table-module'>
     <!-- 右侧表格滚动 -->
     <scroll-view class="scroll-box" scroll-x="true">
-      <view class="scroll-view-item" wx:for="{{fruitList}}" wx:for-index="bigindex" wx:key="{{index}}">
-        <view class='company-name'>{{item.name}}</view>
-        <view wx:for="{{item.list}}" wx:for-item="cell" data-bigindex="{{bigindex}}" data-index='{{index}}'
-          class='price-box' wx:key="{{index2}}">
-          <view class="price">{{cell.price}}</view>
+      <view class="table">
+        <view class="tr">
+          <view class="th">序号</view>
+          <view class="th">姓名</view>
+          <view class="th">性别</view>
+          <view class="th">年龄</view>
+          <view class="th">身份证号</view>
+          <view class="th">联系电话</view>
+          <view class="th">登记时间</view>
+          <view class="th">期望岗位</view>
+          <view class="th">曾经工作岗位</view>
+          <view class="th">期望薪资 元/月</view>
+          <view class="th">有无病史</view>
+        </view>
+        <view class="tr" wx:for="{{list}}" wx:key="index">
+          <view class="th">{{index+1}}</view>
+          <view class="th">{{item.name}}</view>
+          <view class="th">{{item.sex}}</view>
+          <view class="th">{{item.age}}</view>
+          <view class="th">{{item.id_num}}</view>
+          <view class="th">{{item.phone}}</view>
+          <view class="th">{{item.create_time}}</view>
+          <view class="th">{{item.expect_work_name}}</view>
+          <view class="th">{{item.before_work}}</view>
+          <view class="th">{{item.compensation}}</view>
+          <view class="th">{{item.is_ill}}</view>
         </view>
       </view>
     </scroll-view>
