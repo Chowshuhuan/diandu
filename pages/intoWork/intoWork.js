@@ -2,7 +2,6 @@
 let app = getApp()
 const api = app.globalData.api;
 Page({
-
   /**
    * 页面的初始数据
    */

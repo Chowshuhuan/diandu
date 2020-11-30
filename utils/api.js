@@ -82,4 +82,12 @@ export default{
        group: function (data) {
         return request.$post('/api/User/group', data);
       },
+       // 获取上级所属id
+       getBossId: function (data) {
+        return request.$post('/api/Enter/getBossId', data);
+      },
+       // 提交入驻
+       create: function (data) {
+        return request.$post('/api/Enter/create', data);
+      },
 }

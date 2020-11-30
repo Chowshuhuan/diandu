@@ -1,5 +1,5 @@
-// const postUrl = "https://ezhao.bonnidee.cn"
-const postUrl = "http://192.168.10.48:8082"
+const postUrl = "https://diandu.bonnidee.cn"
+// const postUrl = "http://192.168.10.48:8082"
 
 export default class Request {
   $get(paramete, data) {

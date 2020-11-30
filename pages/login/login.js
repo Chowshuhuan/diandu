@@ -29,7 +29,6 @@ Page({
     wx.login({
       success(res) {
         if (res.code) {
-          console.log(res.code)
           //发起网络请求
           let data = {
             code: res.code
@@ -45,12 +44,12 @@ Page({
             }
           })
         } else {
-          // wx.showToast({
-          //   title: res.data.msg,
-          //   icon: 'none',
-          //   duration: 1000
-          // })
-          console.log('登录失败！' + res.errMsg)
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1000
+          })
+          // console.log('登录失败！' + res.errMsg)
         }
       }
     })
@@ -71,7 +70,6 @@ Page({
       session_key: that.data.session_key,
     }
     api.getMobileByOpenid(data).then(res => {
-      console.log(res.data)
       if (res.data.code == 200) {
         that.setData({
           mobile: res.data.data.phoneNumber
@@ -95,9 +93,15 @@ Page({
               icon: 'none',
               duration: 1000
             })
-            wx.switchTab({
-              url: '../index/index',
-            })
+            if (res.data.data.type == 0) {
+              wx.switchTab({
+                url: '../index/index',
+              })
+            } else {
+              wx.navigateTo({
+                url: '../settled/settled',
+              })
+            }
           }
         })
       } else {

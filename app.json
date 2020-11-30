@@ -1,43 +1,49 @@
 {
   "pages":[
-    "pages/intoWork/intoWork",
+    "pages/login/login",
 
-    "pages/family/family",
+    "pages/password/password",
 
-    "pages/personal/personal",
+    "pages/mobile/mobile",
 
-    "pages/leave/leave",
-
-    "pages/workHour/workHour",
-
-    "pages/balance/balance",
-
-
-    "pages/employ/employ",
+    "pages/settled/settled",
 
 
 
     "pages/perInfo/perInfo",
 
-    "pages/index/index",
-    "pages/expressPer/expressPer",
-    "pages/login/login",
-    "pages/city/city",
-    "pages/mobile/mobile",
-    "pages/forget/forget",
+
+
     "pages/register/register",
     "pages/applyInfo/applyInfo",
+
     "pages/matter/matter",
+
     "pages/villageDown/villageDown",
+
     "pages/village/village",
+
     "pages/basicInfo/basicInfo",
+  
     "pages/headImg/headImg",
-    "pages/QRCode/QRCode", 
-    "pages/talent/talent",
-    "pages/settled/settled",
-    "pages/search/search",
+
     "pages/treaty/treaty",
-    "pages/conceal/conceal"
+
+    "pages/conceal/conceal",
+
+    "pages/intoWork/intoWork",
+    "pages/family/family",
+    "pages/personal/personal",
+    "pages/leave/leave",
+    "pages/workHour/workHour",
+    "pages/balance/balance",
+    "pages/employ/employ",
+    "pages/index/index",
+    "pages/expressPer/expressPer",
+    "pages/city/city",
+    "pages/forget/forget",
+    "pages/QRCode/QRCode", 
+    "pages/search/search"
   ],
   "window":{
     "backgroundTextStyle":"light",
