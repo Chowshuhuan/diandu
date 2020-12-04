@@ -9,6 +9,7 @@ Page({
   data: {
     list: [],
     date: '2010-09',
+    src: ''
   },
   getList: function (e) {
     let data = {
@@ -21,7 +22,7 @@ Page({
     api.workHour(data).then(res => {
       console.log(res.data)
       if (res.data.code == 200) {
-        if(res.data.data.data.length == 0){
+        if (res.data.data.length == 0) {
           wx.showToast({
             title: '本月工时列表为空',
             icon: 'none',
@@ -30,7 +31,7 @@ Page({
           this.setData({
             list: []
           })
-        }else{
+        } else {
           this.setData({
             list: res.data.data.data
           })
@@ -38,14 +39,63 @@ Page({
       }
     })
   },
-   // 选择时间
-   bindDateChange: function(e) {
-    let s1 = e.detail.value.substring(0,e.detail.value.length-3)
-     this.setData({
-       date: s1
-     })
-     this.getList()
-   },
+  // 选择时间
+  bindDateChange: function (e) {
+    let s1 = e.detail.value.substring(0, e.detail.value.length - 3)
+    this.setData({
+      date: s1
+    })
+    this.getList()
+  },
+  //  下载文件
+  downLoad: function (e) {
+    let data = {
+      time: this.data.date,
+      is_download: '1',
+      page: '',
+      limit: '',
+      Authorization: wx.getStorageSync('token')
+    }
+    api.workHour(data).then(res => {
+      if (res.data.code == 200) {
+        if (res.data.data.length == 0) {
+          wx.showToast({
+            title: '当前列表为空,无法进行下载操作',
+            icon: 'none',
+            duration: 1500
+          })
+        } else {
+          wx.downloadFile({
+            url: res.data.data,
+            success: function (res) {
+              if (res.errMsg == 'downloadFile:ok') {
+                let filePath = res.tempFilePath;
+                wx.openDocument({
+                  filePath: filePath,
+                  success: function (res) {
+                    wx.showToast({
+                      title: '打开成功',
+                      icon: 'none',
+                      duration: 1500
+                    })
+                  }
+                })
+                // 文件下载成功
+              } else {
+                //  失败
+              }
+            }
+          })
+        }
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 1500
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -56,7 +106,7 @@ Page({
     //获取月份  
     let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
     this.setData({
-      date:JSON.stringify(Y)+'-'+M
+      date: JSON.stringify(Y) + '-' + M
     })
     this.getList()
   },

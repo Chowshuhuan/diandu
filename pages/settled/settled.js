@@ -33,6 +33,7 @@ Page({
     idType: '', //申请身份的类型 1 2 
     bossName: '', //所属上级的名字
     bossId: '', //所属上级类型合伙人
+    bossIdName: '', //根据不同类型合伙人显示
     showBossName: false, //选择后显示boss名字
     showXiang: false,
     mingzi: '', //个人信息 名字
@@ -55,6 +56,7 @@ Page({
     region1: '请选择所在地区',
     region2: '',
     region3: '',
+    bossMingzi:'',
   },
   // 选择性别
   radioChange1: function (e) {
@@ -125,7 +127,8 @@ Page({
         hehuoren: '乡镇合伙人',
         idType: '2',
         showXiang: false,
-        bossId: '2'
+        bossId: '2',
+        bossIdName: '城市合伙人'
       })
     } else if (this.data.name == '乡镇合伙人') {
       this.setData({
@@ -133,7 +136,8 @@ Page({
         hehuoren: '城市合伙人',
         idType: '3',
         showXiang: true,
-        bossId: '3'
+        bossId: '3',
+        bossIdName: '县级合伙人'
       })
     } else {
       this.setData({
@@ -152,7 +156,6 @@ Page({
         enter_xian: this.data.enter_xian,
       }
       api.getBossId(data).then(res => {
-        console.log(res.data)
         if (res.data.code == 200) {
           switch (res.data.data.shenfen) {
             case '1':
@@ -172,9 +175,11 @@ Page({
               break;
           }
           this.setData({
-            bossName: res.data.data.name,
-            showBossName: true
+            bossMingzi: res.data.data[0].name,
+            showBossName: true,
+            boss_id:res.data.data[0].id
           })
+          console.log(this.data.bossMingzi)
         } else {
 
         }
@@ -214,9 +219,9 @@ Page({
         enter_xian: e.detail.value[2],
       })
     }
-    this.setData({
-      showHehuo: false,
-    })
+    // this.setData({
+    //   showHehuo: false,
+    // })
     if (this.data.enter_sheng) {
       let data = {
         Authorization: wx.getStorageSync('token'),
@@ -244,9 +249,11 @@ Page({
               })
               break;
           }
+          console.log(res.data.data)
           this.setData({
-            bossName: res.data.data.name,
-            showBossName: true
+            bossMingzi: res.data.data[0].name,
+            showBossName: true,
+            boss_id:res.data.data[0].id
           })
         } else {
 
@@ -294,14 +301,13 @@ Page({
   },
   // 提交全部资料
   tijiaoInfo: function (e) {
-    console.log(this.data.bossId)
     let data = {
       shenfen: this.data.idType,
       enter_sheng: this.data.enter_sheng,
       enter_shi: this.data.enter_shi,
       enter_xian: this.data.enter_xian,
-      enter_address_details: this.data.enter_address_details,
-      boss_id: this.data.bossId,
+      enter_address_details: this.data.enter_xiang,
+      boss_id: this.data.boss_id,
       name: this.data.mingzi,
       sex: this.data.sex,
       birth_time: this.data.birth_time,
@@ -325,6 +331,12 @@ Page({
           duration: 1000
         })
       }
+    })
+  },
+  // 修改认证资料
+  toChange: function (e) {
+    wx.navigateTo({
+      url: '../changeInfo/changeInfo',
     })
   },
   /**
@@ -367,14 +379,20 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+  //   this.setData({
+  //     type: wx.getStorageSync('type')
+  //  })
+  //  console.log( wx.getStorageSync('type'))
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     this.setData({
+        type: wx.getStorageSync('type')
+     })
+     console.log( wx.getStorageSync('type'))
   },
 
   /**

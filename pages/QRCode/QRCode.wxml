@@ -2,20 +2,20 @@
 <view class="code">
   <view class="codeContent">
     <view class="img">
-    <image class="headImg" src="{{src}}"></image>
+    <image class="headImg" src="{{list.attr}}"></image>
     <view class="text">
-      <view class="name">{{name}}</view>
-      <view class="mobile">{{mobile}}</view>
+      <view class="name">{{list.name}}</view>
+      <view class="mobile">{{list.phone}}</view>
     </view>
   </view>
   <view class="codeImg">
-   <image class="codeImage" src="{{codeImg}}"></image>
+   <image class="codeImage" show-menu-by-longpress src="{{codeImg}}"></image>
   </view>
   <view class="txt">
     扫一扫上面的二维码，填写完成人才信息库采集
   </view>
   </view>
-  <view class="btn" bindtap="saveCode">
+  <button class="btn"  bindtap="saveCode">
     保存到手机相册
-  </view>
+  </button>
 </view>

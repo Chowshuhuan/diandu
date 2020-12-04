@@ -1,15 +1,17 @@
-// pages/headImg/headImg.js
+// pages/waitAuditing/waitAuditing.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    src: '../../images/index/footer/15.png'
+
   },
-  // 取消
-  cancel: function () {
-    
+  // 修改认证资料
+  toChange: function (e) {
+    wx.navigateTo({
+      url: '../changeInfo/changeInfo',
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -17,33 +19,7 @@ Page({
   onLoad: function (options) {
 
   },
-  takePhoto() {
-    var that = this
-    wx.chooseImage({
-      count:9,
-      sizeType:['original','compressed'],
-      sourceType:['camera'],
-      success:function(res){
-        that.setData({
-         src:res.tempFilePaths[0]
-        })
-        console.log(res.tempFilePaths[0])
-      }
-    })
-  },
-  checkPhoto() {
-    var that = this
-    wx.chooseImage({
-      count:9,
-      sizeType:['original','compressed'],
-      sourceType:['album'],
-      success:function(res){
-        that.setData({
-          src:res.tempFilePaths[0]
-         })
-      }
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

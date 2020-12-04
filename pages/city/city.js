@@ -142,6 +142,7 @@ Page({
   //点击城市
   cityTap(e) {
     if (this.data.Index == 0) {
+      console.log(e.currentTarget.dataset)
       let city = e.currentTarget.dataset.val
       this.setData({
         dialogShow: true,
@@ -161,6 +162,7 @@ Page({
   },
   tapDialogButton(e) {
     if (e.detail.item.text == "确定") {
+     
       wx.setStorageSync('locatecity', { city: this.data.linshi, time: new Date().getTime() });
       this.setData({
         dialogShow: false,

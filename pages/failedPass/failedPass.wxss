@@ -1,0 +1,48 @@
+/* pages/failedPass/failedPass.wxss */
+.tijiao{
+  width: 80% !important;
+  border-radius: 40rpx;
+}
+/* 待审核 */
+.wait{
+  background: #fff;
+  text-align: center;
+  padding-top: 200rpx;
+  position: relative;
+}
+.timeImg{
+  width: 176rpx;
+  height:176rpx ;
+}
+.waitPass{
+  padding-top: 20rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.change{
+  font-size: 30rpx;
+  padding-top: 40rpx;
+  color: #999999;
+}
+.reason{
+  font-family: PingFang-SC Medium;
+   padding-top: 20rpx;
+}
+.botTop{
+  padding: 30rpx 0;
+}
+.phone{
+ font-family:  PingFang-SC Medium;
+  color: #999999;
+  /* font-weight: 600; */
+}
+.num{
+ font-family:  PingFang-SC Medium;
+ color: #027aff;
+ /* font-weight: 600; */
+}
+.reason2{
+  color: #999;
+  font-size: 30rpx;
+  padding-top: 10rpx;
+}

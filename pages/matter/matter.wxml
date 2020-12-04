@@ -8,11 +8,10 @@
     </view>
   </block>
   <block wx:if="{{one}}">
-    <view class="info" wx:for="{{arr}}">
+    <view class="info" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}">
       <view class="infoTop">
         <text class="infoLeft">申请身份</text>
-        <text class="infoMiddle">{{item.caoacity}}</text>
-        <text class="infoRight">{{item.status}}</text>
+        <text class="infoMiddle">{{item.shenfen}}</text>
       </view>
       <view>
         <text class="infoLeft2">姓名</text>
@@ -20,25 +19,27 @@
       </view>
       <view>
         <text class="infoLeft">申请区域</text>
-        <text class="infoMiddle">{{item.area}}</text>
+        <text class="infoMiddle">{{item.enter_sheng}}</text>
+        <text class="infoRight">{{item.enter_shi}}</text>
+        <text class="infoRight">{{item.enter_xian}}</text>
       </view>
       <view>
         <text class="infoLeft">详细地址</text>
-        <text class="infoMiddle">{{item.address}}</text>
+        <text class="infoMiddle">{{item.enter_address_details}}</text>
       </view>
       <view class="bottomBtns">
-        <text class="lookInfo" bindtap="lookInfo">查看详情</text>
-        <text class="reject" bindtap="reject">驳回</text>
-        <text class="pass">通过</text>
+        <text class="lookInfo" data-id="{{item.id}}" bindtap="lookInfo">查看详情</text>
+        <text class="reject" data-id="{{item.id}}" bindtap="reject">驳回</text>
+        <text class="pass" data-id="{{item.id}}" bindtap="pass">通过</text>
       </view>
     </view>
   </block>
   <block wx:if="{{two}}">
-    <view class="info" wx:for="{{arr2}}" data-key="{{index}}">
+    <view class="info" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}">
       <view class="infoTop">
         <text class="infoLeft">申请身份</text>
-        <text class="infoMiddle">{{item.caoacity}}</text>
-        <text class="infoRight">{{item.status}}</text>
+        <text class="infoMiddle">{{item.shenfen}}</text>
+        <!-- <text class="infoRight">{{item.status}}</text> -->
       </view>
       <view>
         <text class="infoLeft2">姓名</text>
@@ -46,23 +47,27 @@
       </view>
       <view>
         <text class="infoLeft">申请区域</text>
-        <text class="infoMiddle">{{item.area}}</text>
+        <text class="infoMiddle">{{item.enter_sheng}}</text>
+        <text class="infoRight">{{item.enter_shi}}</text>
+        <text class="infoRight">{{item.enter_xian}}</text>
+        <!-- <text class="infoMiddle">{{item.area}}</text> -->
       </view>
       <view>
         <text class="infoLeft">详细地址</text>
-        <text class="infoMiddle">{{item.address}}</text>
+        <!-- <text class="infoMiddle">{{item.address}}</text> -->
+        <text class="infoMiddle">{{item.enter_address_details}}</text>
       </view>
       <view class="bottomBtns">
-        <text class="lookInfo">查看详情</text>
+        <text class="lookInfo" data-id="{{item.id}}" bindtap="lookInfo">查看详情</text>
       </view>
     </view>
   </block>
   <block wx:if="{{three}}">
-    <view class="info" wx:for="{{arr3}}" data-key="{{index}}">
+    <view class="info" wx:for="{{list}}" wx:key="index" data-id="{{item.id}}">
       <view class="infoTop">
         <text class="infoLeft">申请身份</text>
-        <text class="infoMiddle">{{item.caoacity}}</text>
-        <text class="infoRight">{{item.status}}</text>
+        <text class="infoMiddle">{{item.shenfen}}</text>
+        <!-- <text class="infoRight">{{item.status}}</text> -->
       </view>
       <view>
         <text class="infoLeft2">姓名</text>
@@ -70,25 +75,29 @@
       </view>
       <view>
         <text class="infoLeft">申请区域</text>
-        <text class="infoMiddle">{{item.area}}</text>
+        <text class="infoMiddle">{{item.enter_sheng}}</text>
+        <text class="infoRight">{{item.enter_shi}}</text>
+        <text class="infoRight">{{item.enter_xian}}</text>
+        <!-- <text class="infoMiddle">{{item.area}}</text> -->
       </view>
       <view>
         <text class="infoLeft">详细地址</text>
-        <text class="infoMiddle">{{item.address}}</text>
+        <text class="infoMiddle">{{item.enter_address_details}}</text>
+        <!-- <text class="infoMiddle">{{item.address}}</text> -->
       </view>
       <view class="bottomBtns">
-        <text class="lookInfo">查看详情</text>
+        <text class="lookInfo" data-id="{{item.id}}" bindtap="lookInfo">查看详情</text>
       </view>
     </view>
   </block>
   <!-- 驳回的弹出框 -->
-
-  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
   <view class="modal-dialog" wx:if="{{showModal}}">
     <view class="modal-title">驳回原因</view>
     <view class="modal-content">
       <view class="modal-input">
-        <textarea class="content2" placeholder='请输入驳回内容' maxlength="{{max}}" bindinput="inputs">
+        <textarea class="content2" value="{{cause}}" placeholder='请输入驳回内容' maxlength="{{max}}" bindblur="checkTxt"
+          bindinput="inputs">
 　　　　<text class="currentWordNumber">{{currentWordNumber}}/{{max}}字</text>
 　　</textarea>
       </view>

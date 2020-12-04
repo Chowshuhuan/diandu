@@ -214,6 +214,15 @@ Page({
  },
 //  输送
 expressPer:function(e){
+  console.log(this.data.checkLength)
+  if(this.data.checkLength == 0){
+    wx.showToast({
+      title: '请选择至少一个需要输送的人才',
+      icon: 'none',
+      duration: 2000
+    })
+    return
+  }
    let data = {
     task_id: wx.getStorageSync('optionsId'),
     // task_id:'5',
@@ -221,7 +230,6 @@ expressPer:function(e){
     Authorization:  wx.getStorageSync('token'),
    }
   api.sendStaff(data).then(res =>{
-    console.log(res.data)
     if(res.data.code == 200){
       wx.showToast({
         title: res.data.msg,

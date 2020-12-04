@@ -79,6 +79,10 @@ export default{
         return request.$post('/api/User/waitOnJobList', data);
       },
        // 代办事项
+       toDo: function (data) {
+        return request.$post('/api/User/toDo', data);
+      },
+       //  族群
        group: function (data) {
         return request.$post('/api/User/group', data);
       },
@@ -89,5 +93,25 @@ export default{
        // 提交入驻
        create: function (data) {
         return request.$post('/api/Enter/create', data);
+      },
+      // 通过。驳回入驻申请
+      setType: function (data) {
+        return request.$post('/api/User/setType', data);
+      },
+      // 代办详情
+      toDoInfo: function (data) {
+        return request.$post('/api/User/toDoInfo', data);
+      },
+      // 期望岗位
+      workTag: function (data) {
+        return request.$post('/api/Staff/workTag', data);
+      },
+      // 员工填写信息
+      fillInfo: function (data) {
+        return request.$post('/api/Staff/fillInfo', data);
+      },
+      // 文件上传
+      upload: function (data) {
+        return request.$post('/api/Acount/upload', data);
       },
 }

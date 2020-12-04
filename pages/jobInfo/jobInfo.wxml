@@ -69,7 +69,7 @@
   </view>
   <!-- word下载 -->
   <view class="word">
-    <image class="wordImg" src="../../images/index/footer/67.png"></image>
+    <image bindtap="downLoad" class="wordImg" src="../../images/index/footer/67.png"></image>
     <view>
       <text>word 下载</text>
     </view>
@@ -101,7 +101,7 @@
   <view class='zhezhao' wx:if="{{codeShow}}" bindtap='hiddenCode' />
       <view class="codeContent" wx:if="{{codeShow2}}" bindbuttontap="buttontap">
         <view class="codeImg">
-          <image class="codeImage" src="{{qrcodeURL}}"></image>
+          <image show-menu-by-longpress class="codeImage" src="{{codeImg}}"></image>
         </view>
         <view class="txt">
           <view>

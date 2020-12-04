@@ -1,9 +1,9 @@
 <!--pages/city/city.wxml-->
 <view class="city">
-  <view class="search">
+  <!-- <view class="search">
     <image class="searchImg" src="../../images/index/footer/5.png"></image>
     <input class="searchTxt" type="text" placeholder="城市名或拼音查询" />
-  </view>
+  </view> -->
   <!-- 城市内容 -->
   <view class="hotcity">
 		<view class='city_locate' data-types='locate'>

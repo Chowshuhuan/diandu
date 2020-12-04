@@ -13,39 +13,63 @@ Page({
     password: '', //密码
     sms_code: '', //验证码
     sms_code_key: '', //验证码key
+    Loadingtime: '', //定时器变量
   },
   // 验证手机号
   blurPhone: function (e) {
-    let phone = e.detail.value
-    if (!/^1[34578]\d{9}$/.test(phone)) {
-      this.setData({
-        phoneTrue: false
+    let str = /^1[3-9]\d{9}$/
+    if (!str.test(e.detail.value)) {
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 2000
       })
-      if (phone.length >= 11) {
-        wx.showToast({
-          title: '请输入正确的11位手机号',
-          icon: 'none',
-          duration: 1000
-        })
-      }
     } else {
       this.setData({
-        phoneTrue: true,
-        mobile: phone
+        mobile: e.detail.value
+      })
+    }
+  },
+  // 验证密码
+  firstPwd: function (e) {
+    let str = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/
+    if (!str.test(e.detail.value)) {
+      wx.showToast({
+        title: '密码必须包含数字和字母且长度不少于6',
+        icon: 'none',
+        duration: 1500
+      })
+      this.setData({
+        password: e.detail.value
+      })
+    } else {
+      this.setData({
+        password: e.detail.value
+      })
+    }
+  },
+  // z再次验证密码
+  surePwd: function (e) {
+    console.log(this.data.password)
+    console.log(e.detail.value)
+    if (this.data.password != e.detail.value) {
+      wx.showToast({
+        title: '两次输入的密码不一致',
+        icon: 'none',
+        duration: 1500
+      })
+      this.setData({
+        surePwd: e.detail.value
+      })
+    } else {
+      this.setData({
+        surePwd: e.detail.value
       })
     }
   },
   // 点击获取验证码
   toGetCode: function (e) {
     let that = this
-    if (that.data.mobile == '' || that.data.mobile.length < 11) {
-      wx.showToast({
-        title: '请输入正确的手机号',
-        icon: 'none',
-        duration: 1000
-      })
-      return false
-    }
     let data = {
       mobile: that.data.mobile
     }
@@ -85,96 +109,6 @@ Page({
       }
     })
   },
-  // 验证登录密码
-  userPasswordInput: function (e) {
-    var that = this
-    var value = e.detail.value
-    var strkong = /^(?=.*?[a-z)(?=.*>[A-Z])(?=.*?[0-9])[a-zA_Z0-9]{9,20}$/g
-    if (strkong.test(value)) {
-      that.setData({
-        truePwd: true
-      })
-    } else {
-      if (value.length >= 9) {
-        wx.showToast({
-          title: '密码由9-20位英文字母和数字组成',
-          icon: 'none',
-          duration: 1000
-        })
-        that.setData({
-          truePwd: false
-        })
-      }
-    }
-  },
-  // 注册
-  forgetPassword: function (e) {
-    let that = this
-    let phone = e.detail.value.phone
-    let code = e.detail.value.code
-    let pwd = e.detail.value.pwd
-    let surePwd = e.detail.value.surePwd
-    if (phone == '' || phone.length < 11) {
-      wx.showToast({
-        title: '请输入正确的11位手机号',
-        icon: 'none',
-        duration: 1000
-      })
-      return false
-    }
-    if (code == '') {
-      wx.showToast({
-        title: '请输入验证码',
-        icon: 'none',
-        duration: 1000
-      })
-      return false
-    }
-    if (pwd.length < 9) {
-      wx.showToast({
-        title: '密码最少为9位',
-        icon: 'none',
-        duration: 1000
-      })
-      return false
-    }
-    if (pwd !== surePwd) {
-      wx.showToast({
-        title: '两次输入密码不一致',
-        icon: 'none',
-        duration: 1000
-      })
-      return false
-    }
-    let data = {
-      mobile: phone,
-      password: surePwd,
-      sms_code: code,
-      sms_code_key: that.data.sms_code_key
-    }
-    api.register(data).then(res => {
-      console.log(res.data)
-      if (res.data.code == 200) {
-        that.setData({
-          mobile: '',
-          code: '',
-          pwd: '',
-          surePwd: ''
-        })
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 1000
-        })
-      } else {
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 1000
-        })
-      }
-    })
-  },
   toxieyi() {
     wx.navigateTo({
       url: '../treaty/treaty'
@@ -183,6 +117,74 @@ Page({
   toys() {
     wx.navigateTo({
       url: '../conceal/conceal'
+    })
+  },
+  // 注册
+  formSubmit: function (e) {
+    let str = /^1[3-9]\d{9}$/
+    let str1 = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$/
+    console.log(e.detail.value)
+    if (!str.test(e.detail.value.phone)) {
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 1000
+      })
+      return false
+    }
+    if (e.detail.value.pwd != e.detail.value.surePwd) {
+      wx.showToast({
+        title: '两次输入的密码不一致',
+        icon: 'none',
+        duration: 1000
+      })
+      return false
+    }
+    if (!str1.test(e.detail.value.pwd)) {
+      wx.showToast({
+        title: '请输入有效的密码',
+        icon: 'none',
+        duration: 1000
+      })
+      return false
+    }
+    if (!str1.test(e.detail.value.surePwd)) {
+      wx.showToast({
+        title: '请输入有效的密码',
+        icon: 'none',
+        duration: 1000
+      })
+      return false
+    }
+    let data = {
+      mobile: e.detail.value.phone,
+      password: e.detail.value.pwd,
+      sms_code: e.detail.value.code,
+      sms_code_key: this.data.sms_code_key,
+    }
+    api.register(data).then(res => {
+      if (res.data.code == 200) {
+        wx.showToast({
+          title: res.data.msg + '两秒后跳转到登录页面',
+          icon: 'none',
+          duration: 1500
+        })
+        that.setData({
+          // 定时三秒跳转对比页面
+          Loadingtime: setInterval(function () {
+            // 跳转页面
+            wx.navigateTo({
+              url: '../mobile/mobile',
+            })
+          }, 2000)
+        })
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 1500
+        })
+      }
     })
   },
   /**
@@ -196,6 +198,21 @@ Page({
     wx.getStorageSync('session_key')
     that.setData({
       openid: wx.getStorageSync('openid'),
+    })
+  },
+  onHide: function () {
+    clearInterval(this.data.Loadingtime);
+    this.setData({
+      Loadingtime: null
+    })
+  },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    clearInterval(this.data.Loadingtime);
+    this.setData({
+      Loadingtime: null
     })
   }
 })

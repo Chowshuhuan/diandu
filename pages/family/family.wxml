@@ -5,18 +5,32 @@
       <text class="idInfo">我的身份</text>
       <text class="cityPerson">{{shenfen}}</text>
     </view>
+    <view class="top2" wx:if="{{showBoss}}">
+      <text class="myFamily">所属上级</text>
+      <text class="placr">{{familyList.boss_name}}</text>
+      <text class="placr4">{{bossName}}</text>
+    </view>
     <view class="top2">
       <text class="myFamily">我的族群</text>
       <text class="placr">{{familyList.enter_sheng}}</text>
+      <text class="placr2">{{familyList.enter_shi}}</text>
+      <text class="placr3">{{familyList.enter_xian}}</text>
     </view>
     <view></view>
   </view>
-  <view class="placeInfo"  wx:for="{{familyList.yizhan}}" wx:key="id">
+  <view class="placeInfo" wx:for="{{list2}}" wx:key="id">
     <view class="topTit" bindtap="checkShow">{{item.name}}
       <image class="icon" src="{{src}}"></image>
     </view>
-    <view class="bottom" wx-if="{{showInfo}}" wx:for="{{item.children}}" wx:key="id">
-      <view class="place" bindtap="toVillage">{{children.name}}</view>
+    <view class="bottom" wx-if="{{showInfo}}"  wx:for="{{item.child}}" wx:key="id">
+      <image class="icon1" bindtap="checkShow2" src="{{src1}}"></image>
+      <view class="place" >
+        {{item.name}}
+      </view>
+      <view wx-if="{{showInfo1}}" wx:for="{{item.child}}" wx:key="id">
+         <view>{{item}}</view>
+      </view>
     </view>
   </view>
+  <!--  -->
 </view>

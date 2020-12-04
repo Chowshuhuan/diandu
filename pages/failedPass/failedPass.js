@@ -1,4 +1,4 @@
-// pages/psaaword/psaaword.js
+// pages/failedPass/failedPass.js
 Page({
 
   /**
@@ -7,7 +7,12 @@ Page({
   data: {
 
   },
-
+  // 修改认证资料
+  toChange: function (e) {
+    wx.navigateTo({
+      url: '../changeInfo/changeInfo',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

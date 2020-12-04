@@ -1,11 +1,11 @@
 let app = getApp()
 const api = app.globalData.api;
 Page({
-  data:{
+  data: {
     mobile: '', //手机号
-    code:'',//验证码
-    pwd:'',//密码
-    surePwd:'',//确认密码
+    code: '', //验证码
+    pwd: '', //密码
+    surePwd: '', //确认密码
     phoneTrue: false, //用于验证手机号输入格式
     logincodename: '获取验证码',
     openid: '',
@@ -13,46 +13,33 @@ Page({
     password: '', //密码
     sms_code: '', //验证码
     sms_code_key: '', //验证码key
+    Loadingtime: '', //定时器变量
   },
-   // 验证手机号
-   blurPhone: function (e) {
-    let phone = e.detail.value
-    if (!/^1[34578]\d{9}$/.test(phone)) {
-      this.setData({
-        phoneTrue: false
-      })
-      if (phone.length >= 11) {
-        wx.showToast({
-          title: '请输入正确的11位手机号',
-          icon: 'none',
-          duration: 1000
-        })
-      }
-    } else {
-      this.setData({
-        phoneTrue: true,
-        mobile: phone
-      })
-    }
-  },
-   // 点击获取验证码
-   toGetCode: function (e) {
-    let that = this
-    if (that.data.mobile == '' || that.data.mobile.length < 11) {
+  // 验证手机号
+  blurPhone: function (e) {
+    let str = /^1[3-9]\d{9}$/
+    if (!str.test(e.detail.value)) {
       wx.showToast({
         title: '请输入正确的手机号',
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
-      return false
+    } else {
+      this.setData({
+        mobile: e.detail.value
+      })
     }
+  },
+  // 点击获取验证码
+  toGetCode: function (e) {
+    let that = this
     let data = {
       mobile: that.data.mobile
     }
     api.sendsms(data).then(res => {
       if (res.data.code == 200) {
         that.setData({
-          sms_code:res.data.data.sms_code,
+          sms_code: res.data.data.sms_code,
           sms_code_key: res.data.data.sms_code_key
         })
         wx.showToast({
@@ -77,104 +64,86 @@ Page({
           }
         }, 1000)
       } else {
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 1000
-        })
+        // wx.showToast({
+        //   title: res.data.msg,
+        //   icon: 'none',
+        //   duration: 1000
+        // })
       }
     })
   },
-   // 验证登录密码
-   userPasswordInput: function (e) {
-    var that = this
-    var value = e.detail.value
-    var strkong = /^(?=.*?[a-z)(?=.*>[A-Z])(?=.*?[0-9])[a-zA_Z0-9]{9,20}$/g
-    if (strkong.test(value)) {
-      that.setData({
-        truePwd: true
+  // 输入密码
+  userPasswordInput: function (e) {
+    let pwdRegex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z]).{6,20}')
+    if (!pwdRegex.test(e.detail.value)) {
+      wx.showToast({
+        title: '密码为6-20的数字和字母组成',
+        icon: 'none',
+        duration: 2000
       })
     } else {
-      if (value.length >= 9) {
-        wx.showToast({
-          title: '密码由9-20位英文字母和数字组成',
-          icon: 'none',
-          duration: 1000
-        })
-        that.setData({
-          truePwd: false
-        })
-      }
+      this.setData({
+        pwd: e.detail.value
+      })
     }
   },
-    // 修改完成
-    formSubmit: function (e) {
-      let that = this
-      let phone = e.detail.value.phone
-      let code = e.detail.value.code
-      let pwd = e.detail.value.pwd
-      let surePwd = e.detail.value.surePwd
-      if (phone == '' || phone.length < 11) {
-        wx.showToast({
-          title: '请输入正确的11位手机号',
-          icon: 'none',
-          duration: 1000
-        })
-        return false
-      }
-      if (code == '') {
-        wx.showToast({
-          title: '请输入验证码',
-          icon: 'none',
-          duration: 1000
-        })
-        return false
-      }
-      if (pwd.length < 9) {
-        wx.showToast({
-          title: '密码最少为9位',
-          icon: 'none',
-          duration: 1000
-        })
-        return false
-      }
-      if (pwd !== surePwd) {
-        wx.showToast({
-          title: '两次输入密码不一致',
-          icon: 'none',
-          duration: 1000
-        })
-        return false
-      }
+  // 再次输入密码
+  userPasswordInput2: function (e) {
+    if (e.detail.value !== this.data.pwd) {
+      wx.showToast({
+        title: '两次输入的密码不一致',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      this.setData({
+        surePwd: e.detail.value
+      })
+    }
+  },
+  // 修改完成
+  formSubmit: function (e) {
+    let that = this
+    let str = /^1[3-9]\d{9}$/
+    if (!str.test(e.detail.value.phone)) {
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
       let data = {
-        mobile:phone,
-        password:surePwd,
-        sms_code:code,
-        sms_code_key:that.data.sms_code_key
+        mobile: e.detail.value.phone,
+        password: e.detail.value.surePwd,
+        sms_code: e.detail.value.code,
+        sms_code_key: that.data.sms_code_key
       }
       api.forgetPassword(data).then(res => {
-        console.log(res.data)
-        if(res.data.code == 200){
-           that.setData({
-              mobile:'',
-              code:'',
-              pwd:'',
-              surePwd:''
-           })
+        if (res.data.code == 200) {
           wx.showToast({
-            title:res.data.msg,
+            title: res.data.msg+'两秒后跳转到登录页面',
             icon: 'none',
-            duration: 1000
+            duration: 1500
           })
-        }else {
+          that.setData({
+            // 定时三秒跳转对比页面
+            Loadingtime: setInterval(function () {
+              // 跳转页面
+              wx.navigateTo({
+                url: '../mobile/mobile',
+              })
+            }, 2000)
+          })
+        } else {
           wx.showToast({
-            title:res.data.msg,
+            title: res.data.msg,
             icon: 'none',
-            duration: 1000
+            duration: 1500
           })
         }
       })
-    },
+    }
+  },
   toxieyi() {
     wx.navigateTo({
       url: '../treaty/treaty'
@@ -185,7 +154,7 @@ Page({
       url: '../conceal/conceal'
     })
   },
-   /**
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -197,5 +166,20 @@ Page({
     that.setData({
       openid: wx.getStorageSync('openid'),
     })
-  }
+  },
+  onHide: function () {
+		clearInterval(this.data.Loadingtime);
+		this.setData({
+			Loadingtime: null
+		})
+	},
+	/**
+	 * 生命周期函数--监听页面卸载
+	 */
+	onUnload: function () {
+		clearInterval(this.data.Loadingtime);
+		this.setData({
+			Loadingtime: null
+		})
+	}
 })

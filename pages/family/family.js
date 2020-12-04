@@ -9,6 +9,8 @@ Page({
   data: {
     showInfo: false,
     src: '../../images/index/footer/36.png',
+    src1 :'../../images/index/footer/36.png',
+    showInfo1:false,
     list: [{
       name: '那个村'
     }, {
@@ -17,7 +19,23 @@ Page({
       name: '这户人'
     }],
     familyList: {},
-    shenfen:''
+    shenfen:'',
+    list2:[{
+      name:'',
+      child:[
+        {
+          name:'',
+          child:[
+            {
+              name:'',
+              child:[]
+            }
+          ]
+        }
+      ]
+    }],
+    bossName:'',//所属上级
+    showBoss:'',
   },
   checkShow: function (e) {
     this.setData({
@@ -25,9 +43,10 @@ Page({
       src: this.data.showInfo ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png',
     })
   },
-  toVillage: function () {
-    wx.navigateTo({
-      url: '../village/village',
+  checkShow2:function(e){
+    this.setData({
+      showInfo1: this.data.showInfo1 ? false : true,
+      src1: this.data.showInfo1 ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png',
     })
   },
   // 获取族群的列表
@@ -39,22 +58,30 @@ Page({
       console.log(res.data)
       if (res.data.code == 200) {
         this.setData({
-          familyList: res.data.data
+          familyList: res.data.data,
+          list2:res.data.data.yizhan
         })
+        console.log(res.data.data.shenfen)
         switch (res.data.data.shenfen) {
           case 1:
             this.setData({
-              shenfen: '城市合伙人'
+              shenfen: '城市合伙人',
+              bossName:'',
+              showBoss:false
             })
             break;
           case 2:
             this.setData({
-              shenfen: '县级合伙人'
+              shenfen: '县级合伙人',
+              bossName:'城市合伙人',
+              showBoss:true
             })
             break;
           case 3:
             this.setData({
-              shenfen: '乡镇合伙人'
+              shenfen: '乡镇合伙人',
+              bossName:'县级合伙人',
+              showBoss:true
             })
             break;
         }

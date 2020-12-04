@@ -38,6 +38,48 @@ Page({
       }
     })
   },
+    //  下载文件
+    downLoad: function (e) {
+      let data = {
+        time: this.data.date,
+        is_download: '1',
+        page: '',
+        limit: '',
+        Authorization: wx.getStorageSync('token')
+      }
+      api.leaveJobList(data).then(res => {
+        if (res.data.code == 200) {
+          wx.downloadFile({
+            url: res.data.data,
+            success: function (res) {
+              if (res.errMsg == 'downloadFile:ok') {
+                let filePath = res.tempFilePath;
+                wx.openDocument({
+                  filePath: filePath,
+                  success: function (res) {
+                    wx.showToast({
+                      title: '打开成功',
+                      icon: 'none',
+                      duration: 1500
+                    })
+                  }
+                })
+                // 文件下载成功
+              } else {
+                //  失败
+              }
+            }
+          })
+  
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1500
+          })
+        }
+      })
+    },
   // 选择时间
   bindDateChange: function (e) {
     let s1 = e.detail.value.substring(0, e.detail.value.length - 3)

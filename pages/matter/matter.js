@@ -1,4 +1,6 @@
 // pages/matter/matter.js
+let app = getApp()
+const api = app.globalData.api;
 Page({
 
   /**
@@ -13,47 +15,51 @@ Page({
     one: true,
     two: false,
     three: false,
-    arr: [{
-      caoacity: '城市合伙人',
-      name: '赵钱孙李',
-      area: '北京市 丰台区',
-      address: '而我却无群无群二为王企鹅无群为请问请问',
-      status: '待处理'
-    }, {
-      caoacity: '农村合伙人',
-      name: '李四王五',
-      area: '上海市 浦东新区',
-      address: '请问几千万科技为其味无穷看第三方',
-      status: '待处理'
-    }],
-    arr2: [{
-      caoacity: '城市合伙人',
-      name: '赵钱孙李',
-      area: '北京市 丰台区',
-      address: '而我却无群无群二为王企鹅无群为请问请问',
-      status: '已驳回'
-    }],
-    arr3: [{
-      caoacity: '城市合伙人',
-      name: '赵钱孙李',
-      area: '北京市 丰台区',
-      address: '而我却无群无群二为王企鹅无群为请问请问',
-      status: '已通过'
-    }, {
-      caoacity: '农村合伙人',
-      name: '李四王五',
-      area: '上海市 浦东新区',
-      address: '请问几千万科技为其味无穷看第三方',
-      status: '已通过'
-    }, {
-      caoacity: '乡镇合伙人',
-      name: 'Monster',
-      area: '江西省 南昌市',
-      address: '发送到发送到，票玩儿玩儿绕弯儿问我让',
-      status: '已通过'
-    }],
     // 显示模态框
-    showModal: false
+    showModal: false,
+    type: '1',
+    list: [],
+    shenfen: '',
+    id: '', //点击选择的id
+    cause: '', //驳回的内容
+  },
+  // 获取列表
+  getList: function (e) {
+    let data = {
+      Authorization: wx.getStorageSync('token'),
+      page: '',
+      limut: '',
+      type: this.data.type
+    }
+    api.toDo(data).then(res => {
+      if (res.data.code == 200) {
+        res.data.data.data.forEach(v => {
+          if (v.shenfen == 1) {
+            v.shenfen = '城市合伙人'
+          } else if (v.shenfen == 2) {
+            v.shenfen = '县级合伙人'
+          } else {
+            v.shenfen = '乡镇合伙人'
+          }
+        })
+        this.setData({
+          list: res.data.data.data
+        })
+        if (this.data.list.length == 0) {
+          wx.showToast({
+            title: '数据为空',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
   },
   // 待处理
   checkInfo: function () {
@@ -64,7 +70,9 @@ Page({
       white1: true,
       white2: false,
       white3: false,
+      type: '1'
     })
+    this.getList()
   },
   // 已驳回
   checkInfo1: function () {
@@ -75,7 +83,9 @@ Page({
       white1: false,
       white2: true,
       white3: false,
+      type: '2'
     })
+    this.getList()
   },
   // 已通过
   checkInfo2: function () {
@@ -86,18 +96,22 @@ Page({
       white1: false,
       white2: false,
       white3: true,
+      type: '3'
     })
+    this.getList()
   },
   // 点击驳回按钮
-  reject: function () {
+  reject: function (e) {
     this.setData({
-      showModal: true
+      showModal: true,
+      id: e.currentTarget.dataset.id
     })
   },
   // 查看详情
-  lookInfo:function(e){
+  lookInfo: function (e) {
+    wx.setStorageSync('lookId', e.currentTarget.dataset.id)
     wx.navigateTo({
-      url: '../applyInfo/applyInfo',
+      url: '../applyInfo/applyInfo?id=' + e.currentTarget.dataset.id
     })
   },
   /**
@@ -118,26 +132,95 @@ Page({
   onCancel: function () {
     this.hideModal();
   },
-  /**
-   * 对话框确认按钮点击事件
-   */
-  onConfirm: function () {
-    this.hideModal();
-  },
   // 计算驳回内容的字数
   inputs: function (e) {
     var value = e.detail.value;
     // 获取输入框内容的长度
     var len = parseInt(value.length);
     this.setData({
-      currentWordNumber: len //当前字数 
+      currentWordNumber: len, //当前字数 
+      cause: value
     });
+  },
+  // 判断是否有内容
+  checkTxt: function (e) {
+    if (e.detail.value == '') {
+
+    } else {
+      this.setData({
+        cause: e.detail.value
+      })
+    }
+  },
+  /**
+   * 驳回的确定按钮
+   */
+  onConfirm: function (e) {
+    if (this.data.cause == '') {
+      wx.showToast({
+        title: '请输入有效内容',
+        icon: 'none',
+        duration: 1000
+      })
+    } else {
+      let data = {
+        id: this.data.id,
+        type: '4',
+        cause: this.data.cause,
+        Authorization: wx.getStorageSync('token')
+      }
+      api.setType(data).then(res => {
+        console.log(res.data)
+        if (res.data.code == 200) {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1000
+          })
+          this.getList()
+          // this.hideModal();
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      })
+    }
+  },
+  // 通过的按钮
+  pass: function (e) {
+    
+    let data = {
+      id: e.currentTarget.dataset.id,
+      type: '1',
+      cause: '',
+      Authorization: wx.getStorageSync('token')
+    }
+    api.setType(data).then(res => {
+      if (res.data.code == 200) {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+        this.getList()
+        // this.hideModal();
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getList()
   },
 
   /**

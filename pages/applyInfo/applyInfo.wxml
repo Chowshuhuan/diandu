@@ -2,74 +2,86 @@
 <view class="applyInfo">
   <view class="all">
     <view class="img">
-    <image class="time" src="../../images/index/footer/9.png"></image>
-  </view>
-  <view class="apply">
-    待审批
-  </view>
-  <view class="cooperate">
-    合作申请
-  </view>
-  <view class="content">
-    <view class="identity">
-      <text class="left">申请身份：</text>
-      <text class="right">乡镇合伙人</text>
+      <image class="time" src="{{src}}"></image>
     </view>
-    <view class="identity">
-      <text class="left">申请区域：</text>
-      <text class="right">江苏省 苏州市 吴中区</text>
+    <view class="apply">
+      {{shenPi}}
     </view>
-    <view class="identity">
-      <text class="left">所属上级：</text>
-      <text class="right">张齐</text>
-      <text class="right">县级合伙人</text>
+    <view class="cooperate">
+      合作申请
     </view>
-    <view class="identity2">
-      <text class="left">详细地址：</text>
-      <view class="right2">乡镇合伙人阿萨德萨达和阿萨德稍等沙雕阿萨德啥都会撒娇挥洒肯定撒</view>
+    <view class="content">
+      <view class="identity">
+        <text class="left">申请身份：</text>
+        <text class="right">{{list.shenfen}}</text>
+      </view>
+      <view class="identity">
+        <text class="left">申请区域：</text>
+        <text class="right">{{list.enter_sheng}} </text>
+        <text class="right">{{list.enter_shi}} </text>
+        <text class="right">{{list.enter_xian}} </text>
+      </view>
+      <view class="identity">
+        <text class="left">所属上级：</text>
+        <text class="right">{{list.boss_name}}</text>
+        <text class="bossShenfen">{{list.boss_shenfen}}</text>
+      </view>
+      <view class="identity2">
+        <text class="left">详细地址：</text>
+        <view class="right2">{{list.enter_address_details}}</view>
+      </view>
     </view>
-  </view>
-  <view class="cooperate2">
-    个人信息
-  </view>
-  <view class="content">
-    <view class="content5">
-      <text class="left">姓名：</text>
-      <view class="name">Monster</view>
+    <view class="cooperate2">
+      个人信息
     </view>
-    <view class="content5">
-      <text class="left">性别：</text>
-      <view class="name">男</view>
+    <view class="content">
+      <view class="content5">
+        <text class="left">姓名：</text>
+        <view class="name">{{list.name}}</view>
+      </view>
+      <view class="content5">
+        <text class="left">性别：</text>
+        <view class="name">{{list.sex}}</view>
+      </view>
+      <view class="content5">
+        <text class="left">出生年月：</text>
+        <view class="name">{{list.birth_time}}</view>
+      </view>
+      <view class="content5">
+        <text class="left">身份证号码：</text>
+        <view class="name">{{list.id_num}}</view>
+      </view>
+      <view class="content5">
+        <text class="left">联系电话：</text>
+        <view class="name">{{list.phone}}</view>
+      </view>
+      <view class="content5">
+        <text class="left">户籍所在地：</text>
+        <view class="name">{{list.census_address}}</view>
+      </view>
+      <view class="content5">
+        <text class="left">户籍地详细地址：</text>
+        <view class="name">{{list.census_address_details}}</view>
+      </view>
     </view>
-    <view class="content5">
-      <text class="left">出生年月：</text>
-      <view class="name">1980-10-08</view>
-    </view>
-    <view class="content5">
-      <text class="left">身份证号码：</text>
-      <view class="name">328381236547854123</view>
-    </view>
-    <view class="content5">
-      <text class="left">联系电话：</text>
-      <view class="name">132 5555 5656</view>
-    </view>
-    <view class="content5">
-      <text class="left">户籍所在地：</text>
-      <view class="name">江苏省 苏州市 吴中区</view>
-    </view>
-    <view class="content5">
-      <text class="left">户籍地详细地址：</text>
-      <view class="name">乡镇合伙人阿萨德萨达和阿萨德稍等沙雕阿萨德啥都会撒娇挥洒肯定撒</view>
-    </view>
-  </view>
   </view>
   <view class="applyTime">
     <text class="leftTime">申请时间：</text>
-    <text class="rightTime">2020-10-10</text>
+    <text class="rightTime">{{list.create_time}}</text>
   </view>
   <view class="footer">
-    <text class="back" bindtap="reject">驳回</text>
-    <text class="pass">通过</text>
+    <!-- <text class="backK">驳回</text>
+      <text class="passS">通过</text> -->
+    <view wx:if="{{showType}}">
+      <text class="backK">驳回</text>
+      <text class="passS">通过</text>
+    </view>
+    <view wx:else>
+      <text class="back" bindtap="reject">驳回</text>
+      <text class="pass" bindtap="pass">通过</text>
+    </view>
+    <!-- <text class="{{showType?'backK':'back'}}" bindtap="{{showType?'':reject}}">驳回</text>
+    <text class="{{showType?'passS':'pass'}}" bindtap="{{showType?'':pass}}">通过</text> -->
   </view>
   <!-- 驳回的弹出框 -->
 
@@ -78,7 +90,7 @@
     <view class="modal-title">驳回原因</view>
     <view class="modal-content">
       <view class="modal-input">
-        <textarea class="content2" placeholder='请输入驳回内容' maxlength="{{max}}" bindinput="inputs">
+        <textarea class="content2" value="{{cause}}" placeholder='请输入驳回内容' maxlength="{{max}}" bindinput="inputs">
 　　　　<text class="currentWordNumber">{{currentWordNumber}}/{{max}}字</text>
 　　</textarea>
       </view>

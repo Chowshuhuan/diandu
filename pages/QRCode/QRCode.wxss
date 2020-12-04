@@ -49,10 +49,11 @@
 }
 .btn{
   background: #3FCB56;
-  height: 90rpx;
-  text-align: center;
-  line-height: 90rpx;
+  /* height: 90rpx; */
+  /* text-align: center;
+  line-height: 90rpx; */
   color: #fff;
   border-radius: 40rpx;
   margin-top: 40rpx;
+  width: 530rpx !important;
 }

@@ -1,7 +1,60 @@
 <view class="person">
-  <view class="profile">
+  <block wx:if="{{typeToken}}">
+    <view class="profile">
+    <view class="logo" bindtap="toLogin">
+      <image src="../../images/index/footer/15.png"></image>
+      <view class="now">立即登录</view>
+    </view>
+    <!-- 姓名 电话 -->
+    <!-- <view class="info2">
+      立即登录
+    </view> -->
+    <view class="jiantou">
+     <image class="arrowhead" src="../../images/user/she.png"></image>
+    </view>
+  </view>
+  <!-- 工时相关 -->
+  <view class="information">
+    <view class="box" >
+      <text class="month">本月工时</text>
+      <text class="personNum"></text>
+      <!-- <image src="../../images/user/she.png"></image> -->
+    </view>
+    <view class="box" >
+      <text class="month">在职人数</text>
+      <text class="personNum"></text>
+      <!-- <image src="../../images/user/she.png"></image> -->
+    </view>
+    <view class="box" >
+      <text class="month">离职人数</text>
+      <text class="personNum"></text>
+      <!-- <image src="../../images/user/she.png"></image> -->
+    </view>
+    <view class="box" >
+      <text class="month">待入职人数</text>
+      <text class="personNum"></text>
+      <!-- <image src="../../images/user/she.png"></image> -->
+    </view>
+  </view>
+  <!-- 待办事项 -->
+  <view class="needDealt">
+    <view class="box">
+      <text class="month">待办事项</text>
+      <!-- <view class="doNum"></view> -->
+      <!-- <image src="../../images/user/she.png"></image> -->
+    </view>
+    <view class="box">
+      <text class="month">族群</text>
+      <!-- <image src="../../images/user/she.png"></image> -->
+    </view>
+  </view>
+  </block>
+
+
+  <block wx:else> 
+    <view class="profile">
     <view class="logo" bindtap="toInfo">
-      <image src="{{list.attr}}"></image>
+      <image src="{{attr}}"></image>
     </view>
     <!-- 姓名 电话 -->
     <view class="info">
@@ -13,10 +66,10 @@
     </view>
   </view>
   <!-- 结算金额 -->
-  <view class="price" bindtap="toBalance">
-     <view class="money">待结算金额(元)</view>
-     <view class="figure">{{list.wait_payment_money}}</view>
-  </view>
+   <view class="price" bindtap="toBalance">
+       <view class="money">待结算金额(元)</view>
+       <view class="figure">{{list.wait_payment_money}}</view>
+   </view>
   <!-- 工时相关 -->
   <view class="information">
     <view class="box" bindtap="toWorkHour">
@@ -52,4 +105,5 @@
       <image src="../../images/user/she.png"></image>
     </view>
   </view>
+  </block>
 </view>

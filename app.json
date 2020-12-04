@@ -1,48 +1,35 @@
 {
   "pages":[
+    "pages/index/index",
+    "pages/changeInfo/changeInfo",
     "pages/login/login",
-
-    "pages/password/password",
-
     "pages/mobile/mobile",
-
-    "pages/settled/settled",
-
-
-
-    "pages/perInfo/perInfo",
-
-
-
-    "pages/register/register",
-    "pages/applyInfo/applyInfo",
-
-    "pages/matter/matter",
-
-    "pages/villageDown/villageDown",
-
-    "pages/village/village",
-
     "pages/basicInfo/basicInfo",
-  
-    "pages/headImg/headImg",
-
-    "pages/treaty/treaty",
-
-    "pages/conceal/conceal",
-
-    "pages/intoWork/intoWork",
-    "pages/family/family",
+    "pages/forget/forget",
+    "pages/register/register",
+    "pages/shenqing/shenqing",
+    "pages/failedPass/failedPass",
+    "pages/waitAuditing/waitAuditing",
+    "pages/settled/settled",
+    "pages/city/city",
+    "pages/perInfo/perInfo",
     "pages/personal/personal",
+    "pages/balance/balance",
+    "pages/jobInfo/jobInfo",
+    "pages/password/password",
+    "pages/matter/matter",
+    "pages/applyInfo/applyInfo",
+    "pages/QRCode/QRCode", 
+    "pages/family/family",
+    "pages/villageDown/villageDown",
+    "pages/village/village",
+    "pages/treaty/treaty",
+    "pages/conceal/conceal",
+    "pages/intoWork/intoWork",
     "pages/leave/leave",
     "pages/workHour/workHour",
-    "pages/balance/balance",
     "pages/employ/employ",
-    "pages/index/index",
     "pages/expressPer/expressPer",
-    "pages/city/city",
-    "pages/forget/forget",
-    "pages/QRCode/QRCode", 
     "pages/search/search"
   ],
   "window":{

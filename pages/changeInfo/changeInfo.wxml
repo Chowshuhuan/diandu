@@ -1,0 +1,151 @@
+<!--pages/changeInfo/changeInfo.wxml-->
+<view class="settled">
+    <view class="userInfo">
+      <view class="imgBox" bindtap="showCheck">
+        <text class="shenqing">申请身份</text>
+        <view class="flex">
+          <input disabled value="{{name}}" style="text-align:right;padding-right:10px" placeholder="请选择"></input>
+          <image class="return" src="/images/user/she.png" />
+        </view>
+      </view>
+      <view class="checkId" wx:if="{{showCheck}}">
+        <!-- <view class="one"></view> -->
+        <view class="imgBox" bindtap="toggleDialog">
+          <text class="shenqing">申请身份</text>
+          <view class="flex">
+            <input disabled value="{{name}}" style="text-align:right;padding-right:10px" placeholder="请选择"></input>
+            <image class="return" src="/images/user/she.png" />
+          </view>
+        </view>
+        <view class="free-dialog {{ showDialog ? 'free-dialog--show' : '' }}">
+          <view class="free-dialog__mask" bindtap="toggleDialog" />
+          <view class="free-dialog__container">
+            <view style="padding: 5% 5% 15%;">
+              <form bindsubmit='submit' bindreset="reset">
+                <view bindtap='cancelCheck' class="free-button free-dialog-reset">取消</view>
+                <view bindtap='sureCheck' class="free-button free-dialog-submit">确定</view>
+
+                <radio-group class='free-radios' bindchange="radioChange">
+                  <label class="free-radio" bindtap="click" wx:for="{{items}}" wx:key="index" data-id="{{index}}"
+                    style="{{index==id?'background:#48c23d;color:#fff;':'background:#fff;color:#000;'}}">
+                    <radio value="{{item.name}}" name="{{item.value}}"></radio>
+                    <label class="free-text">{{item.name}}</label>
+                  </label>
+                </radio-group>
+              </form>
+
+            </view>
+          </view>
+        </view>
+        <view class="imgBox2">
+          <text>申请区域</text>
+          <view class="flex">
+            <picker mode="region" bindchange="bindRegionChange" value="{{region}}">
+              <view class="tui-picker-detail">
+                {{ enter_sheng}} {{shi}} {{ enter_xian}}
+              </view>
+            </picker>
+            <image class="return2" src="/images/user/she.png" />
+          </view>
+        </view>
+        <view class="box" wx:if="{{showHehuo}}">
+          <text class="left">所属上级</text>
+          <view class="boxRight2">
+            <text class="partner2" wx:if="{{showBossMing}}">{{bossMingzi}}</text>
+            <text class="level2" wx:if="{{showBossName}}">{{bossIdName}}</text>
+          </view>
+        </view>
+        <view class="imgBox2" wx:if="{{showXiang}}">
+          <text class="shenqing">申请区域</text>
+          <view class="shenqingArea ">
+            <input value="{{enter_xiang}}" bindblur="blurChange1" style="text-align:right;padding-right:10px"
+              placeholder="请输入乡镇" />
+          </view>
+        </view>
+        <view class="imgBox3">
+          <text class="checkArea">详细地址</text>
+          <view class="section1">
+            <textarea class="txtArea" value="{{enter_address_details}}" bindblur="bindTextAreaBlur" auto-height
+              placeholder="如：道路 门牌号 小区 楼栋号 单元室等" />
+            </view>
+				</view>
+				<!-- <view class="two"></view> -->
+			</view>
+			<view class="personInfo">
+				<text class="person">个人信息</text>
+			</view>
+			<view class="imgBox">
+				<text>姓名</text>
+				<view class="flex">
+					<input  style="text-align:right;padding-right:10px" bindblur="blurChange2" placeholder="请输入真实姓名" 
+						value="{{mingzi}}" ></input>
+				</view>
+			</view>
+			<view class="imgBox">
+				<text>性别</text>
+				<view class="flex">
+					<radio-group class="radio-group" bindchange="radioChange1">
+						<radio class="radio" value="1">
+							<text>男</text>
+						</radio>
+						<radio class="radio" value="2">
+							<text>女</text>
+						</radio>
+					</radio-group>
+				</view>
+			</view>
+			<view class="imgBox" >
+				<text>出生年月日</text>
+				<view class="flex">
+					<picker mode="date" value="" start="1970-01-01" bindchange="changeDate">
+						<view class="tui-picker-detail ">
+							{{birth_time}}
+						</view>
+					</picker>
+					<image class="return" src="/images/user/she.png" />
+				</view>
+			</view>
+			<view class="imgBox">
+				<text>身份证号码</text>
+				<view class="flex">
+					<input style="text-align:right;padding-right:10px" bindblur="blurChange3" placeholder="请填写" 
+						value="{{id_num}}"></input>
+				</view>
+			</view>
+			<view class="imgBox">
+				<text>联系电话</text>
+				<view class="flex">
+					<input  bindblur="blurChange4" style="text-align:right;padding-right:10px" placeholder="请填写" 
+						value="{{phone}}" ></input>
+				</view>
+			</view>
+		</view>
+		<view class="register">
+			<text class="register2">户籍所在地</text>
+		</view>
+		<view class="imgBox2">
+			<text>户籍所在地</text>
+			<view class="flex">
+				<picker mode="region" bindchange="bindRegionChange1" value="{{region1}}">
+					<view class="tui-picker-detail">
+						{{region1}} {{region2}} {{region3}}
+					</view>
+				</picker>
+				<image class="return2" src="/images/user/she.png" />
+			</view>
+		</view>
+		<view class="imgBox3">
+			<text class="info">户籍地详细地址</text>
+			<view class="section1">
+						<textarea class="txtArea1" value="{{census_address_details}}" bindblur="bindTextAreaBlur1" auto-height
+							placeholder="如：道路 门牌号 小区 楼栋号 单元室等" />
+		</view>
+			<!-- <view class="flex3">
+				<text>如：道路、门牌号、小区、楼栋号、单元室等</text>
+			</view> -->
+
+		</view>
+		<view class="bot">
+			<button type="primary" class="tijiao" bindtap="tijiaoInfo">提交</button>
+		</view>
+	</view>

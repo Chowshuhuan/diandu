@@ -37,6 +37,6 @@
   </view>
   <!-- 下载明细 -->
   <view class="footer">
-    <text class="downLoad">下载明细</text>
+    <text class="downLoad" bindtap="downLoad">下载明细</text>
   </view>
 </view>

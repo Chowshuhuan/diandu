@@ -8,7 +8,7 @@
 		<!-- 密码输入框 -->
 		<view class="infoBox">
 			<text class="code2">验证码</text>
-			<input placeholder="请输入验证码" name="code" class="code"></input>
+			<input placeholder="请输入验证码" bindblur="yanzhengma" value="{{codeMa}}" name="code" class="code"></input>
 			<button class="yanzhengma" bindtap="toGetCode" data-id="1" disabled="{{logindisabled}}">
 				{{logincodename}}
 			</button>

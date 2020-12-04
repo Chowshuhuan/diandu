@@ -1,0 +1,17 @@
+<!--pages/waitAuditing/waitAuditing.wxml-->
+<view class="settled">
+  <view class="wait">
+		<view class="img">
+			<image class="timeImg" src="../../images/index/footer/9.png"></image>
+		</view>
+		<view class="waitPass">等待审核</view>
+		<view class="change"> 我们将在1-3个工作日内反馈审核结果</view>
+		<view class="reason2">如有疑问请拨打客服电话咨询</view>
+		<view class="bot">
+			<view class="botTop">
+				<text class="phone">客服电话：<text class="num">4000630888</text></text>
+			</view>
+			<button type="primary" class="tijiao" bindtap="toChange">修改认证资料</button>
+		</view>
+	</view>
+</view>

@@ -4,10 +4,6 @@ const app = getApp()
 const api = app.globalData.api;
 Page({
   data: {
-    // postUrl: app.globalData.postUrl,
-    // userInfo: {},
-    // hasUserInfo: false,
-    // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     openid: '',
     iv: '',
     session_key: '',
@@ -45,7 +41,7 @@ Page({
           })
         } else {
           wx.showToast({
-            title: res.data.msg,
+            title: 'res.data.msg',
             icon: 'none',
             duration: 1000
           })
@@ -55,63 +51,95 @@ Page({
     })
   },
   getPhoneNumber(e) {
-    let that = this
-    that.setData({
-      iv: e.detail.iv,
-      encrypted_data: e.detail.encryptedData
-    })
-    wx.setStorageSync('iv', e.detail.iv)
-    wx.setStorageSync('encrypted_data', e.detail.encrypted_data)
+    if (e.detail.errMsg == 'getPhoneNumber:ok') {
+      let that = this
+      that.setData({
+        iv: e.detail.iv,
+        encrypted_data: e.detail.encryptedData
+      })
+      wx.setStorageSync('iv', e.detail.iv)
+      wx.setStorageSync('encrypted_data', e.detail.encrypted_data)
 
-    let data = {
-      openid: that.data.openid,
-      iv: encodeURIComponent(that.data.iv),
-      encrypted_data: encodeURIComponent(that.data.encrypted_data),
-      session_key: that.data.session_key,
-    }
-    api.getMobileByOpenid(data).then(res => {
-      if (res.data.code == 200) {
-        that.setData({
-          mobile: res.data.data.phoneNumber
-        })
-        let data = {
-          type: '1',
-          openid: that.data.openid,
-          mobile: that.data.mobile,
-          password: '',
-          sms_code: '',
-          sms_code_key: '',
-          attr: ''
-        }
-        api.login(data).then(res => {
-          if (res.data.code == 200) {
-            wx.setStorageSync('token', res.data.data.token)
-            wx.setStorageSync('type', res.data.data.type)
-            wx.setStorageSync('user_id', res.data.data.user_id)
-            wx.showToast({
-              title: res.data.msg,
-              icon: 'none',
-              duration: 1000
-            })
-            if (res.data.data.type == 0) {
-              wx.switchTab({
-                url: '../index/index',
-              })
-            } else {
-              wx.navigateTo({
-                url: '../settled/settled',
-              })
-            }
-          }
-        })
-      } else {
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 1000
-        })
+      let data = {
+        openid: that.data.openid,
+        iv: encodeURIComponent(that.data.iv),
+        encrypted_data: encodeURIComponent(that.data.encrypted_data),
+        session_key: that.data.session_key,
       }
-    })
+      api.getMobileByOpenid(data).then(res => {
+        if (res.data.code == 200) {
+          that.setData({
+            mobile: res.data.data.phoneNumber
+          })
+          let data = {
+            type: '1',
+            openid: that.data.openid,
+            mobile: that.data.mobile,
+            password: '',
+            sms_code: '',
+            sms_code_key: '',
+            attr: ''
+          }
+          api.login(data).then(res => {
+            if (res.data.code == 200) {
+              wx.setStorageSync('token', res.data.data.token)
+              wx.setStorageSync('type', res.data.data.type)
+              wx.setStorageSync('user_id', res.data.data.user_id)
+              wx.showToast({
+                title: res.data.msg,
+                icon: 'none',
+                duration: 1000
+              })
+              switch (res.data.data.type) {
+                case 0:
+                  wx.switchTab({
+                    url: '../index/index',
+                  })
+                  break;
+                case 1:
+                  wx.navigateTo({
+                    url: '../waitAuditing/waitAuditing',
+                  })
+                  break;
+                case 2:
+                  wx.navigateTo({
+                    url: '../waitAuditing/waitAuditing',
+                  })
+                  break;
+                case 3:
+                  wx.navigateTo({
+                    url: '../waitAuditing/waitAuditing',
+                  })
+                  break;
+                case 4:
+                  wx.navigateTo({
+                    url: '../failedPass/failedPass',
+                  })
+                  break;
+                case 5:
+                  wx.navigateTo({
+                    url: '../shenqing/shenqing',
+                  })
+                  break;
+              }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      })
+
+    } else {
+      wx.showToast({
+        title: '已拒绝授权登录',
+        icon: 'none',
+        duration: 1000
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

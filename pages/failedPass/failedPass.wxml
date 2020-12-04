@@ -1,0 +1,15 @@
+<!--pages/failedPass/failedPass.wxml-->
+<view class="wait">
+		<view class="img">
+			<image class="timeImg" src="../../images/index/footer/12.png"></image>
+		</view>
+		<view class="waitPass">审核未通过</view>
+		<view class="change">资料审核不通过，请修改后提交</view>
+		<view class="reason">备注：身份证信息与名字不符</view>
+		<view class="bot">
+			<view class="botTop">
+				<text class="phone">客服电话：<text class="num">4000630888</text></text>
+			</view>
+			<button type="primary" class="tijiao" bindtap="toChange">修改认证资料</button>
+		</view>
+	</view>

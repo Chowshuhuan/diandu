@@ -2,8 +2,8 @@
 <view class="perInfo">
   <view class="headInfo" bindtap="headImg">
     <text class="headTit">头像</text>
-    <image class="headImg" src="{{list.attr}}"></image>
-    <image class="headRight" src="../../images/user/she.png"></image>
+    <image class="headImg" src="{{attr}}"></image>
+    <!-- <image class="headRight" src="../../images/user/she.png"></image> -->
   </view>
   <view class="box">
     <text class="left">姓名</text>

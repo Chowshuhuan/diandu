@@ -12,6 +12,7 @@ Page({
     leavel: '',
     boss_name: '',
     boss_shenme: '',
+    attr:'../../images/index/footer/3.png'
   },
   // 获取个人资料
   //  获取个人资料

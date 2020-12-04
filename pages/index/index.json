@@ -1,5 +1,6 @@
 {
   "usingComponents": {},
   "navigationBarTitleText":"任务",
-  "navigationBarTextStyle":"black"
+  "navigationBarTextStyle":"black",
+  "enablePullDownRefresh": true
 }

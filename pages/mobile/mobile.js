@@ -15,25 +15,20 @@ Page({
     password: '', //密码
     sms_code: '', //验证码
     sms_code_key: '', //验证码key
+    codeMa:''
   },
   // 验证手机号
   blurPhone: function (e) {
-    let phone = e.detail.value
-    if (!/^1[34578]\d{9}$/.test(phone)) {
-      this.setData({
-        phoneTrue: false
+    let str = /^1[3-9]\d{9}$/
+    if (!str.test(e.detail.value)) {
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 2000
       })
-      if (phone.length != 11) {
-        wx.showToast({
-          title: '请输入11位正确的手机号',
-          icon: 'none',
-          duration: 1000
-        })
-      }
     } else {
       this.setData({
-        phoneTrue: true,
-        mobile: phone
+        mobile: e.detail.value
       })
     }
   },
@@ -45,8 +40,8 @@ Page({
     }
     api.sendsms(data).then(res => {
       if (res.data.code == 200) {
-        console.log(res.data)
         that.setData({
+          sms_code:res.data.data.sms_code,
           sms_code_key: res.data.data.sms_code_key
         })
         wx.showToast({
@@ -71,6 +66,7 @@ Page({
           }
         }, 1000)
       } else {
+        // console.log('2')
         wx.showToast({
           title: res.data.msg,
           icon: 'none',
@@ -79,18 +75,31 @@ Page({
       }
     })
   },
+  // 验证码输入框的值
+  yanzhengma(e){
+    this.setData({
+      codeMa:e.detail.value
+    })
+  },
   // 验证码登录
   formSubmit: function (e) {
     let that = this
-    let phone = e.detail.value.phone
-    console.log(phone)
-    if (phone = '' || phone.length != 11) {
+    let str = /^1[3-9]\d{9}$/
+    if (!str.test(e.detail.value.phone)) {
       wx.showToast({
-        title: '请输入13',
+        title: '请输入正确的手机号',
         icon: 'none',
         duration: 1000
       })
       return false
+    }
+    if(that.data.codeMa != that.data.sms_code) {
+      wx.showToast({
+        title: '请输入正确的验证号',
+        icon: 'none',
+        duration: 1000
+      })
+      return
     }
     let data = {
       type: '3',
@@ -104,18 +113,46 @@ Page({
     api.login(data).then(res => {
       if (res.data.code == 400) {
         wx.showToast({
-          title: res.data.msg + ',可前往立即注册',
+          title: '此号码尚未注册，可前往注册',
           icon: 'none',
           duration: 1000
         })
       } else if (res.data.code == 200) {
-        console.log(res.data.data)
         wx.setStorageSync('token', res.data.data.token)
         wx.setStorageSync('type', res.data.data.type)
         wx.setStorageSync('user_id', res.data.data.user_id)
-        wx.switchTab({
-          url: '../index/index'
-        })
+        switch (res.data.data.type) {
+          case 0:
+            wx.switchTab({
+              url: '../index/index',
+            })
+            break;
+          case 1:
+            wx.navigateTo({
+              url: '../waitAuditing/waitAuditing',
+            })
+            break;
+          case 2:
+            wx.navigateTo({
+              url: '../waitAuditing/waitAuditing',
+            })
+            break;
+          case 3:
+            wx.navigateTo({
+              url: '../waitAuditing/waitAuditing',
+            })
+            break;
+          case 4:
+            wx.navigateTo({
+              url: '../failedPass/failedPass',
+            })
+            break;
+          case 5:
+            wx.navigateTo({
+              url: '../shenqing/shenqing',
+            })
+            break;
+        }
         wx.showToast({
           title: '登录成功',
           icon: 'none',

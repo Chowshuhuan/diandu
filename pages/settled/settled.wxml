@@ -1,5 +1,5 @@
 <view class="settled">
-	<view class="wait" wx:if="{{type == 1}}">
+	<view class="wait" wx:if="{{type == 1|| type == 2 || type == 3}}">
 		<view class="img">
 			<image class="timeImg" src="../../images/index/footer/9.png"></image>
 		</view>
@@ -10,7 +10,7 @@
 			<view class="botTop">
 				<text class="phone">客服电话：<text class="num">1212121212</text></text>
 			</view>
-			<button type="primary" class="tijiao">修改认证资料</button>
+			<button type="primary" class="tijiao" bindtap="toChange">修改认证资料</button>
 		</view>
 	</view>
 	<view class="wait" wx:if="{{type == 4}}">
@@ -24,7 +24,7 @@
 			<view class="botTop">
 				<text class="phone">客服电话：<text class="num">1212121212</text></text>
 			</view>
-			<button type="primary" class="tijiao">修改认证资料</button>
+			<button type="primary" class="tijiao" bindtap="toChange">修改认证资料</button>
 		</view>
 	</view>
 	<view wx:if="{{type == 5}}">
@@ -37,7 +37,7 @@
 				</view>
 			</view>
 			<view class="checkId" wx:if="{{showCheck}}">
-				<view class="one"></view>
+				<!-- <view class="one"></view> -->
 				<view class="imgBox" bindtap="toggleDialog">
 					<text class="shenqing">申请身份</text>
 					<view class="flex">
@@ -79,13 +79,13 @@
 				<view class="box" wx:if="{{showHehuo}}">
 					<text class="left">所属上级</text>
 					<view class="boxRight2">
-						<text class="partner2" wx:if="{{showBossName}}">{{bossNmae}}</text>
-						<text class="level2" wx:if="{{showBossName}}">{{bossId}}</text>
+						<text class="partner2" wx:if="{{showBossName}}">{{bossMingzi}}</text>
+						<text class="level2" wx:if="{{showBossName}}">{{bossIdName}}</text>
 					</view>
 				</view>
 				<view class="imgBox2" wx:if="{{showXiang}}">
 					<text class="shenqing">申请区域</text>
-					<view class="shenqingArea colr9">
+					<view class="shenqingArea ">
 						<input value="{{enter_xiang}}" bindblur="blurChange1" style="text-align:right;padding-right:10px" placeholder="请输入乡镇"  />
 					</view>
 				</view>
@@ -96,7 +96,7 @@
 							placeholder="如：道路 门牌号 小区 楼栋号 单元室等" />
 						</view>
 				</view>
-				<view class="two"></view>
+				<!-- <view class="two"></view> -->
 			</view>
 			<view class="personInfo">
 				<text class="person">个人信息</text>
@@ -104,7 +104,7 @@
 			<view class="imgBox">
 				<text>姓名</text>
 				<view class="flex">
-					<input  style="text-align:right;padding-right:10px" bindblur="blurChange2" placeholder="请输入真实姓名" placeholder-class="colr9"
+					<input  style="text-align:right;padding-right:10px" bindblur="blurChange2" placeholder="请输入真实姓名" 
 						value="{{mingzi}}" ></input>
 				</view>
 			</view>
@@ -125,7 +125,7 @@
 				<text>出生年月日</text>
 				<view class="flex">
 					<picker mode="date" value="" start="1970-01-01" bindchange="changeDate">
-						<view class="tui-picker-detail colr9">
+						<view class="tui-picker-detail ">
 							{{birth_time}}
 						</view>
 					</picker>
@@ -135,14 +135,14 @@
 			<view class="imgBox">
 				<text>身份证号码</text>
 				<view class="flex">
-					<input style="text-align:right;padding-right:10px" bindblur="blurChange3" placeholder="请填写" placeholder-class="colr9"
+					<input style="text-align:right;padding-right:10px" bindblur="blurChange3" placeholder="请填写" 
 						value="{{id_num}}"></input>
 				</view>
 			</view>
 			<view class="imgBox">
 				<text>联系电话</text>
 				<view class="flex">
-					<input  bindblur="blurChange4" style="text-align:right;padding-right:10px" placeholder="请填写" placeholder-class="colr9"
+					<input  bindblur="blurChange4" style="text-align:right;padding-right:10px" placeholder="请填写" 
 						value="{{phone}}" ></input>
 				</view>
 			</view>
@@ -154,7 +154,7 @@
 			<text>户籍所在地</text>
 			<view class="flex">
 				<picker mode="region" bindchange="bindRegionChange1" value="{{region1}}">
-					<view class="tui-picker-detail colr9">
+					<view class="tui-picker-detail">
 						{{region1}} {{region2}} {{region3}}
 					</view>
 				</picker>

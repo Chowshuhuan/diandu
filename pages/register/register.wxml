@@ -17,11 +17,11 @@
     </view>
     <view class="infoBox">
       <text class="code2">输入密码</text>
-      <input class="code" value="{{pwd}}"   placeholder="输入密码（9-20位英文字母和数字）" password="{{true}}" bindinput="userPasswordInput" name="pwd" />
+      <input class="code" value="{{pwd}}"   placeholder="输入密码（6-20位英文字母和数字）" password="{{true}}" bindblur="firstPwd" name="pwd" />
     </view>
     <view class="infoBox">
       <text class="code2">再次输入密码</text>
-      <input class="code" value="{{surePwd}}" placeholder="与设置密码一致" password="{{true}}" name="surePwd" />
+      <input class="code" bindblur="surePwd" value="{{surePwd}}" placeholder="与设置密码一致" password="{{true}}" name="surePwd" />
     </view>
     <button form-type='submit' class="mt40">注册</button>
     <view class="tips">登录表示您已同意 <text bindtap="toxieyi">《用户协议》</text> 和<text bindtap="toys">《用户隐私政策》</text></view>
