@@ -1,0 +1,20 @@
+<!--pages/countDown/countDown.wxml-->
+<view class="skp">
+                <view class="count">
+                  <view class="img">
+                    <image class="iconImg" src="../../images/index/footer/6.png"></image>
+                  </view>
+                 <view class="middle">
+                    <view class="zhineng">
+                      <text class="first">智能用工</text>
+                      <text class="second"></text>
+                      <text class="third">创享未来</text>
+                    </view>
+                  <!-- <text>正在进入   </text>
+                  <text>   {{countDownNum}}秒</text> -->
+                 </view>
+                 <view class="botto">
+                  - 上海点度信息科技有限公司 -
+                 </view>
+                </view>
+</view> 

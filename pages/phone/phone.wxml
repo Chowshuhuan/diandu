@@ -1,0 +1,17 @@
+<view class="mobile">
+	<form bindsubmit="formSubmit">
+		<!-- 手机号输入框 -->
+		<view class="infoBox">
+			<text class="baliu">+86</text>
+      <image class="mobileIcon" src="../../images/icon/14.png"></image>
+			<input class="num"  name="phone"  placeholder="请输入手机号" type="number" />
+		</view>
+		<!-- 密码输入框 -->
+		<view class="infoBox">
+			<text class="code2">密码</text>
+      <image class="yanmaIcon" src="../../images/icon/16.png"></image>
+			<input placeholder="请输入密码"  name="password" class="code" type="password"></input>
+		</view>
+		<button form-type='submit' class="mt40">绑定手机号</button>
+	</form>
+</view>

@@ -14,6 +14,7 @@ Page({
     sms_code: '', //验证码
     sms_code_key: '', //验证码key
     Loadingtime: '', //定时器变量
+    activeBtn: false
   },
   // 验证手机号
   blurPhone: function (e) {
@@ -22,7 +23,7 @@ Page({
       wx.showToast({
         title: '请输入正确的手机号',
         icon: 'none',
-        duration: 2000
+        duration: 500
       })
     } else {
       this.setData({
@@ -37,7 +38,7 @@ Page({
       wx.showToast({
         title: '密码必须包含数字和字母且长度不少于6',
         icon: 'none',
-        duration: 1500
+        duration: 500
       })
       this.setData({
         password: e.detail.value
@@ -56,14 +57,22 @@ Page({
       wx.showToast({
         title: '两次输入的密码不一致',
         icon: 'none',
-        duration: 1500
+        duration: 500
       })
       this.setData({
-        surePwd: e.detail.value
+        surePwd: e.detail.value,
+        activeBtn: true
       })
     } else {
       this.setData({
-        surePwd: e.detail.value
+        surePwd: e.detail.value,
+        activeBtn: true
+      })
+    }
+    if (!e.detail.value) {
+      this.setData({
+        surePwd: e.detail.value,
+        activeBtn: false
       })
     }
   },

@@ -11,7 +11,7 @@ Page({
     shenfen: '',
     leavel: '',
     boss_name: '',
-    boss_shenme: '',
+    boss_shenFen: '',
     attr:'../../images/index/footer/3.png'
   },
   // 获取个人资料
@@ -26,6 +26,7 @@ Page({
         this.setData({
           list: res.data.data
         })
+        console.log(this.data.list)
         if (this.data.list.boss_name == '') {
           this.setData({
             boss_name: '管理员'
@@ -35,6 +36,26 @@ Page({
           this.setData({
             boss_shenfen: '管理员'
           })
+        }
+        switch (this.data.list.boss_shenfen) {
+          case 1:
+            this.setData({
+              boss_shenFen: '城市合伙人',
+              leavel: '一'
+            })
+            break;
+          case 2:
+            this.setData({
+              boss_shenFen: '县级合伙人',
+              leavel: '二'
+            })
+            break;
+          case 3:
+            this.setData({
+              boss_shenFen: '乡镇合伙人',
+              leavel: '三'
+            })
+            break;
         }
         switch (this.data.list.shenfen) {
           case 1:

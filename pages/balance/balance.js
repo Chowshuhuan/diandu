@@ -17,7 +17,7 @@ Page({
     all: '', //合计
     took: '', //已提现
     yizhan: [],
-    src: '../../images/index/footer/36.png',
+    src: '../../images/index/footer/88.png',
     benyue: '',
     date: '',
     date1:''
@@ -72,7 +72,7 @@ Page({
   showInfo: function (e) {
     this.setData({
       showInfo: this.data.showInfo ? false : true,
-      src: this.data.showInfo ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png'
+      src: this.data.showInfo ? '../../images/index/footer/88.png' : '../../images/index/footer/89.png'
     })
   },
   /**

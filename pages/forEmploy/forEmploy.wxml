@@ -1,0 +1,32 @@
+<!--pages/forInfo/forInfo.wxml-->
+<view class="info">
+  <view class="one">
+    <text class="oneTxt" style="background: #B4D8FC ;">序号</text>
+    <text class="oneTxt1">{{index}}</text>
+  </view>
+  <view class="one">
+    <text class="oneTxt" style="background: #E7F3FF ;">姓名</text>
+    <text class="oneTxt1" style="background: #FFF ;">{{list.name}}</text>
+  </view>
+  <view class="one">
+    <text class="oneTxt" style="background: #B4D8FC ;">身份证号</text>
+    <text class="oneTxt1">{{list.id_num}}</text>
+  </view>
+  <view class="one">
+    <text class="oneTxt" style="background: #E7F3FF ;">入职时间</text>
+    <text class="oneTxt1" style="background: #FFF ;">{{list.entry_time}}</text>
+  </view>
+  <view class="one">
+    <text class="oneTxt" style="background: #B4D8FC ;">工作地点</text>
+    <text class="oneTxt1" >{{list.address_details}}</text>
+  </view>
+  <view class="one">
+    <text class="oneTxt" style="background: #E7F3FF ;">服务单位</text>
+    <text class="oneTxt1" style="background: #FFF ;">{{list.company_name}}</text>
+  </view>
+  <view>
+  </view>
+  <view class="footer">
+    <view class="downLoad" data-url="{{word}}" bindtap="downLoad">下载明细</view>
+  </view>
+</view>

@@ -1,5 +1,5 @@
 {
-  "usingComponents": {},
+  "usingComponents": {"date-picker": "../../components/date-picker/date-picker"},
   "navigationBarTitleText":"申请入驻",
-  "navigationBarTextStyle":"black"
+  "navigationBarTextStyle":"white"
 }

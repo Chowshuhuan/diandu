@@ -1,5 +1,7 @@
 .mobile {
   font-family: PingFang SC;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
 }
 
 .infoBox {
@@ -21,14 +23,15 @@
   top: 50%;
   transform: translateY(-50%);
   font-weight: Bold;
-  font-size: 28rpx;
+  font-size: 26rpx;
+  padding-left: 50rpx;
 }
-
+.input-placeholder {
+  font-size:24rpx;
+}
 .yanzhengma {
   height: 60rpx;
-  /* line-height: 60rpx;
-  text-align: center; */
-  background: #3FCB56;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
   color: #fff;
   font-size: 24rpx;
   font-weight: Medium;
@@ -48,14 +51,15 @@
 .mt40 {
   display: block;
   margin-top: 160rpx;
-  background: #3FCB56;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
   color: #fff;
   font-family: PingFang SC;
   font-weight: Medium;
   font-size: 32rpx;
   margin-bottom: 20rpx;
-  width: 700rpx !important;
-  border-radius: 40rpx;
+  width: 90% !important;
+  border-radius: 10rpx;
+  margin-left: 5%;
 }
 .tabMode {
   padding: 30rpx 30rpx;
@@ -73,10 +77,24 @@
 .tips {
   font-size: 24rpx;
   color: #333333;
-  text-align: left;
+  text-align: center;
   font-family: PingFang SC;
   font-weight: Medium;
 }
 .tips text {
-  color: #3FCB56;
+  color: #4262FF;
+}
+.mobileIcon{
+  height: 40rpx;
+  width: 26rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.yanmaIcon{
+  height: 34rpx;
+  width: 30rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }

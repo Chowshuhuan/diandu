@@ -1,6 +1,6 @@
 {
   "navigationBarTitleText":"城市选择",
-  "navigationBarTextStyle":"black",
+"navigationBarTextStyle":"white",
   "usingComponents": {
     "mp-dialog": "../../components/dialog/dialog"
   }

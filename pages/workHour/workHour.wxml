@@ -10,30 +10,16 @@
       </picker>
     </view>
   </view>
-  <!-- 表格内容 -->
-   <view class='table-module'>
-    <!-- 右侧表格滚动 -->
-    <scroll-view class="scroll-box" scroll-x="true">
-      <view class="table">
-        <view class="tr">
-          <view class="th">序号</view>
-          <view class="th">姓名</view>
-          <view class="th">身份证号</view>
-          <view class="th">服务单位</view>
-          <view class="th">工时/h</view>
-        </view>
-        <view class="tr" wx:for="{{list}}" wx:key="index">
-          <view class="th">{{index+1}}</view>
-          <view class="th">{{item.name}}</view>
-          <view class="th">{{item.id_num}}</view>
-          <view class="th">{{item.service_unit}}</view>
-          <view class="th">{{item.work_hour}}</view>
-        </view>
-      </view>
-    </scroll-view>
+  <view class="tabTxt">
+    <view>序号</view>
+    <view>姓名</view>
+    <view class="xiangQing">详情</view>
   </view>
-  <!-- 下载明细 -->
-  <view class="footer">
-    <text class="downLoad" bindtap="downLoad">下载明细</text>
+  <!-- 详情 -->
+  <view class="tabTxt2" wx:for="{{list}}" wx:key="index">
+    <view wx:if="{{index < 8}}">0{{(index+1)}}</view>
+    <view wx:else>{{index+1}}</view>
+    <view class="nameTxt">{{item.name}}</view>
+    <view class="infoTxt" bindtap="forInfo" data-id="{{item.id}}" data-index="{{index}}">查看详情</view>
   </view>
 </view>

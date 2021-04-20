@@ -5,7 +5,7 @@
 		</view>
 		<view class="waitPass">审核未通过</view>
 		<view class="change">资料审核不通过，请修改后提交</view>
-		<view class="reason">备注：身份证信息与名字不符</view>
+		<view class="reason">备注：{{cause}}</view>
 		<view class="bot">
 			<view class="botTop">
 				<text class="phone">客服电话：<text class="num">4000630888</text></text>

@@ -4,8 +4,9 @@
 }
 
 .all {
+  height: 100%;
+padding-bottom: 50rpx;
   border-bottom: 1rpx solid #F0F0F0;
-  height: 1111rpx;
 }
 
 .img {
@@ -82,6 +83,7 @@
 }
 
 .applyTime {
+  margin-top: 60rpx;
   text-align: right;
   padding: 25rpx 25rpx;
 }
@@ -102,8 +104,8 @@
 }
 
 .back {
-  border: 1px solid #3FCB56;
-  color: #3FCB56;
+  border: 1px solid #4262FF;
+  color: #4262FF;
   display: inline-block;
   height: 80rpx;
   line-height: 80rpx;
@@ -113,7 +115,7 @@
 }
 
 .pass {
-  background: #3FCB56;
+  background: #4262FF;
   color: #fff;
   display: inline-block;
   height: 80rpx;
@@ -195,9 +197,9 @@ input-holder {
 
 .btn-cancel {
   width: 30%;
-  color: #3FCB56;
+  color: #4262FF;
   text-align: center;
-  border: 1px solid #3FCB56;
+  border: 1px solid #4262FF;
   background: #fff;
   border-radius: 15rpx;
 }
@@ -206,8 +208,8 @@ input-holder {
   width: 30%;
   color: #fff;
   text-align: center;
-  border: 1px solid #3FCB56;
-  background: #3FCB56;
+  border: 1px solid #4262FF;
+  background: #4262FF;
   border-radius: 15rpx;
   margin-left: 50rpx;
 }
@@ -230,8 +232,8 @@ input-holder {
 }
 
 .backK {
-  border: 1px solid #9FE5AA;
-  color: #9FE5AA;
+  border: 1px solid #4262FF;
+  color: #4262FF;
   display: inline-block;
   height: 80rpx;
   line-height: 80rpx;
@@ -241,7 +243,7 @@ input-holder {
 }
 
 .passS {
-  background: #9FE5AA;
+  background: #4262FF;
   color: #fff;
   display: inline-block;
   height: 80rpx;

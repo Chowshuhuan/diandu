@@ -1,6 +1,5 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText":"任务",
-  "navigationBarTextStyle":"black",
-  "enablePullDownRefresh": true
+  "navigationBarTitleText":"点度互联",
+  "navigationBarTextStyle":"white"
 }

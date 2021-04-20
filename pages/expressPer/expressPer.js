@@ -2,7 +2,6 @@ const {
   default: api
 } = require("../../utils/api")
 
-// pages/expressPer/expressPer.js
 Page({
 
   /**
@@ -19,7 +18,8 @@ Page({
     workTag: [], //工种，期望岗位
     unitIndex: [], //工种选择的下标
     ageIndex: '', //年龄选择的下标
-    sexIndex:'',//性别选择的下标
+    sexIndex: '', //性别选择的下标
+    tagIndex: '', //工种下标
     ageList: [{
       id: 1,
       age: '不限',
@@ -42,27 +42,37 @@ Page({
       id: 7,
       age: '50岁以上',
     }], //年龄列表
-    icon: '../../images/index/footer/2.png', // 显示的图标
-    icon2: '../../images/index/footer/4.png', // 显示的图标
+    icon: '../../images/index/footer/4.png', // 显示的图标
+    icon2: '../../images/index/footer/2.png', // 显示的图标
     sex: '', //性别
     min_age: '', //最小年龄
     max_age: '', //最大年龄
     work_tag: [], //工种
-    sexList:[
-      {id:0,sex:'不限'},
-      {id:1,sex:'男'},
-      {id:2,sex:'女'},
+    sexList: [{
+        id: 0,
+        sex: '不限'
+      },
+      {
+        id: 1,
+        sex: '男'
+      },
+      {
+        id: 2,
+        sex: '女'
+      },
     ],
-    activeSex:'',
-    express:[],//输送的元
-    checkLength:'0',//输送的人数
+    activeSex: '',
+    express: [], //输送的元
+    checkLength: '0', //输送的人数
+    tagIndex1:''
   },
   // 显示工种
   checkWork: function (e) {
     this.setData({
       showWork: this.data.showWork ? false : true,
       showAge: false,
-      showSex: false
+      showSex: false,
+      tagIndex:'31'
     })
   },
   // 显示性别
@@ -78,7 +88,8 @@ Page({
     this.setData({
       showAge: this.data.showAge ? false : true,
       showWork: false,
-      showSex: false
+      showSex: false,
+      ageIndex:'不限'
     })
   },
   // 获取列表
@@ -89,7 +100,7 @@ Page({
       min_age: this.data.min_age,
       max_age: this.data.max_age,
       Authorization: wx.getStorageSync('token'),
-      work_tag: this.data.unitIndex
+      work_tag: this.data.tagIndex1
     }
     api.staffList(data).then(res => {
       if (res.data.code == 200) {
@@ -106,15 +117,31 @@ Page({
       }
     })
   },
+  // 隐藏工作岗位
+  hideModal() {
+    this.setData({
+      showWork: false
+    });
+  },
+  // 隐藏性别
+  hideModal1() {
+    this.setData({
+      showSex: false
+    });
+  },
+  // 隐藏年龄
+  // 隐藏性别
+  hideModal2() {
+    this.setData({
+      showAge: false
+    });
+  },
   // 获取工种
   getWork: function (e) {
     api.workTag().then(res => {
       if (res.data.code == 200) {
         this.setData({
           workTag: res.data.data,
-        })
-        this.data.workTag.forEach(item => {
-          item.selected = false
         })
       }
     })
@@ -128,20 +155,18 @@ Page({
   },
   // 选择工种
   checkTag: function (e) {
-    let arr = []
-    let string = "workTag[" + e.target.dataset.index + "].selected"
-    this.setData({
-      [string]: !this.data.workTag[e.target.dataset.index].selected
-    })
-    this.data.unitIndex.push(e.target.dataset.index)
-    this.data.workTag.forEach(v => {
-      if (v.selected == true) {
-        arr.push(v.id)
-      }
-    })
-    this.setData({
-      unitIndex: arr
-    })
+    let index = e.currentTarget.dataset.id
+    if (index == 31) {
+      this.setData({
+        tagIndex1: '',
+        tagIndex: index,
+      })
+    } else {
+      this.setData({
+        tagIndex: index,
+        tagIndex1: index,
+      })
+    }
     this.getList()
   },
   // 选择性别
@@ -149,7 +174,7 @@ Page({
     let index = e.currentTarget.dataset.id
     this.setData({
       sexIndex: index,
-      sex:JSON.stringify(index)
+      sex: JSON.stringify(index)
     })
     this.getList()
   },
@@ -205,58 +230,56 @@ Page({
     }
     this.getList()
   },
- //选中员工box
- checkboxChange:function(e){
-   this.setData({
-    express:e.detail.value,
-    checkLength:JSON.stringify(e.detail.value.length)
-   })
- },
-//  输送
-expressPer:function(e){
-  console.log(this.data.checkLength)
-  if(this.data.checkLength == 0){
-    wx.showToast({
-      title: '请选择至少一个需要输送的人才',
-      icon: 'none',
-      duration: 2000
+  //选中员工box
+  checkboxChange: function (e) {
+    this.setData({
+      express: e.detail.value,
+      checkLength: JSON.stringify(e.detail.value.length)
     })
-    return
-  }
-   let data = {
-    task_id: wx.getStorageSync('optionsId'),
-    // task_id:'5',
-    staff_id:this.data.express,
-    Authorization:  wx.getStorageSync('token'),
-   }
-  api.sendStaff(data).then(res =>{
-    if(res.data.code == 200){
+  },
+  //  输送
+  expressPer: function (e) {
+    if (this.data.checkLength == 0) {
       wx.showToast({
-        title: res.data.msg,
+        title: '请选择至少一个需要输送的人才',
         icon: 'none',
         duration: 2000
       })
-      // this.getList()
-    }else {
-      wx.showToast({
-        title: res.data.msg,
-        icon: 'none',
-        duration: 2000
-      })
+      return
     }
-  })
-},
+    let data = {
+      task_id: wx.getStorageSync('taskId'),
+      // task_id:'5',
+      staff_id: this.data.express,
+      Authorization: wx.getStorageSync('token'),
+    }
+    api.sendStaff(data).then(res => {
+      if (res.data.code == 200) {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 2000
+        })
+        // this.getList()
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
     let that = this
     that.setData({
       id: options.id
     })
     that.getList()
-    that.getWork()
   },
 
   /**
@@ -270,7 +293,7 @@ expressPer:function(e){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getWork()
   },
 
   /**

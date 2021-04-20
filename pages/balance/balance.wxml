@@ -6,7 +6,7 @@
     <!-- <view class="top3">已提现金额</view>
     <view class="top4">{{price1}}</view> -->
   </view>
-  <view class="content">
+  <view class="allTwo">
     <view class="top10">
       <view class="section">
       <picker mode="date" value="{{date}}" start="2010-09" end="2030-09" bindchange="bindDateChange">
@@ -17,6 +17,7 @@
       </picker>
     </view>
     </view>
+  <view class="content">
     <view class="month">
       <view class="monthTop">
         <text class="month1">{{month}}</text>
@@ -33,6 +34,7 @@
         </view>
       </view>
     </view>
+  </view>
   </view>
   <view class="city">
     <!-- <view class="city1"> -->

@@ -1,13 +1,13 @@
 /* pages/jobInfo/jobInfo.wxss */
+@import '../../utils//wxParse/wxParse.wxss';
+
 .job {
   background: #fff;
   font-family: PingFang SC;
   padding-bottom: 120rpx;
-  background: #f5f5f5;
 }
 
 .tit {
-  /* height: 200rpx; */
   background: #fff;
   padding: 30rpx 30rpx;
   box-sizing: border-box;
@@ -20,30 +20,35 @@
 }
 
 .salary {
-  color: #3FCB56;
+  color: #FE0D0D;
   position: absolute;
   right: 20rpx;
 }
 
 .bottom {
-  margin-top: 30rpx;
+  padding-bottom: 20rpx;
+}
+
+.shengShi {
+  padding-top: 20rpx;
+  font-size: 28rpx;
 }
 
 .bottom1,
 .bottom2,
 .bottom3,
 .bottom4 {
-  background: #B2EABB;
-  border-radius: 20rpx;
+  display: inline-block;
+  height: 30rpx;
+  background: #E4E9FF;
+  color: #4262FF;
   padding: 10rpx 10rpx;
-  color: #fff;
   margin-right: 10rpx;
   font-size: 24rpx;
 }
 
 /* 职位详情 */
 .info {
-  /* height: 500rpx; */
   margin-top: 30rpx;
   background: #fff;
   padding: 40rpx 20rpx;
@@ -83,14 +88,33 @@
   height: 100%;
 }
 
-/* 公司名称 */
-.name {
-  /* background: #f5f5f5; */
-  margin-top: 30rpx;
-  padding: 20rpx 20rpx;
-  border-bottom: 2rpx solid #F0F0F0;
-  background: #fff;
+.conpanyIcon {
+  width: 80%;
+  height: 120rpx;
+  padding: 20 20rpx;
+  background: #F8F8F8;
+  border-radius: 5px;
+  position: relative;
+  left: 10%;
+}
 
+.conpanyTxt {
+  display: inline-block;
+  position: absolute;
+  left: 20%;
+  top: 30%;
+  color: #2A2E3F;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.conpanyImg {
+  width: 88rpx;
+  height: 84rpx;
+  position: absolute;
+  left: 1%;
+  top: 20%;
+  z-index: 999;
 }
 
 .company,
@@ -100,29 +124,69 @@
   padding-bottom: 20rpx;
 }
 
-.companyName1 {
-  font-size: 28rpx;
-}
-
 /* 公司地址 */
 .place {
   padding: 20rpx 20rpx;
-  border-bottom: 2rpx solid #F0F0F0;
   background: #fff;
+  color: #2A2E3F;
+  padding-bottom: 40rpx;
 }
 
 /* word下载 */
 .word {
-  padding: 20rpx 20rpx;
-  font-size: 26rpx;
-  padding-top: 30rpx;
+  width: 700rpx;
+  height: 100rpx;
+  line-height: 100rpx;
   background: #fff;
+  border-radius: 5px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 25rpx;
+}
+
+.wordInner {
+  height: 100%;
 }
 
 .wordImg {
   display: block;
-  width: 52rpx;
-  height: 60rpx;
+  width: 86rpx;
+  height: 84rpx;
+}
+
+.wordTxt1 {
+  position: absolute;
+  top: -5%;
+  left: 17%;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2A2E3F;
+}
+
+.wordTxt {
+  position: absolute;
+  bottom: 5%;
+  left: 17%;
+  color: #4262FF;
+}
+
+.wordBtn {
+  position: absolute;
+  right: 10%;
+  top: 30%;
+  /* transform: translateY(-50%); */
+}
+
+.wordBtn1 {
+  width: 114rpx !important;
+  height: 52rpx;
+  line-height: 52rpx;
+  font-size: 24rpx;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
+  border-radius: 4px;
+  color: #fff;
+  padding: 0;
 }
 
 /* 底部 */
@@ -165,7 +229,7 @@
 .fixedbox .right {
   width: 473rpx;
   text-align: center;
-  background-color: #3FCB56;
+  background-color: #4262FF;
   color: #fff;
   border-radius: 38rpx;
   font-size: 36rpx;
@@ -174,11 +238,6 @@
 .fixedbox .right.active {
   border: 1px solid #C7FDFA;
   background: rgba(199, 253, 250, 1)
-}
-
-/* 收藏的颜色 */
-.collect {
-  color: #3FCB56;
 }
 
 /* 二维码转发的弹框 */
@@ -186,50 +245,16 @@ my-code {
   height: 400rpx;
   width: 400rpx;
 }
-
-/* pages/jobInfo/jobInfo.wxss */
-.job {
-  background: #fff;
-  font-family: PingFang SC;
-  padding-bottom: 120rpx;
-  background: #f5f5f5;
-}
-
-.tit {
-  /* height: 200rpx; */
-  background: #fff;
-  padding: 30rpx 30rpx;
-  box-sizing: border-box;
-}
-
-.top {
-  font-size: 36rpx;
-  font-weight: bold;
+.iconPlace{
   position: relative;
 }
-
-.salary {
-  color: #3FCB56;
+.placeIcon {
+  width: 26rpx;
+  height: 32rpx;
   position: absolute;
-  right: 20rpx;
+  left: 0;
+  top: 6rpx;
 }
-
-.bottom {
-  margin-top: 30rpx;
-}
-
-.bottom1,
-.bottom2,
-.bottom3,
-.bottom4 {
-  background: #B2EABB;
-  border-radius: 20rpx;
-  padding: 10rpx 10rpx;
-  color: #fff;
-  margin-right: 10rpx;
-  font-size: 24rpx;
-}
-
 /* 职位详情 */
 .info {
   /* height: 500rpx; */
@@ -237,6 +262,12 @@ my-code {
   background: #fff;
   padding: 40rpx 20rpx;
   box-sizing: border-box;
+}
+
+.place4 {
+  padding-left: 35rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
 }
 
 .infoTit,
@@ -273,12 +304,12 @@ my-code {
 }
 
 /* 公司名称 */
-.name {
-  /* background: #f5f5f5; */
+/* .name {
+  background: #f5f5f5;
   margin-top: 30rpx;
   padding: 20rpx 20rpx;
   border-bottom: 2rpx solid #F0F0F0;
-}
+} */
 
 .company,
 .place2 {
@@ -291,23 +322,12 @@ my-code {
   font-size: 28rpx;
 }
 
-/* 公司地址 */
-.place {
-  padding: 20rpx 20rpx;
-  border-bottom: 2rpx solid #F0F0F0;
-}
 
 /* word下载 */
 .word {
   padding: 20rpx 20rpx;
   font-size: 26rpx;
   padding-top: 30rpx;
-}
-
-.wordImg {
-  display: block;
-  width: 52rpx;
-  height: 60rpx;
 }
 
 /* 底部 */
@@ -350,9 +370,9 @@ my-code {
 .fixedbox .right {
   width: 473rpx;
   text-align: center;
-  background-color: #3FCB56;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
   color: #fff;
-  border-radius: 38rpx;
+  border-radius: 10rpx;
   font-size: 36rpx;
 }
 
@@ -363,7 +383,7 @@ my-code {
 
 /* 收藏的颜色 */
 .collect {
-  color: #3FCB56;
+  color: #4262FF;
 }
 
 /* 遮罩层颜色 */
@@ -379,7 +399,8 @@ my-code {
   overflow: hidden;
 
 }
-.codeContent{
+
+.codeContent {
   position: fixed;
   top: 40%;
   transform: translateY(-50%);
@@ -389,29 +410,44 @@ my-code {
   height: 600rpx;
   background: #fff;
 }
-.codeImg{
-  padding-top:60rpx ;
+
+.codeImg {
+  padding-top: 60rpx;
   text-align: center;
 }
-.codeImage{
+
+.codeImage {
   width: 213rpx;
   height: 213rpx;
 }
-.txt{
-  /* font-family: PingFang SC Medium; */
+
+.txt {
   font-size: 32rpx;
   color: #333;
   text-align: center;
   padding-top: 20rpx;
 }
-.btn{
-  background: #3FCB56;
+
+.btn {
+  background: #4262F6;
   height: 90rpx;
   text-align: center;
   line-height: 90rpx;
   color: #fff;
-  border-radius: 10rpx;
+  border-radius: 5rpx;
   margin-top: 40rpx;
   width: 80%;
   margin-left: 10%;
+}
+
+.container image {
+  width: 686rpx;
+  height: 686rpx;
+  background-color: #f9f9f9;
+}
+
+.canvas-box {
+  position: fixed;
+  top: 999999rpx;
+  left: 0;
 }

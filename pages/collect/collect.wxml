@@ -1,0 +1,23 @@
+<!--pages/collect/collect.wxml-->
+<view class="collect">
+  <view class="content">
+    <view class="list" wx:for="{{list}}" wx:key="index" bindtap="todetail" data-id="{{item.id}}">
+      <view class="left">
+        <view class="position">{{item.company_name}}</view>
+        <view class="salary">{{item.pay_min}}-{{item.pay_max}}</view>
+        <view class="welfare">
+          <text class="physical" wx:for="{{item.welfare_name}}" wx:key="index">{{item}}</text>
+        </view>
+        <view class="locale">
+          <text>工作点：</text>
+          <text>{{item.address_details}}</text>
+        </view>
+      </view>
+      <view class="right">
+        <view class="num">{{item.recruit_num}}人</view>
+        <view class="time">{{item.create_time}}</view>
+      </view>
+    </view>
+    
+  </view>
+</view>

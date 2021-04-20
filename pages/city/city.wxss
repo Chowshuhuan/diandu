@@ -37,16 +37,10 @@
 }
 
 .city_locate_text {
-  /* color: #3FCB56; */
-  color: #fff;
-  background: #3FCB56;
-  position: absolute;
-  right: 40rpx;
+  color: #4262FF;
   width: 140rpx;
   height: 60rpx;
   line-height: 60rpx;
-  text-align: center;
-  border-radius: 20rpx;
 }
 
 .city_left {
@@ -74,7 +68,7 @@
 
 .letter_item.active {
   color: #fff;
-  background: #3FCB56;
+  background: #4262FF;
 }
 
 .city_locate,
@@ -128,9 +122,9 @@
 }
 
 .new_city_text.active {
-  background-color: #3FCB56;
+  background-color: #4262FF;
   color: #fff;
-  border: 2rpx solid #3FCB56;
+  border: 2rpx solid #4262FF;
 }
 
 .city_first_letter {
@@ -138,7 +132,7 @@
   font-size: 28rpx;
   font-family: PingFang SC;
   font-weight: 500;
-  color: #3FCB56;
+  color: #4262FF;
 }
 
 .city_name {

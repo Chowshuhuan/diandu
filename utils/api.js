@@ -30,6 +30,10 @@ export default{
      taskList: function (data) {
       return request.$get('/api/Task/list', data);
     },
+     // 轮播图列表
+     bannerList: function (data) {
+      return request.$get('/api/Task/bannerList', data);
+    },
     // 查看详情
     taskView: function (data) {
       return request.$post('/api/Task/view', data);
@@ -113,5 +117,21 @@ export default{
       // 文件上传
       upload: function (data) {
         return request.$post('/api/Acount/upload', data);
+      },
+       // 我的收藏列表
+       getCollectList: function (data) {
+        return request.$post('/api/User/getCollectList', data);
+      },
+       // 上传证书
+       upload: function (data) {
+        return request.$post('/api/Account/upload', data);
+      },
+      // 绑定手机号
+      bindMobile:function(data){
+        return request.$post('/api/User/bindMobile', data);
+      },
+       // 绑定微信号
+       bindWeChat:function(data){
+        return request.$post('/api/User/bindWeChat', data);
       },
 }

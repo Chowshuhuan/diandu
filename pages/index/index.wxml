@@ -1,42 +1,60 @@
 <!--index.wxml-->
 <view class="container">
   <view class="top">
-    <!-- <image class="img" src="/images/index/footer/banner.png"></image> -->
-    <view class="img"></view>
-    <view class="search">
+    <view class="img">
+      <view class="swiper">
+        <swiper autoplay="true" indicator-dots="true" circular="true">
+          <block wx:for="{{bannerList}}" wx:key="index">
+            <swiper-item class="swiper2">
+              <image class="bannerImg" src="{{item}}"></image>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+    </view>
+  </view>
+  <!-- 搜索框 -->
+   <view class="angel">
+   <view class="sousuo2">
+      <view class="search">
       <view class="section" bindtap="bindRegionChange">
         <view class="picker">
           {{city}}
         </view>
-        <image bindchange="bindRegionChange" class="place" src="../../images/index/footer/4.png"></image>
-        <!-- <picker mode="region"  value="{{region}}" custom-item="{{customItem}}">
-                <view class="picker">
-                  {{area}}
-                </view>
-                <image bindchange="bindRegionChange" class="place" src="../../images/index/footer/4.png"></image>
-              </picker> -->
+        <image bindchange="bindRegionChange" class="place" src="../../images/index/footer/44.png"></image>
       </view>
       <input type="text" bindinput="search" value="{{searchName}}" confirm-type="search" placeholder="搜索职位/公司" />
+      <view class="searchIcon">
       <image bindtap="search2" class="searchLogo" src="../../images/index/footer/5.png" alt=""></image>
+      </view>
     </view>
   </view>
+   </view>
   <view class="content">
     <view class="list" wx:for="{{list}}" wx:key="index" bindtap="todetail" data-id="{{item.id}}">
+      <view class="listLeft">
+        <image class="listImg" src="{{item.logo}}"></image>
+      </view>
       <view class="left">
         <view class="position">{{item.work_name}}</view>
-        <view class="salary">{{item.pay_min}}-{{item.pay_max}}</view>
+        <view class="salary">{{item.pay_min}}-{{item.pay_max}} 元/月</view>
         <view class="welfare">
           <text class="physical" wx:for="{{item.welfare_name}}" wx:key="index">{{item}}</text>
         </view>
-        <view class="locale">
-          <text>工作点：</text>
-          <text>{{item.address_details}}</text>
+        <view class="renshu">
+          <text class="gongsi">{{item.company_name}}</text>
+          <!-- <text class="renshu1">{{item.recruit_num}}人</text> -->
         </view>
       </view>
       <view class="right">
+        <!-- <view class="num">{{item.pay_min}}-{{item.pay_max}}</view> -->
         <view class="num">{{item.recruit_num}}人</view>
         <view class="time">{{item.create_time}}</view>
       </view>
+      <view class="locale">
+          <text>工作点：</text>
+          <text class="localeInfo">{{item.address_details}}</text>
+        </view>
     </view>
   </view>
 </view>

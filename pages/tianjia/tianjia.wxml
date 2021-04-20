@@ -1,0 +1,16 @@
+<!--pages/tianjia/tianjia.wxml-->
+<view class="box">
+  <view class="list {{item.isTouchMove ? 'touch-move-active' : ''}}" wx:for="{{jishu_prove}}" wx:key="index" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove">
+    <view class="listInfo">
+      <text class="txt">{{item.name}}</text>
+      <!-- <image class="logoImg" src="{{item.logo}}"></image> -->
+      <!-- <image class="del" catchtap="del" src="../../images/index/footer/laji.png"></image> -->
+    </view>
+  </view>
+  <view class="xuxian" bindtap='addInput'>
+    添加相关技术证书
+  </view>
+  <view class="footer">
+    <button class="save" bindtap="saveImg">保存</button>
+  </view>
+</view>

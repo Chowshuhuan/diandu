@@ -23,20 +23,13 @@ Page({
     encrypted_data: '',
     searchName: '',
     city: "全部",
+    bannerList:[],//轮播图列表
   },
   // 选择城市
   bindRegionChange: function (e) {
     wx.navigateTo({
       url: '../city/city'
     })
-    // this.setData({
-    //   region: e.detail.value,
-    //   address_sheng: e.detail.value[0],
-    //   address_shi: e.detail.value[1],
-    //   area: e.detail.value[1]
-    // })
-    // console.log(this.data.address_sheng, this.data.address_shi)
-    // this.getList()
   },
   // 搜索职位/公司
   search: function (e) {
@@ -110,6 +103,7 @@ Page({
             list: [],
           })
         } else {
+          console.log(res.data.data.data)
           this.setData({
             list: res.data.data.data,
           })
@@ -122,6 +116,18 @@ Page({
         })
       }
     })
+  },
+  // 获取banner
+  getBanner:function(e){
+    let arr = []
+   api.bannerList().then(res => {
+     res.data.data.forEach( v => {
+         arr.push(v.complete_path)
+     });
+     this.setData({
+       bannerList:arr
+     })
+   })
   },
   // 查看详情
   todetail(e) {
@@ -149,57 +155,58 @@ Page({
   },
 
   onLoad: function () {
-    this.getList()
+      this.getList()
+      this.getBanner()
   },
   onShow: function () {
     switch (wx.getStorageSync("locatecity").city) {
       case '全部':
         this.setData({
-          city:'全部',
-          area:'',
-          address_sheng:''
+          city: '全部',
+          area: '',
+          address_sheng: ''
         })
         break;
       case '上海':
         this.setData({
-          city:'上海',
-          area:'',
-          address_sheng:'上海'
+          city: '上海',
+          area: '',
+          address_sheng: '上海'
         })
         break;
       case '天津':
         this.setData({
-          city:'天津',
-          area:'',
-          address_sheng:'天津'
+          city: '天津',
+          area: '',
+          address_sheng: '天津'
         })
         break;
       case '重庆':
         this.setData({
-          city:'重庆',
-          area:'',
-          address_sheng:'重庆'
+          city: '重庆',
+          area: '',
+          address_sheng: '重庆'
         })
         break;
       case '北京':
         this.setData({
-          city:'北京',
-          area:'',
-          address_sheng:'北京'
+          city: '北京',
+          area: '',
+          address_sheng: '北京'
         })
     }
-    if(wx.getStorageSync("locatecity").city != ('全部' || '北京' ||'天津'||'上海'|| '重庆') ){
-       this.setData({
-          city:wx.getStorageSync("locatecity").city,
-          area:wx.getStorageSync("locatecity").city,
-          address_sheng:''
-       })
-    }
-    if(!wx.getStorageSync("locatecity").city){
+    if (wx.getStorageSync("locatecity").city != ('全部' || '北京' || '天津' || '上海' || '重庆')) {
       this.setData({
-        area:'',
-        city:'全部',
-        address_sheng:''
+        city: wx.getStorageSync("locatecity").city,
+        area: wx.getStorageSync("locatecity").city,
+        address_sheng: ''
+      })
+    }
+    if (!wx.getStorageSync("locatecity").city) {
+      this.setData({
+        area: '',
+        city: '全部',
+        address_sheng: ''
       })
     }
     this.getList()

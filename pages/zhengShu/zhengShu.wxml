@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}"
+    bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="index">
+    <view class="content">
+      <text class="txt">{{item.name}}</text>
+      <image class="imgIcon" src="{{item.logo}}"></image>
+    </view>
+    <view>
+      <image class="del" catchtap="del" data-index="{{index}}" src="../../images/index/footer/laji.png"></image>
+    </view>
+  </view>
+  <view class="xuxian" bindtap='addInput'>
+    添加相关技术证书
+  </view>
+  <view class="footer">
+    <button class="save" bindtap="saveImg">保存</button>
+  </view>
+</view>

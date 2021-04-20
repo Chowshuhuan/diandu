@@ -9,6 +9,7 @@ Page({
   data: {
     list: [],
     date: '2010-09',
+    word: ''
   },
   getList: function (e) {
     let data = {
@@ -38,48 +39,19 @@ Page({
       }
     })
   },
-    //  下载文件
-    downLoad: function (e) {
-      let data = {
-        time: this.data.date,
-        is_download: '1',
-        page: '',
-        limit: '',
-        Authorization: wx.getStorageSync('token')
+  // 查看详情
+  forInfo(e) {
+    let index = e.currentTarget.dataset.index
+    wx.setStorageSync('leaveIndex', index + 1)
+    this.data.list.forEach(v => {
+      if (v.id == e.currentTarget.dataset.id) {
+        wx.setStorageSync('forLeave', v)
       }
-      api.leaveJobList(data).then(res => {
-        if (res.data.code == 200) {
-          wx.downloadFile({
-            url: res.data.data,
-            success: function (res) {
-              if (res.errMsg == 'downloadFile:ok') {
-                let filePath = res.tempFilePath;
-                wx.openDocument({
-                  filePath: filePath,
-                  success: function (res) {
-                    wx.showToast({
-                      title: '打开成功',
-                      icon: 'none',
-                      duration: 1500
-                    })
-                  }
-                })
-                // 文件下载成功
-              } else {
-                //  失败
-              }
-            }
-          })
-  
-        } else {
-          wx.showToast({
-            title: res.data.msg,
-            icon: 'none',
-            duration: 1500
-          })
-        }
-      })
-    },
+    })
+    wx.navigateTo({
+      url: '../forLeave/forLeave'
+    })
+  },
   // 选择时间
   bindDateChange: function (e) {
     let s1 = e.detail.value.substring(0, e.detail.value.length - 3)

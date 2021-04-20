@@ -1,0 +1,39 @@
+<!--pages/headImg/headImg.wxml-->
+<view class="header">
+  <view class="top">
+     <view>
+       <image class="right" src="../../images/index/footer/right.png"></image>
+       <text class="rightTxt">正确示范</text>
+     </view>
+     <view class="updateTxt">
+       上传真实照片，更容易赢得好感
+     </view>
+     <view class="rightImg">
+        <image class="five" src="../../images/icon/five.png"></image>
+     </view>
+  </view>
+  <view class="bottom">
+    <view>
+      <image class="error" src="../../images/index/footer/error.png"></image>
+       <text class="rightTxt">错误示范</text>
+     </view>
+     <view class="errorImg">
+      <view class="errorImg1">
+         <image class="three" src="../../images/icon/three.png"></image>
+         <view>非人物照</view>
+      </view>
+      <view class="errorImg1">
+         <image class="three" src="../../images/icon/two.png"></image>
+         <view>五官遮挡</view>
+      </view>
+      <view class="errorImg1">
+         <image class="three" src="../../images/icon/one.png"></image>
+         <view>五官不清</view>
+      </view>
+      <view class="errorImg1">
+         <image class="three" src="../../images/icon/four.png"></image>
+         <view>衣着不当</view>
+      </view>
+     </view>
+  </view>
+</view>

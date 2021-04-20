@@ -1,14 +1,18 @@
+// import qrcode from '../../utils/qrcode';
+// import code from '../../utils/code';
 // pages/jobInfo/jobInfo.js
-import QR from '../../utils/qrcode'
+let WxParse = require('../../utils/wxParse/wxParse')
 let app = getApp()
 const api = app.globalData.api;
+let QR = require("../../utils/code");
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['../../images/index/footer/27.png', '../../images/index/footer/27.png', '../../images/index/footer/banner.png'], //工作环境表
+    background: [], //工作环境表
     list: {}, //详情列表
     welfare: [], //福利
     id: '',
@@ -18,14 +22,18 @@ Page({
     src: '../../images/index/footer/3.png',
     name: '赵钱孙李',
     mobile: '186****8999',
-    codeImg: '../../images/index/footer/code.png',
+    codeImg: '',
     qrcodeURL: '',
     word: '', //word下载的地址
+    canvasHidden: false,
+    imagePath: '',
+    sex: '', //性别
+    content: '', //工作内容
   },
   // 获取列表
-  getList(){
+  getList() {
     let that = this
-       // 获取详情
+    // 获取详情
     let data = {
       // id: '5',
       id: wx.getStorageSync('taskId'),
@@ -33,6 +41,7 @@ Page({
     }
     api.taskView(data).then(res => {
       if (res.data.code == 200) {
+        console.log(res.data.data)
         if (res.data.data.is_collect == 1) {
           that.setData({
             is_collect: true
@@ -42,17 +51,30 @@ Page({
             is_collect: false
           })
         }
+        switch (res.data.data.sex) {
+          case 1:
+            that.setData({
+              sex: '男'
+            })
+            break;
+          case 2:
+            that.setData({
+              sex: '女'
+            })
+            break;
+          case 3:
+            that.setData({
+              sex: '不限'
+            })
+            break;
+        }
         that.setData({
           list: res.data.data,
-          //  background:res.data.data.work_env,
+          background: res.data.data.work_env,
           welfare: res.data.data.welfare_name,
-          word: res.data.data.word
+          word: res.data.data.word,
+          content: res.data.data.work_desc
         })
-        if (that.data.list.sex == '1') {
-          that.data.list.sex = '男'
-        } else {
-          that.data.list.sex = '女'
-        }
       }
     })
   },
@@ -63,7 +85,7 @@ Page({
   },
   // 点击收藏
   collect: function (e) {
-    if(!wx.getStorageSync('token')){
+    if (!wx.getStorageSync('token')) {
       wx.showToast({
         title: '请先登录',
         icon: 'none',
@@ -75,7 +97,7 @@ Page({
     let data = {
       //  id:that.data.id,
       // id: '5',
-      id:wx.getStorageSync('taskId'),
+      id: wx.getStorageSync('taskId'),
       Authorization: wx.getStorageSync('token')
     }
     api.collect(data).then(res => {
@@ -94,7 +116,7 @@ Page({
   },
   //  点击弹框二维码
   share: function (e) {
-    if(!wx.getStorageSync('token')){
+    if (!wx.getStorageSync('token')) {
       wx.showToast({
         title: '请先登录',
         icon: 'none',
@@ -102,98 +124,17 @@ Page({
       })
       return
     }
-    this.setData({
-      codeShow: this.data.codeShow ? false : true,
-      codeShow2: this.data.codeShow2 ? false : true,
+    wx.navigateTo({
+      url: '../share/share' 
     })
-    // this.drawImg()
+    // this.setData({
+    //   codeShow: this.data.codeShow ? false : true,
+    //   codeShow2: this.data.codeShow2 ? false : true,
+    // })
   },
-  // 隐藏二维码
-  hiddenCode: function (e) {
-    this.setData({
-      codeShow: this.data.codeShow ? false : true,
-      codeShow2: this.data.codeShow2 ? false : true,
-    })
-  },
-  // 授权相册
-  saveCode: function (e) {
-    let that = this
-    wx.getImageInfo({
-      src: that.data.codeImg,
-      success: function (ret) {
-        that.setData({
-          path: ret.path
-        })
-        //若二维码未加载完毕，加个动画提高用户体验
-        //判断用户是否授权"保存到相册"
-        wx.getSetting({
-          success(res) {
-            //没有权限，发起授权
-            if (!res.authSetting['scope.writePhotosAlbum']) {
-              wx.authorize({
-                scope: 'scope.writePhotosAlbum',
-                success() { //用户允许授权，保存图片到相册
-                  that.savePhoto();
-                },
-                fail() { //用户点击拒绝授权，跳转到设置页，引导用户授权
-                  wx.openSetting({
-                    success() {
-                      wx.authorize({
-                        scope: 'scope.writePhotosAlbum',
-                        success() {
-                          that.savePhoto();
-                        }
-                      })
-                    }
-                  })
-                }
-              })
-            } else { //用户已授权，保存到相册
-              that.savePhoto()
-            }
-          }
-        })
-      }
-    })
-  },
-  // 保存图片
-  savePhoto() {
-    wx.saveImageToPhotosAlbum({
-      filePath: this.data.path,
-      success(res) {
-        wx.showToast({
-          title: '保存成功',
-          icon: 'none',
-          duration: 1500
-        })
-      },
-      fail(error) {
-        wx.showToast({
-          title: '保存失败',
-          icon: 'none',
-          duration: 1500
-        })
-      }
-    })
-  },
-  // 生成二维码的方法
-  // drawImg: function () {
-  //   let that = this,
-  //     params = JSON.stringify(wx.getStorageSync('user_id')) // 二维码参数 
-
-  //   var imgData = QR.drawImg(params, {
-  //     typeNumber: 4, // 密度
-  //     errorCorrectLevel: 'L', // 纠错等级
-  //     size: 800, // 白色边框
-  //   })
-
-  //   this.setData({
-  //     qrcodeURL: imgData
-  //   })
-  // },
   // 输送人才
   express: function (e) {
-    if(!wx.getStorageSync('token')){
+    if (!wx.getStorageSync('token')) {
       wx.showToast({
         title: '请先登录',
         icon: 'none',
@@ -208,7 +149,7 @@ Page({
   },
   // word下载
   downLoad: function (e) {
-    if(!wx.getStorageSync('token')){
+    if (!wx.getStorageSync('token')) {
       wx.showToast({
         title: '请先登录',
         icon: 'none',
@@ -216,35 +157,53 @@ Page({
       })
       return
     }
-    
+    if (!this.data.word) {
+      wx.showToast({
+        title: 'word文档为空,无法下载',
+        icon: 'none',
+        duration: 1500
+      })
+      return
+    }
     wx.downloadFile({
       url: this.data.word,
+      header: {},
       success: function (res) {
-        if (res.errMsg == 'downloadFile:ok') {
-          let filePath = res.tempFilePath;
-          wx.saveImageToPhotosAlbum({
-            filePath:filePath,
-            success: function (res) {
-              wx.showToast({
-                title: '下载成功',
-                icon: 'none',
-                duration: 1500
-              })
-              // wx.saveFile({
-              //   tempFilePath: tempFilePaths[0],
-              //   success(res) {
-              //     const savedFilePath = res.savedFilePath
-              //   }
-              // })
-            }
-          })
-          console.log('成功')
-          // 文件下载成功
-        } else {
-          //  失败
-          console.log('失败')
-        }
-      }
+        var filePath = res.tempFilePath;
+        wx.openDocument({
+          filePath: filePath,
+          success: function (res) {
+            wx.showToast({
+              title: '打开文档成功',
+              icon: 'none',
+              duration: 1500
+            })
+          },
+          fail: function (res) {
+            wx.showToast({
+              title: '打开文档失败',
+              icon: 'none',
+              duration: 1500
+            })
+          },
+          complete: function (res) {
+            console.log(res)
+            // wx.showToast({
+            //   title: 'word 为空，打开失败',
+            //   icon: 'none',
+            //   duration: 1500
+            // })
+          }
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: 'word为空',
+          icon: 'none',
+          duration: 1500
+        })
+      },
+      complete: function (res) {},
     })
   },
   /**
@@ -256,6 +215,45 @@ Page({
    */
   onShow: function () {
     this.getList()
+    var that = this
+    wx.request({
+      url: 'https://diandu.bonnidee.cn/api/Task/view' ,
+      method:'post',
+      data:{
+        id: wx.getStorageSync('taskId'),
+        Authorization: wx.getStorageSync('token')
+      },
+      header:{
+        'content-type':'application/json'
+      },
+      success:function(res) {
+        var article = res.data.data.work_desc
+        WxParse.wxParse('article','html',article,that,5)
+      },
+      fail:function(res){
+      },
+      complete:function(res){
+      }
+    })
+    wx.request({
+      url: 'https://diandu.bonnidee.cn/api/Task/view' ,
+      method:'post',
+      data:{
+        id: wx.getStorageSync('taskId'),
+        Authorization: wx.getStorageSync('token')
+      },
+      header:{
+        'content-type':'application/json'
+      },
+      success:function(res) {
+        var article1 = res.data.data.company_profile
+        WxParse.wxParse('article1','html',article1,that,5)
+      },
+      fail:function(res){
+      },
+      complete:function(res){
+      }
+    })
   },
 
   /**

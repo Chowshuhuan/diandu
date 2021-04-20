@@ -1,7 +1,9 @@
 /* pages/matter/matter.wxss */
-.matter {
+page{
   background: #f5f5f5;
   height: 100%;
+}
+.matter {
   padding-top: 60rpx;
 }
 
@@ -20,7 +22,7 @@
 }
 
 .detial {
-  color: #3FCB56;
+  color: #4262FF;
 }
 
 .btns text:nth-child(2) {
@@ -28,11 +30,9 @@
 }
 
 .info {
-  /* height: 450rpx; */
   background: #fff;
   margin-top: 20rpx;
   padding: 30rpx 25rpx;
-  /* box-sizing: border-box; */
 }
 
 .info view {
@@ -54,7 +54,7 @@
 }
 
 .infoRight {
-  color: #3FCB56;
+  color: #4262FF;
   font-size: 30rpx;
   font-weight: bold;
   position: absolute;
@@ -65,7 +65,7 @@
 .bottomBtns {
   border-top: 1rpx solid #f0f0f0;
   text-align: right;
-  color: #3FCB56;
+  color: #4262FF;
   font-size: 30rpx;
   padding-right: 25rpx;
   height: 50rpx;
@@ -78,9 +78,10 @@
   line-height: 60rpx;
   text-align: center;
   width: 150rpx;
-  border: 1px solid #3FCB56;
+  border: 1px solid #B8B8B8;
   margin-right: 20rpx;
   border-radius: 40rpx;
+  color: #2A2E3F;
 }
 
 .reject {
@@ -89,27 +90,46 @@
   line-height: 60rpx;
   text-align: center;
   width: 150rpx;
-  border: 1px solid #3FCB56;
   margin-right: 20rpx;
   border-radius: 40rpx;
+  background: linear-gradient(140deg, #00BBFA 0%, #0067EC 100%);
+  color: #fff;
 }
 
 .pass {
   display: inline-block;
   height: 60rpx;
   width: 150rpx;
-  border: 1px solid #3FCB56;
   line-height: 60rpx;
   text-align: center;
   border-radius: 40rpx;
   color: #fff;
-  background: #3FCB56;
+  background: linear-gradient(140deg, #00BBFA 0%, #0067EC 100%);
 }
 
 .green {
-  color: #3FCB56;
+  color: #4262FF;
 }
-
+.typeTxt{
+  color: #2A2E3F;
+}
+.typeTxt,
+.typeTxtTwo,
+.typeTxt3{
+  font-weight: 600;
+  position: relative;
+}
+.typeTxtTwo{
+  color: #E01134;
+}
+.typeTxt3{
+  color: #4262FF;
+}
+.typeTxt2{
+  position: absolute;
+  right: 40rpx;
+  top: 30rpx;
+}
 .white {
   color: #999;
 }
@@ -130,6 +150,7 @@
   right: 30rpx;
   bottom: 20rpx;
 }
+
 /*  */
 
 .modal-mask {
@@ -202,9 +223,9 @@ input-holder {
 
 .btn-cancel {
   width: 30%;
-  color: #3FCB56;
+  color: #4262FF;
   text-align: center;
-  border: 1px solid #3FCB56;
+  border: 1px solid #4262FF;
   background: #fff;
   border-radius: 15rpx;
 }
@@ -213,8 +234,8 @@ input-holder {
   width: 30%;
   color: #fff;
   text-align: center;
-  border: 1px solid #3FCB56;
-  background: #3FCB56;
+  border: 1px solid #4262FF;
+  background: #4262FF;
   border-radius: 15rpx;
   margin-left: 50rpx;
 }

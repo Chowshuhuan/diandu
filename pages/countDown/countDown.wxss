@@ -1,0 +1,35 @@
+
+.count{
+  text-align: center;
+}
+.img{
+  margin-top: 160rpx;
+}
+.iconImg{
+  width: 528rpx;
+  height: 526rpx;
+}
+.zhineng{
+  font-family: PingFang SC;
+  font-weight: 600;
+  font-size: 36rpx;
+  color: #4262FF;
+}
+.middle{
+  margin-top: 200rpx;
+}
+.second{
+  display: inline-block;
+  width: 15rpx;
+  height: 15rpx;
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  margin-bottom: 5rpx;
+  border-radius: 50%;
+  background:#4262FF ;
+}
+.botto{
+  margin-top: 200rpx;
+  color: #C3C3C3;
+  font-size: 32rpx;
+}

@@ -4,14 +4,25 @@
   background: #f5f5f5;
   padding-bottom: 100rpx;
 }
-.personInso{
+
+.personInso {
   padding: 25rpx 25rpx;
   background: #fff;
 }
+
 .infoTit {
   font-size: 30rpx;
   color: #333333;
   font-weight: bold;
+}
+.jishuTxt{
+  width: 330rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.jishu {
+  padding-right: 40rpx;
 }
 
 .jobInfo {
@@ -25,6 +36,7 @@
   color: #333333;
   font-weight: bold;
 }
+
 .imgBox {
   display: flex;
   justify-content: space-between;
@@ -35,6 +47,7 @@
   font-weight: bold;
   border-bottom: 2rpx solid #f0f0f0;
 }
+
 .userInfo .imgBox {
   padding: 0;
   height: 98rpx;
@@ -45,29 +58,39 @@
   margin-top: unset;
   padding-left: 20rpx;
 }
-.shenqing{
+
+.shenqing {
   padding-left: 0;
 }
+
 .flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .return {
   width: 14rpx;
   height: 20rpx;
   padding-right: 20rpx;
 }
-.personInfo{
+.return5 {
+  width: 14rpx;
+  height: 20rpx;
+  padding-right: 20rpx;
+}
+.personInfo {
   background: #fff;
   margin-top: 20rpx;
   padding: 20rpx 20rpx 0 20rpx;
 }
-.person{
+
+.person {
   color: #333;
   font-weight: bold;
   font-size: 30rpx;
 }
+
 /* 性别选择按钮 */
 .radio {
   margin-left: 20rpx;
@@ -79,26 +102,31 @@
   margin-left: 10rpx;
   color: #333333;
 }
+
 .flex {
   display: flex;
   justify-content: space-between;
   align-items: center
 }
-.tui-picker-detail{
+
+.tui-picker-detail {
   padding-right: 20rpx;
   color: #999999;
 }
-.register{
+
+.register {
   margin-top: 20rpx;
   background: #fff;
   padding: 20rpx 20rpx 0 20rpx;
 }
-.register2{
+
+.register2 {
   color: #333;
   font-weight: bold;
   font-size: 30rpx;
 }
-.imgBox2{
+
+.imgBox2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,12 +138,14 @@
   border-bottom: 2rpx solid #F0F0F0;
   font-size: 28rpx;
 }
-.return2{
+
+.return2 {
   padding-right: 20rpx;
   width: 14rpx;
   height: 20rpx;
 }
-.imgBox3{
+
+.imgBox3 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -123,7 +153,8 @@
   background: #fff;
   padding-top: 20rpx;
 }
-.info{
+
+.info {
   display: inline-block;
   width: 220rpx;
   font-size: 28rpx;
@@ -131,68 +162,69 @@
   color: #333;
   padding-left: 30rpx;
 }
-.flex3{
+
+.flex3 {
   color: #999999;
   font-size: 24rpx;
   padding-right: 20rpx;
 }
-.check{
+
+.check {
   height: 100%;
 }
-.work{
-  height: 200rpx;
+
+.work {
+  margin-top: 30rpx;
   padding: 25rpx 25rpx;
   box-sizing: border-box;
-  /* background: #f5f5f5; */
+  /* padding-bottom: 50rpx; */
 }
-/* .work text{
-  text-align: center;
-  background: #3FCB56;
-  display: inline-block;
-  width: 100rpx;
-  padding: 10rpx 10rpx;
-  color: #fff;
-  margin: 10rpx 10rpx;
-  border-radius: 40rpx;
-  font-size: 24rpx;
-} */
-.content{
+
+.content {
   height: 200rpx;
   background: #f5f5f5;
   padding: 20rpx;
 }
-.content text{
+
+.content text {
   font-size: 30rpx;
   color: #333;
   font-weight: 600;
 }
-.content textarea{
-  padding-top:20rpx;
+
+.content textarea {
+  padding-top: 20rpx;
   padding-left: 30rpx;
 }
-.footer{
+
+.footer {
   height: 100rpx;
-  background: #f5f5f5;
+  background: #fff;
   position: fixed;
   bottom: 0;
   width: 100%;
   padding-top: 20rpx;
+  padding-top: 30rpx;
+  z-index: 990;
 }
-.add{
+
+.add {
   display: block;
-  background: #3FCB56;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
   color: #FFF;
   width: 80%;
-  border-radius: 40rpx;
+  border-radius: 5rpx;
   text-align: center;
   height: 80rpx;
   line-height: 80rpx;
   margin: auto;
+  z-index: 990;
 }
+
 /* 选中工种后的样式 */
-.active{
+.active {
   color: #fff;
-  background: #3FCB56;
+  background: #4262FF;
   text-align: center;
   display: inline-block;
   width: 100rpx;
@@ -201,7 +233,8 @@
   border-radius: 10rpx;
   font-size: 24rpx;
 }
-.txt{
+
+.txt {
   text-align: center;
   display: inline-block;
   width: 100rpx;
@@ -210,4 +243,107 @@
   border-radius: 10rpx;
   font-size: 24rpx;
   border: 1rpx solid #999;
+}
+
+.imgBox3 {
+  font-family: PingFang-SC;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fff;
+  padding-top: 20rpx;
+  width: 100%;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.info {
+  display: inline-block;
+  width: 35%;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  padding-left: 30rpx;
+}
+
+.section1 {
+  padding-left: 20rpx;
+  width: 55%;
+}
+
+.txtArea {
+  width: 100%;
+}
+
+.wx-radio-input.wx-radio-input-checked {
+  border-color: #4262FF !important;
+  background: #4262FF !important;
+}
+
+picker-action-confirm {
+  color: #4262FF !important;
+}
+
+/*  */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 9500;
+  width: 100%;
+  height: 35%;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 2rpx;
+  box-sizing: border-box;
+}
+
+.topBtn {
+  padding: 30rpx 15rpx;
+  position: relative;
+  font-size: 32rpx;
+}
+
+.cancel {
+  color: #101010;
+  position: absolute;
+  left: 5%;
+}
+
+.middleJob {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.finsh {
+  position: absolute;
+  right: 5%;
+  color: #4262FF;
+}
+
+date-picker {
+  height: 500rpx;
+  position: fixed;
+  bottom: 0;
+  z-index: 999;
+}
+
+.birth_time {
+  padding-right: 20rpx;
 }

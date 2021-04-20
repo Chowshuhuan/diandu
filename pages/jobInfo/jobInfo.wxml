@@ -1,25 +1,33 @@
 <!--pages/jobInfo/jobInfo.wxml-->
+<import src="../../utils/wxParse/wxParse.wxml" />
+
 <view class="job">
   <view class="tit">
     <view class="top">
       <text class="work">{{list.work_name}}</text>
       <text class="salary">{{list.pay_min}}-{{list.pay_max}}</text>
     </view>
-    <view class="bottom">
-      <text class="bottom1">{{list.recruit_num}}人</text>
-      <!-- <text class="bottom2" >{{item}}</text> -->
-      <text class="bottom3" wx:for="{{welfare}}" wx:key="index">{{item}}</text>
-      <!-- <text class="bottom4">上海 浦东</text> -->
-    </view>
+   <view class="shengShi">
+      {{list.address_sheng}} - {{list.address_shi}}
+   </view>
+  </view>
+  <!-- 公司icon -->
+  <view class="conpanyIcon">
+    <image class="conpanyImg" src="{{list.logo}}"></image>
+    <text class="conpanyTxt">{{list.company_name}}</text>
   </view>
   <!-- 职位详情 -->
   <view class="info">
     <view class="infoTit">
-      <text>职位详情</text>
+      <text>职位描述</text>
+    </view>
+    <view class="bottom">
+      <text class="bottom1">{{list.recruit_num}}人</text>
+      <text class="bottom3" wx:for="{{welfare}}" wx:key="index">{{item}}</text>
     </view>
     <view class="infoAll">
       <view class="sex">
-        性别：{{list.sex}}
+        性别：{{sex}}
       </view>
       <view class="age">
         年龄：{{list.age_min}}-{{list.age_max}}岁
@@ -27,17 +35,28 @@
       <view class="content">
         工作内容：
       </view>
-      <view class="contentInfo">
-        {{list.work_desc}}
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
       </view>
+      <!-- <view class="contentInfo">
+        {{list.work_desc}}
+      </view> -->
     </view>
 
+  </view>
+  <!-- 公司简介 -->
+  <view class="environment">
+    <view class="content">
+        公司简介：
+      </view>
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+      </view>
   </view>
   <!-- 工作环境 -->
   <view class="environment">
     <view class="workTit">
       <text>工作环境</text>
-
     </view>
     <view class="swiper">
       <swiper autoplay="true" indicator-dots="true" circular="true">
@@ -49,30 +68,30 @@
       </swiper>
     </view>
   </view>
-  <!-- 公司名称 -->
-  <view class="name">
-    <view class="company">
-      <text class="companyName">公司名称</text>
-    </view>
-    <view>
-      <text class="companyName1">{{list.company_name}}</text>
-    </view>
-  </view>
   <!-- 公司地址 -->
   <view class="place">
     <view class="place2">
       <text class="place3">公司地址</text>
     </view>
-    <view>
+    <view class="iconPlace">
+      <image class="placeIcon" src="../../images/index/footer/place.png"></image>
       <text class="place4">{{list.address_details}}</text>
     </view>
   </view>
   <!-- word下载 -->
-  <view class="word">
-    <image bindtap="downLoad" class="wordImg" src="../../images/index/footer/67.png"></image>
-    <view>
-      <text>word 下载</text>
-    </view>
+  <view class="word" data-url="{{word}}" bindtap="downLoad">
+     <view class="wordInner">
+      <image class="wordImg" src="../../images/index/footer/67.png"></image>
+     </view>
+     <view class="wordTxt1">
+      <text > {{list.company_name}}简介</text>
+     </view>
+     <view class="wordTxt">
+      <text > 下载WORD可查看</text>
+     </view>
+     <view class="wordBtn">
+      <button class="wordBtn1"> 下载</button>
+     </view>
   </view>
   <!-- 底部 -->
   <view class="fixedbox">
@@ -85,34 +104,33 @@
         <image src="{{is_collect?'../../images/index/footer/collect.png':'../../images/index/footer/29.png'}}"></image>
         <view class="{{is_collect?'collect':''}}">收藏</view>
       </view>
-      <!-- <view class="left" wx:else bindtap="shoucangdel">
-				<image src="/images/detail/sced.png"></image>
-				<view style="color:#5CCBC5;">取消</view>
-			</view> -->
     </view>
     <view style="display:flex;justify-content: space-between;width:450rpx">
-      <button class="right"  bindtap="express" style="margin-left:20rpx"
-        style="margin-right:20rpx">
+      <button class="right" bindtap="express" style="margin-left:20rpx" style="margin-right:20rpx">
         输送人才
       </button>
     </view>
   </view>
 
-  <view class='zhezhao' wx:if="{{codeShow}}" bindtap='hiddenCode' />
-      <view class="codeContent" wx:if="{{codeShow2}}" bindbuttontap="buttontap">
-        <view class="codeImg">
-          <image show-menu-by-longpress class="codeImage" src="{{codeImg}}"></image>
-        </view>
-        <view class="txt">
-          <view>
-            打开微信扫一扫
-          </view>
-          <view>
-            完成人才信息采集
-          </view>
-        </view>
-        <view class="btn" bindtap="saveCode">
-          保存到手机相册
-        </view>
+  <!-- <view class='zhezhao' wx:if="{{codeShow}}" bindtap='hiddenCode' />
+  <view class="codeContent" wx:if="{{codeShow2}}" bindbuttontap="buttontap">
+    <view class="codeImg">
+      <image show-menu-by-longpress class="codeImage" src="{{imagePath}}"></image>
+    </view>
+    <view class="txt">
+      <view>
+        打开微信扫一扫
       </view>
+      <view>
+        完成人才信息采集
+      </view>
+    </view>
+    <view class="btn" bindtap="saveCode">
+      保存到手机相册
+    </view>
+  </view> -->
+  <!-- 画布，用来画二维码，只用来站位，不用来显示-->
+  <!-- <view class="canvas-box">
+    <canvas hidden="{{canvasHidden}}" style="width: 686rpx;height: 686rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+  </view> -->
 </view>

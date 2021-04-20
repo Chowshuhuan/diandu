@@ -1,0 +1,70 @@
+/* pages/share/share.wxss */
+page{
+  height: 100%;
+  width: 100%;
+  background:#4262FF ;
+}
+.share{
+  height: 100%;
+  width: 100%;
+}
+.backImg{
+  position: fixed;
+  top: 10%;
+  display: block;
+  height: 70%;
+  width: 100%;
+}
+.codeContent {
+  position: fixed;
+  top: 40%;
+  transform: translateY(-50%);
+  left: 10%;
+  z-index: 999;
+  width: 80%;
+  height: 600rpx;
+  background: #fff;
+}
+
+.codeImg {
+  padding-top: 30rpx;
+  text-align: center;
+}
+
+.codeImage {
+  width: 453rpx;
+  height: 453rpx;
+}
+
+.txt {
+  font-size: 32rpx;
+  color: #333;
+  text-align: center;
+  padding-top: 20rpx;
+}
+
+.btn {
+  position: fixed;
+  bottom: 7%;
+  background: linear-gradient(180deg, #00C5FB 0%, #0053EA 100%);
+  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  height: 90rpx;
+  text-align: center;
+  line-height: 90rpx;
+  color: #fff;
+  width: 80%;
+  margin-left: 10%;
+}
+
+.container image {
+  width: 686rpx;
+  height: 686rpx;
+  background-color: #f9f9f9;
+}
+
+.canvas-box {
+  position: fixed;
+  top: 999999rpx;
+  left: 0;
+}

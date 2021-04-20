@@ -85,6 +85,7 @@ Page({
               wx.setStorageSync('token', res.data.data.token)
               wx.setStorageSync('type', res.data.data.type)
               wx.setStorageSync('user_id', res.data.data.user_id)
+              wx.setStorageSync('cause', res.data.data.cause)
               wx.showToast({
                 title: res.data.msg,
                 icon: 'none',

@@ -40,8 +40,8 @@
 }
 .partner{
   margin-left: 20rpx;
-  background: #9FE5AA;
-  color: #fff;
+  color: #4262FF;
+  border: 1rpx solid #4262FF;
   display: block;
   width: 170rpx;
   height: 45rpx;

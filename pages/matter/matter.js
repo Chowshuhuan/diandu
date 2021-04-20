@@ -22,6 +22,7 @@ Page({
     shenfen: '',
     id: '', //点击选择的id
     cause: '', //驳回的内容
+    typeTxt: ''
   },
   // 获取列表
   getList: function (e) {
@@ -40,6 +41,40 @@ Page({
             v.shenfen = '县级合伙人'
           } else {
             v.shenfen = '乡镇合伙人'
+          }
+        })
+        res.data.data.data.forEach(v => {
+          switch (v.type) {
+            case 0:
+              this.setData({
+                typeTxt: '已通过'
+              })
+              break;
+            case 1:
+              this.setData({
+                typeTxt: '待处理'
+              })
+              break;
+            case 2:
+              this.setData({
+                typeTxt: '待处理'
+              })
+              break;
+            case 3:
+              this.setData({
+                typeTxt: '待处理'
+              })
+              break;
+            case 4:
+              this.setData({
+                typeTxt: '已驳回'
+              })
+              break;
+            case 5:
+              this.setData({
+                typeTxt: '未申请'
+              })
+              break;
           }
         })
         this.setData({
@@ -83,7 +118,7 @@ Page({
       white1: false,
       white2: true,
       white3: false,
-      type: '2'
+      type: '2',
     })
     this.getList()
   },
@@ -96,7 +131,7 @@ Page({
       white1: false,
       white2: false,
       white3: true,
-      type: '3'
+      type: '3',
     })
     this.getList()
   },
@@ -145,7 +180,11 @@ Page({
   // 判断是否有内容
   checkTxt: function (e) {
     if (e.detail.value == '') {
-
+      wx.showToast({
+        title: '请输入有效内容',
+        icon: 'none',
+        duration: 1000
+      })
     } else {
       this.setData({
         cause: e.detail.value
@@ -170,12 +209,14 @@ Page({
         Authorization: wx.getStorageSync('token')
       }
       api.setType(data).then(res => {
-        console.log(res.data)
         if (res.data.code == 200) {
           wx.showToast({
             title: res.data.msg,
             icon: 'none',
             duration: 1000
+          })
+          this.setData({
+            showModal: false
           })
           this.getList()
           // this.hideModal();
@@ -191,7 +232,7 @@ Page({
   },
   // 通过的按钮
   pass: function (e) {
-    
+
     let data = {
       id: e.currentTarget.dataset.id,
       type: '1',

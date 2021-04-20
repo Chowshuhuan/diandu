@@ -1,6 +1,7 @@
 <!--pages/perInfo/perInfo.wxml-->
 <view class="perInfo">
-  <view class="headInfo" bindtap="headImg">
+  <!-- bindtap="headImg" -->
+  <view class="headInfo" >
     <text class="headTit">头像</text>
     <image class="headImg" src="{{attr}}"></image>
     <!-- <image class="headRight" src="../../images/user/she.png"></image> -->
@@ -31,8 +32,8 @@
   <view class="box">
     <text class="left">所属上级</text>
     <view class="boxRight2">
-      <text class="partner2">{{boss_name}}</text>
-      <text class="level2">{{boss_shenfen}}</text>
+      <text class="partner2">{{list.boss_name}}</text>
+      <text class="level2">{{boss_shenFen}}</text>
     </view>
   </view>
   <view class="box3">
@@ -45,6 +46,7 @@
   <view class="headInfo2" bindtap="QRCode">
     <text class="headTit">我的二维码</text>
     <image class="headRight" src="../../images/user/she.png"></image>
+    <image class="headRight2" src="../../images/index/footer/77.png"></image>
   </view>
   <!-- 退出登录 -->
    <view class="outLogin">

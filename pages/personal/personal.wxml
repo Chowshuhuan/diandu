@@ -1,109 +1,147 @@
 <view class="person">
   <block wx:if="{{typeToken}}">
     <view class="profile">
-    <view class="logo" bindtap="toLogin">
-      <image src="../../images/index/footer/15.png"></image>
-      <view class="now">立即登录</view>
+      <view class="logo" bindtap="toLogin">
+        <image src="../../images/index/footer/15.png"></image>
+        <view class="now">立即登录</view>
+      </view>
+      <view class="jiantou1">
+        <image class="arrowhead" src="../../images/user/she.png"></image>
+      </view>
     </view>
-    <!-- 姓名 电话 -->
-    <!-- <view class="info2">
-      立即登录
-    </view> -->
-    <view class="jiantou">
-     <image class="arrowhead" src="../../images/user/she.png"></image>
+    <!-- 工时相关 -->
+    <view class="information">
+      <view class="box">
+        <image class="boxImg2" src="../../images/icon/1.png"></image>
+        <text class="month">本月工时</text>
+        <text class="personNum"></text>
+        <!-- <image src="../../images/icon/1.png"></image> -->
+      </view>
+      <view class="box">
+        <image class="boxImg2" src="../../images/icon/10.png"></image>
+        <text class="month">在职人数</text>
+        <text class="personNum"></text>
+        <!-- <image src="../../images/user/she.png"></image> -->
+      </view>
+      <view class="box">
+        <image class="boxImg2" src="../../images/icon/9.png"></image>
+        <text class="month">离职人数</text>
+        <text class="personNum"></text>
+        <!-- <image src="../../images/user/she.png"></image> -->
+      </view>
+      <view class="box">
+        <image class="boxImg2" src="../../images/icon/18.png"></image>
+        <text class="month">待入职人数</text>
+        <text class="personNum"></text>
+        <!-- <image src="../../images/user/she.png"></image> -->
+      </view>
     </view>
-  </view>
-  <!-- 工时相关 -->
-  <view class="information">
-    <view class="box" >
-      <text class="month">本月工时</text>
-      <text class="personNum"></text>
-      <!-- <image src="../../images/user/she.png"></image> -->
-    </view>
-    <view class="box" >
-      <text class="month">在职人数</text>
-      <text class="personNum"></text>
-      <!-- <image src="../../images/user/she.png"></image> -->
-    </view>
-    <view class="box" >
-      <text class="month">离职人数</text>
-      <text class="personNum"></text>
-      <!-- <image src="../../images/user/she.png"></image> -->
-    </view>
-    <view class="box" >
-      <text class="month">待入职人数</text>
-      <text class="personNum"></text>
-      <!-- <image src="../../images/user/she.png"></image> -->
-    </view>
-  </view>
-  <!-- 待办事项 -->
-  <view class="needDealt">
-    <view class="box">
-      <text class="month">待办事项</text>
-      <!-- <view class="doNum"></view> -->
-      <!-- <image src="../../images/user/she.png"></image> -->
-    </view>
-    <view class="box">
-      <text class="month">族群</text>
-      <!-- <image src="../../images/user/she.png"></image> -->
-    </view>
-  </view>
+    <!-- 待办事项 -->
+    <view class="needDealt">
+      <view class="box">
+        <image class="boxImg2" src="../../images/icon/3.png"></image>
+        <text class="month">待办事项</text>
+        <!-- <view class="doNum"></view> -->
+        <!-- <image src="../../images/user/she.png"></image> -->
+      </view>
+      <view class="box">
+        <image class="boxImg2" src="../../images/icon/20.png"></image>
+        <text class="month">族群</text>
+      </view>
+      <view class="box">
+        <image class="boxImg2" src="../../images/icon/13.png"></image>
+        <text class="month">收藏</text>
+      </view>
+    </view>    
   </block>
 
 
-  <block wx:else> 
+  <block wx:else>
+    <view class="color"></view>
     <view class="profile">
-    <view class="logo" bindtap="toInfo">
-      <image src="{{attr}}"></image>
+      <view class="infoTop">
+        <view class="logo" bindtap="toInfo">
+          <image src="{{list.attr? list.attr :'../../images/index/footer/3.png'}}"></image>
+        </view>
+        <!-- 姓名 电话 -->
+        <view class="info">
+          <view class="name">{{list.name}}</view>
+          <view class="number">{{list.phone}}</view>
+        </view>
+        <view class="jiantou">
+          <image class="arrowhead" src="../../images/user/she.png"></image>
+        </view>
+        <!-- 结算金额 -->
+        <view class="price" bindtap="toBalance">
+          <view class="money">待结算金额(元)</view>
+          <view class="figure">{{list.wait_payment_money}}</view>
+        </view>
+      </view>
     </view>
-    <!-- 姓名 电话 -->
-    <view class="info">
-      <view class="name">{{list.name}}</view>
-      <view class="number">{{list.phone}}</view>
+
+    <!-- 工时相关 -->
+    <view class="information">
+      <view class="box" bindtap="toWorkHour">
+        <image class="boxImg2" src="../../images/icon/1.png"></image>
+        <text class="month">本月工时</text>
+        <text class="personNum">{{list.work_hour}}h</text>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
+      <view class="box" bindtap="toEmploy">
+        <image class="boxImg2" src="../../images/icon/10.png"></image>
+        <text class="month">在职人数</text>
+        <text class="personNum">{{list.on_job}}人</text>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
+      <view class="box" bindtap="toLeave">
+        <image class="boxImg2" src="../../images/icon/9.png"></image>
+        <text class="month">离职人数</text>
+        <text class="personNum">{{list.leave_job}}人</text>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
+      <view class="box" bindtap="toIntoWork">
+        <image class="boxImg2" src="../../images/icon/18.png"></image>
+        <text class="month">待入职人数</text>
+        <text class="personNum">{{list.wait_job}}人</text>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
     </view>
-    <view class="jiantou">
-     <image class="arrowhead" src="../../images/user/she.png"></image>
+    <!-- 待办事项 -->
+    <view class="needDealt">
+      <view class="box" bindtap="toMaster">
+        <image class="boxImg2" src="../../images/icon/3.png"></image>
+        <text class="month">待办事项</text>
+        <view class="doNum">{{list.to_do}}</view>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
+      <view class="box" bindtap="toFamily">
+        <image class="boxImg2" src="../../images/icon/20.png"></image>
+        <text class="month">族群</text>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
+      <view class="box" bindtap="toCollect">
+        <image class="boxImg2" src="../../images/icon/13.png"></image>
+        <text class="month">收藏</text>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
     </view>
-  </view>
-  <!-- 结算金额 -->
-   <view class="price" bindtap="toBalance">
-       <view class="money">待结算金额(元)</view>
-       <view class="figure">{{list.wait_payment_money}}</view>
-   </view>
-  <!-- 工时相关 -->
-  <view class="information">
-    <view class="box" bindtap="toWorkHour">
-      <text class="month">本月工时</text>
-      <text class="personNum">{{list.work_hour}}h</text>
-      <image src="../../images/user/she.png"></image>
+    <!-- 绑定微信手机 -->
+    <view class="needDealt">
+      <view class="box" bindtap="toPhone">
+        <image class="boxImg3" src="../../images/icon/23.png"></image>
+        <text class="month">绑定手机号</text>
+        <view class="doNum2">{{bindMobile}}</view>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
+      <view class="box" bindtap="toWechat">
+        <image class="boxImg2" src="../../images/icon/22.png"></image>
+        <text class="month">绑定微信</text>
+        <view class="doNum2">{{bindWeChat}}</view>
+        <image class="boxImg1" src="../../images/user/she.png"></image>
+      </view>
     </view>
-    <view class="box" bindtap="toEmploy">
-      <text class="month">在职人数</text>
-      <text class="personNum">{{list.on_job}}人</text>
-      <image src="../../images/user/she.png"></image>
-    </view>
-    <view class="box" bindtap="toLeave">
-      <text class="month">离职人数</text>
-      <text class="personNum">{{list.leave_job}}人</text>
-      <image src="../../images/user/she.png"></image>
-    </view>
-    <view class="box" bindtap="toIntoWork">
-      <text class="month">待入职人数</text>
-      <text class="personNum">{{list.wait_job}}人</text>
-      <image src="../../images/user/she.png"></image>
-    </view>
-  </view>
-  <!-- 待办事项 -->
-  <view class="needDealt">
-    <view class="box"  bindtap="toMaster">
-      <text class="month">待办事项</text>
-      <view class="doNum">{{list.to_do}}</view>
-      <image src="../../images/user/she.png"></image>
-    </view>
-    <view class="box" bindtap="toFamily">
-      <text class="month">族群</text>
-      <image src="../../images/user/she.png"></image>
-    </view>
-  </view>
   </block>
+  <mp-dialog title="提示" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
+		<view>{{message}}</view>
+	</mp-dialog>
 </view>

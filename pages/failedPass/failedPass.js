@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cause: ''
   },
   // 修改认证资料
   toChange: function (e) {
@@ -31,7 +31,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.setData({
+      cause:  wx.getStorageSync('cause')
 
+    })
   },
 
   /**

@@ -2,9 +2,9 @@
 <view class="express">
   <view class="search1">
     <view class="search2">
-      <image class="searchImg" src="../../images/index/footer/5.png"></image>
+      <image class="searchImg" src="../../images/index/footer/55.png"></image>
       <input bindinput="search" class="searchTxt" confirm-type="search"
-        placeholder-style="color:#333;font-size:24rpx;font-weight:600" type="text" value="{{name}}" placeholder="搜索" />
+        placeholder-style="font-size:24rpx;font-weight:600" type="text" value="{{name}}" placeholder="城市名或拼音查询" />
     </view>
   </view>
   <!-- 筛选按钮 -->
@@ -24,26 +24,34 @@
   </view>
   <!-- 点击显示工种的内容 -->
   <view class="work" wx:if="{{showWork}}">
-    <block>
-      <text checked="{{item.selected}}" class="{{item.selected? 'active' : 'txt'}}" wx:for="{{workTag}}" wx:key="index"
-        bindtap="checkTag" data-id="{{item.id}}" data-index="{{index}}">{{item.tag}}</text>
-    </block>
+    <view class="modal-mask" bindtap="hideModal" wx:if="{{showWork}}"></view>
+    <view wx:if="{{showWork}}">
+      <view class="modal-content">
+        <view class="work">
+          <text class="{{tagIndex == item.id ? 'active' : 'txt'}}" wx:for="{{workTag}}" wx:key="index" bindtap="checkTag" data-id="{{item.id}}" data-index="{{index}}">{{item.tag}}</text>
+        </view>
+      </view>
+    </view>
   </view>
   <!-- 选择性别 -->
   <view class="sex" wx:if="{{showSex}}">
-    <block>
-      <view class="{{sexIndex == index ? 'activeSexTxt' : 'sexTxt'}} " wx:for="{{sexList}}" wx:key="index"
+    <view class="modal-mask" bindtap="hideModal1" wx:if="{{showSex}}"></view>
+    <view wx:if="{{showSex}}">
+      <view class="modal-content">
+        <view class="{{sexIndex == index ? 'activeSexTxt' : 'sexTxt'}} " wx:for="{{sexList}}" wx:key="index"
         data-id="{{item.id}}" bindtap="checkSexInfo">{{item.sex}}</view>
-      <!-- <view class="{{activeSex=='2'? activeSexTxt :sexTxt}}" bindtap="checkMan">男</view>
-      <view class="{{activeSex=='3'? activeSexTxt :sexTxt}}" bindtap="checkWoman">女</view> -->
-    </block>
+      </view>
+    </view>
   </view>
   <!-- 点击显示年龄 -->
   <view class="age" wx:if="{{showAge}}">
-    <block>
-      <text class="{{ageIndex == item.age ? 'active' : 'txt'}}" wx:for="{{ageList}}" wx:key="index" bindtap="checkAge2"
+    <view class="modal-mask" bindtap="hideModal2" wx:if="{{showAge}}"></view>
+    <view wx:if="{{showAge}}">
+      <view class="modal-content">
+        <text class="{{ageIndex == item.age ? 'active' : 'txt'}}" wx:for="{{ageList}}" wx:key="index" bindtap="checkAge2"
         data-id="{{item.id}}" data-index="{{item.age}}">{{item.age}}</text>
-    </block>
+      </view>
+    </view>
   </view>
   <!-- 查询的内容 -->
   <view class="content">

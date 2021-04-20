@@ -11,7 +11,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 20%;
+  left: 22%;
 }
 .footer{
   height: 80rpx;
@@ -33,74 +33,45 @@
   margin-right: 30rpx;
 }
 /* 表格样式 */
-/* 表格样式 */
-.table-module {
+.tabTxt {
   display: flex;
-  margin-top: 2vh;
-  background: white;
-  border-bottom: 1rpx solid #EEEEEE;
-  width: 100%;
+  justify-content: space-between;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #B4D8FC;
+  padding-left: 35rpx;
+  padding-right: 60rpx;
+  position: relative;
+  color: #2A2E3F;
+  font-weight: 600;
 }
-.scroll-box {
-  height: auto;
-  white-space: nowrap; 
-  width: 100%;
-}
-.table-module {
+
+.tabTxt2 {
   display: flex;
-  margin-top: 2vh;
-  background: white;
-  border-bottom: 1rpx solid #EEEEEE;
-  width: 100%;
+  justify-content: space-between;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 35rpx;
+  position: relative;
 }
-.scroll-box {
-  height: auto;
-  white-space: nowrap; 
-  width: 100%;
+.tabTxt2:nth-child(2n+1){
+  background: #F2F2F2;
 }
-.table{
-  border: 1px solid #ccc;
-  width: 1350rpx !important;
-  align-items:center;/*垂直居中*/
-  justify-content: center;/*水平居中*/
+.nameTxt {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.tr{
-  width: 100%;
-  display: flex;
-}
-.th:nth-child(1){
-  width: 100rpx;
-  border-top: 1rpx solid #ccc;
-  border-right: 1rpx solid #ccc;
-  text-align: center;
-}
-.th:nth-child(2){
-  width: 150rpx;
-  border-top: 1rpx solid #ccc;
-  border-right: 1rpx solid #ccc;
-  text-align: center;
-}
-.th:nth-child(3){
-  width: 350rpx;
-  border-top: 1rpx solid #ccc;
-  border-right: 1rpx solid #ccc;
-  text-align: center;
-}
-.th:nth-child(4){
-  width: 300rpx;
-  border-top: 1rpx solid #ccc;
-  border-right: 1rpx solid #ccc;
-  text-align: center;
-}
-.th:nth-child(5){
-  width: 300rpx;
-  border-top: 1rpx solid #ccc;
-  border-right: 1rpx solid #ccc;
-  text-align: center;
-}
-.th:nth-child(6){
-  width: 200rpx;
-  border-top: 1rpx solid #ccc;
-  border-right: 1rpx solid #ccc;
-  text-align: center;
+
+.infoTxt {
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(140deg, #00BBFA 0%, #0067EC 100%);
+  border-radius: 2px;
+  color: #fff;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 25rpx;
 }

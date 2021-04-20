@@ -1,0 +1,49 @@
+/* pages/forInfo/forInfo.wxss */
+page {
+  background: #F2F2F2;
+}
+
+.info {
+  padding-top: 60rpx;
+}
+
+.one {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+.oneTxt {
+  display: inline-block;
+  width: 30%;
+}
+
+.oneTxt1 {
+  display: inline-block;
+  width: 64%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.footer {
+  height: 80rpx;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  text-align: right;
+}
+
+.downLoad {
+  color: #fff;
+  background: linear-gradient(140deg, #00BBFA 0%, #0067EC 100%);
+  font-size: 32rpx;
+  display: inline-block;
+  width: 150rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  margin-right: 30rpx;
+}

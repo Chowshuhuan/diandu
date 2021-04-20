@@ -8,9 +8,9 @@ Page({
    */
   data: {
     showInfo: false,
-    src: '../../images/index/footer/36.png',
-    src1 :'../../images/index/footer/36.png',
-    showInfo1:false,
+    src: '../../images/index/footer/88.png',
+    src1: '../../images/index/footer/88.png',
+    showInfo1: false,
     list: [{
       name: '那个村'
     }, {
@@ -19,35 +19,65 @@ Page({
       name: '这户人'
     }],
     familyList: {},
-    shenfen:'',
-    list2:[{
-      name:'',
-      child:[
-        {
-          name:'',
-          child:[
-            {
-              name:'',
-              child:[]
-            }
-          ]
-        }
-      ]
+    shenfen: '',
+    list2: [{
+      name: '',
+      child: [{
+        name: '',
+        child: [{
+          name: '',
+          child: []
+        }]
+      }]
     }],
-    bossName:'',//所属上级
-    showBoss:'',
+    bossName: '', //所属上级
+    showBoss: '',
+    xianSh1: false,
+    xianShi2: false,
+    xianShi3: false,
+    list3: [{
+      name: '',
+      child: []
+    }],
+    list1:[],
+    listIndex:'',
+    showIndex: 0
   },
   checkShow: function (e) {
     this.setData({
       showInfo: this.data.showInfo ? false : true,
-      src: this.data.showInfo ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png',
+      src: this.data.showInfo ? '../../images/index/footer/88.png' : '../../images/index/footer/89.png',
     })
   },
-  checkShow2:function(e){
+  checkShow2: function (e) {
+    console.log(e.currentTarget.dataset.index)
+    let index = e.currentTarget.dataset.id
     this.setData({
       showInfo1: this.data.showInfo1 ? false : true,
-      src1: this.data.showInfo1 ? '../../images/index/footer/36.png' : '../../images/index/footer/4.png',
+      listIndex:index,
+      src1: this.data.showInfo1 ? '../../images/index/footer/88.png' : '../../images/index/footer/89.png',
     })
+  },
+  //  折叠面板
+  panel: function (e) {
+    console.log(e.currentTarget.dataset.index)
+    let index =e.currentTarget.dataset.index
+    this.setData({
+      listIndex: index,
+      showInfo1: this.data.showInfo1 ? false : true,
+      src1: this.data.showInfo1 ? '../../images/index/footer/88.png' : '../../images/index/footer/89.png',
+      // src2: this.data.showInfo1 ? '../../images/index/footer/89.png' : '../../images/index/footer/88.png',
+    })
+    // if (e.currentTarget.dataset.index != this.data.showIndex) {
+    //   this.setData({
+    //     showIndex: e.currentTarget.dataset.index,
+    //     listIndex:e.currentTarget.dataset.index
+    //   })
+    // } else {
+    //   this.setData({
+    //     showIndex: 0
+    //   })
+    // }
   },
   // 获取族群的列表
   getList: function (e) {
@@ -55,36 +85,56 @@ Page({
       Authorization: wx.getStorageSync('token')
     }
     api.group(data).then(res => {
-      console.log(res.data)
       if (res.data.code == 200) {
+        if(!res.data.data.enter_xian){
+          res.data.data.enter_xian = ''
+        }
+        if(!res.data.data.enter_xiang){
+          res.data.data.enter_xiang = ''
+        }
         this.setData({
           familyList: res.data.data,
-          list2:res.data.data.yizhan
         })
         console.log(res.data.data.shenfen)
         switch (res.data.data.shenfen) {
           case 1:
             this.setData({
               shenfen: '城市合伙人',
-              bossName:'',
-              showBoss:false
+              bossName: '',
+              showBoss: false,
+              xianSh1: true,
+              xianShi2: false,
+              xianShi3: false,
+              list1:res.data.data.yizhan
             })
             break;
           case 2:
             this.setData({
               shenfen: '县级合伙人',
-              bossName:'城市合伙人',
-              showBoss:true
+              bossName: '城市合伙人',
+              showBoss: true,
+              list2: res.data.data.yizhan,
+              xianSh1: false,
+              xianShi2: true,
+              xianShi3: false,
             })
             break;
           case 3:
             this.setData({
               shenfen: '乡镇合伙人',
-              bossName:'县级合伙人',
-              showBoss:true
+              bossName: '县级合伙人',
+              showBoss: true,
+              xianSh1: false,
+              xianShi2: false,
+              xianShi3: true,
+              list3: res.data.data.yizhan,
             })
             break;
         }
+        this.data.list1.child.forEach(v => {
+          v.isOpen = false
+        })
+        console.log(this.data.list1)
       } else {
         wx.showToast({
           title: res.data.msg,

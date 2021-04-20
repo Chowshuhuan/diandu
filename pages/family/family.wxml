@@ -18,19 +18,59 @@
     </view>
     <view></view>
   </view>
-  <view class="placeInfo" wx:for="{{list2}}" wx:key="id">
-    <view class="topTit" bindtap="checkShow">{{item.name}}
+  <!-- wx:for="{{list2}}" wx:key="id" -->
+  <view class="placeInfo" wx:if="{{xianShi2}}">
+    <view class="topTit" bindtap="checkShow">{{list2.name}}
       <image class="icon" src="{{src}}"></image>
     </view>
-    <view class="bottom" wx-if="{{showInfo}}"  wx:for="{{item.child}}" wx:key="id">
-      <image class="icon1" bindtap="checkShow2" src="{{src1}}"></image>
-      <view class="place" >
+    <view class="bottom" wx-if="{{showInfo}}"  bindtap="checkShow2" wx:for="{{list2.child}}" wx:key="id">
+      <image class="icon1" src="{{src1}}"></image>
+      <view class="place">
         {{item.name}}
       </view>
       <view wx-if="{{showInfo1}}" wx:for="{{item.child}}" wx:key="id">
-         <view>{{item}}</view>
+        <view>{{item}}</view>
       </view>
     </view>
   </view>
+  <view class="placeInfo" wx:if="{{xianShi3}}">
+    <view class="topTit" bindtap="checkShow">{{list3.name}}
+      <image class="icon" src="{{src}}"></image>
+    </view>
+    <view class="bottom" wx-if="{{showInfo}}" wx:for="{{list3.child}}" wx:key="id">
+      <view>{{item}}</view>
+    </view>
+  </view>
+  <view class="placeInfo" wx:if="{{xianSh1}}">
+    <view class="topTit" bindtap="checkShow">{{list1.name}}
+      <image class="icon" src="{{src}}"></image>
+    </view>
+    <view class='help' wx-if="{{showInfo}}" wx:for="{{list1.child}}" wx:key="index">
+      <view class='help_item'>
+        <view class='title' data-index='{{index}}' catchtap='panel' data-id="{{index}}">
+          <view class='title_1'> {{item.name}}</view>
+          <view class='title_2'>
+            <image class="icon1" src="{{listIndex == index ? src1:'../../images/index/footer/88.png'}}"></image>
+          </view>
+        </view>
+        <view class='detail' wx:if="{{listIndex == index?showInfo1:''}}">
+          <view wx:for="{{item.child}}" wx:key="id" class="itemTxt2">
+            {{item}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="bottom" wx-if="{{showInfo}}" wx:for="{{list1.child}}" wx:key="id">
+      <image class="icon1" bindtap="checkShow2" src="{{src1}}" data-id="{{item.id}}" data-index="{{index}}"></image>
+      <view class="place" bindtap="checkShow2" data-id="{{item.id}}" data-index="{{index}}">
+        {{item.name}}
+      </view>
+      <view class="itemTxt"  wx:if="{{showInfo1}}">
+        <view wx:for="{{item.child}}" wx:key="id"  class="itemTxt2">{{item}}</view>
+      </view>
+    </view> -->
+  </view>
+  <!-- miaban -->
+
   <!--  -->
 </view>

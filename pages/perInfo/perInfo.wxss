@@ -53,8 +53,9 @@
 }
 .level{
   display: inline-block;
-  background: #9FE5AA;
-  color: #fff;
+  background: #fff;
+  border:1rpx solid #E4E9FF;
+  color: #4262FF;
   width: 72rpx;
   height: 50rpx;
   text-align: center;
@@ -72,8 +73,9 @@
 }
 .level2{
   display: inline-block;
-  background: #9FE5AA;
-  color: #fff;
+  background: #fff;
+  border:1rpx solid #E4E9FF;
+  color: #4262FF;
   height: 50rpx;
   text-align: center;
   line-height: 50rpx;
@@ -91,7 +93,7 @@
 
 .right3{
   font-family:PingFang-SC-Medium;
-  font-size: 24rpx;
+  font-size: 28rpx;
   display: inline-block;
   width: 500rpx;
   padding-left: 55rpx;
@@ -104,14 +106,24 @@
 }
 .outLogin{
   width: 100%;
-  margin-top: 30rpx;
 }
 .wx {
   display: block;
   color: #fff;
-  background: #3FCB56;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
   font-weight: Medium;
   font-size: 32rpx;
   width: 80% !important;
-  border-radius: 40rpx;
+  border-radius: 10rpx;
+  position: fixed;
+  bottom: 10%;
+  left: 10%;
+}
+.headRight2{
+  position: absolute;
+  width: 34rpx;
+  height: 34rpx;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
 }

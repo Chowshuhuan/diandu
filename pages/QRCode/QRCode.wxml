@@ -2,20 +2,24 @@
 <view class="code">
   <view class="codeContent">
     <view class="img">
-    <image class="headImg" src="{{list.attr}}"></image>
-    <view class="text">
-      <view class="name">{{list.name}}</view>
-      <view class="mobile">{{list.phone}}</view>
+      <image class="headImg" src="{{attr}}"></image>
+      <view class="text">
+        <view class="name">{{list.name}}</view>
+        <view class="mobile">{{list.phone}}</view>
+      </view>
+    </view>
+    <view class="codeImg">
+      <image class="codeImage" mode="scaleToFill" show-menu-by-longpress src="{{imagePath}}"></image>
+        <!-- 画布，用来画二维码，只用来站位，不用来显示-->
+  <view class="canvas-box">
+      <canvas hidden="{{canvasHidden}}" style="width: 683rpx;height: 683rpx;background:#f1f1f1;" canvas-id="mycanvas" />
+  </view>
+    </view>
+    <view class="txt">
+      扫一扫上面的二维码图案,可填写资料
     </view>
   </view>
-  <view class="codeImg">
-   <image class="codeImage" show-menu-by-longpress src="{{codeImg}}"></image>
-  </view>
-  <view class="txt">
-    扫一扫上面的二维码，填写完成人才信息库采集
-  </view>
-  </view>
-  <button class="btn"  bindtap="saveCode">
+  <button class="btn" bindtap="saveCode">
     保存到手机相册
   </button>
 </view>

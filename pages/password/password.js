@@ -10,12 +10,51 @@ Page({
     mobile: '',
     password: ''
   },
+  // 验证手机号
+  phone(e) {
+    let str = /^1[3-9]\d{9}$/
+    if (!str.test(e.detail.value)) {
+      wx.showToast({
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      this.setData({
+        mobile: e.detail.value
+      })
+    }
+  },
+  // 密码
+  password(e) {
+    this.setData({
+      password: e.detail.value
+    })
+  },
+    // 协议
+    toxieyi() {
+      wx.navigateTo({
+        url: '../treaty/treaty'
+      })
+    },
+    // 政策
+    toys() {
+      wx.navigateTo({
+        url: '../conceal/conceal'
+      })
+    },
   // 登录
   formSubmit: function (e) {
     let str = /^1[3-9]\d{9}$/
     if (!str.test(e.detail.value.phone)) {
       wx.showToast({
-        title:  '请输入正确的手机号',
+        title: '请输入正确的手机号',
+        icon: 'none',
+        duration: 2000
+      })
+    } else if (this.data.password == '') {
+      wx.showToast({
+        title: '请输入密码',
         icon: 'none',
         duration: 2000
       })
@@ -40,7 +79,7 @@ Page({
           wx.setStorageSync('token', res.data.data.token)
           wx.setStorageSync('type', res.data.data.type)
           wx.setStorageSync('user_id', res.data.data.user_id)
-          
+          wx.setStorageSync('cause', res.data.data.cause)
           switch (res.data.data.type) {
             case 0:
               wx.switchTab({
@@ -73,15 +112,6 @@ Page({
               })
               break;
           }
-          // if (res.data.data.type == 0) {
-          //   wx.switchTab({
-          //     url: '../index/index',
-          //   })
-          // } else {
-          //   wx.navigateTo({
-          //     url: '../settled/settled',
-          //   })
-          // }
           wx.showToast({
             title: '登录成功',
             icon: 'none',

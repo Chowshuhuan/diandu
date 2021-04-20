@@ -38,15 +38,19 @@
 
 .wx {
   color: #fff;
-  background: #3FCB56;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
   font-weight: Medium;
   font-size: 32rpx;
 }
 
 .mobile {
   margin-top: 20rpx;
-  background: #EDEDED;
-  color: #3FCB56;
+  /* background: #EDEDED;
+  color: #3FCB56; */
+  background: #fff;
+  color: #101010;
   font-weight: Medium;
   font-size: 32rpx;
+border: 2px solid #E9E9E9;
+border-radius: 5px;
 }

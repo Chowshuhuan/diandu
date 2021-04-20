@@ -1,0 +1,15 @@
+<view class="box">
+  <view class="topAll" >
+    <view class="top">
+      <input class="inpt" type="text" data-idx='{{inputIndex}}'  value="{{val}}" placeholder="填写技能名称" bindblur="getInputVal"/>
+    </view>
+    <view class="list" wx:for='{{array}}' wx:key='index'>
+        <image class="addImg" bindtap="addImage" data-idx='{{index}}'  src="../../images/index/footer/add.png"></image>
+        <image class="newImg" wx:if="{{imgShow}}" data-idx='{{index}}' src="{{imageVal[index] ? imageVal[index] :''}}"  ></image>
+        <image class="detele" bindtap="delImage" wx:if="{{imgShow}}" data-idx='{{index}}' src="{{imageVal[index] ? '../../images/index/footer/delete.png' :''}}" ></image>
+    </view>
+  </view>
+  <view class="footer">
+    <button class="save" bindtap="saveImg">保存</button>
+  </view>
+</view>

@@ -113,7 +113,7 @@
 .weui-dialog__btn {
   display: block;
   flex: 1;
-  color: #5CCBC5;
+  color: #4262FF;
   text-decoration: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   position: relative

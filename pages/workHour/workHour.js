@@ -9,7 +9,8 @@ Page({
   data: {
     list: [],
     date: '2010-09',
-    src: ''
+    src: '',
+    word:''
   },
   getList: function (e) {
     let data = {
@@ -20,7 +21,6 @@ Page({
       Authorization: wx.getStorageSync('token')
     }
     api.workHour(data).then(res => {
-      console.log(res.data)
       if (res.data.code == 200) {
         if (res.data.data.length == 0) {
           wx.showToast({
@@ -35,6 +35,7 @@ Page({
           this.setData({
             list: res.data.data.data
           })
+          console.log(this.data.list)
         }
       }
     })
@@ -47,6 +48,19 @@ Page({
     })
     this.getList()
   },
+    // 查看详情
+    forInfo(e){
+      let index = e.currentTarget.dataset.index
+      wx.setStorageSync('workIndex', index+1)
+      this.data.list.forEach(v => {
+        if(v.id ==e.currentTarget.dataset.id ){
+          wx.setStorageSync('forHour', v)
+        }
+      })
+     wx.navigateTo({
+      url: '../forHour/forHour'
+    })
+    },
   //  下载文件
   downLoad: function (e) {
     let data = {
@@ -58,35 +72,39 @@ Page({
     }
     api.workHour(data).then(res => {
       if (res.data.code == 200) {
-        if (res.data.data.length == 0) {
-          wx.showToast({
-            title: '当前列表为空,无法进行下载操作',
-            icon: 'none',
-            duration: 1500
-          })
-        } else {
-          wx.downloadFile({
-            url: res.data.data,
-            success: function (res) {
-              if (res.errMsg == 'downloadFile:ok') {
-                let filePath = res.tempFilePath;
-                wx.openDocument({
-                  filePath: filePath,
-                  success: function (res) {
-                    wx.showToast({
-                      title: '打开成功',
-                      icon: 'none',
-                      duration: 1500
-                    })
-                  }
+        this.setData({
+          word:res.data.data
+        })
+        wx.downloadFile({
+          url: res.data.data,
+          header: {},
+          success: function (res) {
+            var filePath = res.tempFilePath;
+            wx.openDocument({
+              filePath: filePath,
+              success: function (res) {
+                wx.showToast({
+                  title: '打开文档成功',
+                  icon: 'none',
+                  duration: 1500
                 })
-                // 文件下载成功
-              } else {
-                //  失败
+              },
+              fail: function (res) {
+                wx.showToast({
+                  title: '打开文档失败',
+                  icon: 'none',
+                  duration: 1500
+                })
+              },
+              complete: function (res) {
               }
-            }
-          })
-        }
+            })
+          },
+          fail: function (res) {
+            console.log('文件下载失败');
+          },
+          complete: function (res) {},
+        })
       } else {
         wx.showToast({
           title: res.data.msg,

@@ -3,11 +3,13 @@
     <!-- 手机号输入框 -->
     <view class="infoBox">
       <text class="baliu">+86</text>
-      <input class="num" bindblur="blurPhone" name="phone" value="{{mobile}}" placeholder="请输入手机号" type="number" />
+      <image class="mobileIcon" src="../../images/icon/14.png"></image>
+      <input class="num" bindinput="blurPhone" name="phone" value="{{mobile}}" placeholder="请输入手机号" type="number" />
     </view>
     <!-- 密码输入框 -->
     <view class="infoBox">
       <text class="code2">验证码</text>
+      <image class="yanmaIcon" src="../../images/icon/16.png"></image>
       <input value="{{code}}" placeholder="请输入验证码" name="code" class="code"></input>
       <button class="yanzhengma" bindtap="toGetCode" data-id="1" disabled="{{logindisabled}}">
         {{logincodename}}
@@ -17,13 +19,15 @@
     </view>
     <view class="infoBox">
       <text class="code2">输入密码</text>
-      <input class="code" value="{{pwd}}"   placeholder="输入密码（6-20位英文字母和数字）" password="{{true}}" bindblur="firstPwd" name="pwd" />
+      <image class="prdIcon" src="../../images/icon/8.png"></image>
+      <input class="code" value="{{pwd}}"   placeholder="输入密码（6-20位英文字母和数字）" password="{{true}}" bindinput="firstPwd" name="pwd" />
     </view>
     <view class="infoBox">
       <text class="code2">再次输入密码</text>
-      <input class="code" bindblur="surePwd" value="{{surePwd}}" placeholder="与设置密码一致" password="{{true}}" name="surePwd" />
+      <image class="prdIcon" src="../../images/icon/8.png"></image>
+      <input class="code" bindinput="surePwd" value="{{surePwd}}" placeholder="与设置密码一致" password="{{true}}" name="surePwd" />
     </view>
-    <button form-type='submit' class="mt40">注册</button>
+    <button form-type='submit' class="{{activeBtn?'activeBtn':'mt40'}}">注册</button>
     <view class="tips">登录表示您已同意 <text bindtap="toxieyi">《用户协议》</text> 和<text bindtap="toys">《用户隐私政策》</text></view>
   </form>
 </view>

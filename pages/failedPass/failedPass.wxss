@@ -1,48 +1,70 @@
 /* pages/failedPass/failedPass.wxss */
-.tijiao{
-  width: 80% !important;
-  border-radius: 40rpx;
-}
 /* 待审核 */
-.wait{
+.wait {
   background: #fff;
   text-align: center;
   padding-top: 200rpx;
   position: relative;
 }
-.timeImg{
+
+.timeImg {
   width: 176rpx;
-  height:176rpx ;
+  height: 176rpx;
 }
-.waitPass{
+
+.waitPass {
   padding-top: 20rpx;
-  font-size: 34rpx;
-  font-weight: bold;
+  font-size: 40rpx;
+  /* font-weight: bold; */
+  color:#2A2E3F;
 }
-.change{
+
+.change {
   font-size: 30rpx;
   padding-top: 40rpx;
   color: #999999;
 }
-.reason{
+
+.reason {
   font-family: PingFang-SC Medium;
-   padding-top: 20rpx;
+  padding-top: 20rpx;
+  color: #027aff;
 }
-.botTop{
+
+.botTop {
   padding: 30rpx 0;
 }
-.phone{
- font-family:  PingFang-SC Medium;
+
+.phone {
+  font-family: PingFang-SC Medium;
   color: #999999;
   /* font-weight: 600; */
 }
-.num{
- font-family:  PingFang-SC Medium;
- color: #027aff;
- /* font-weight: 600; */
+
+.num {
+  font-family: PingFang-SC Medium;
+  color: #027aff;
+  /* font-weight: 600; */
 }
-.reason2{
-  color: #999;
+
+.reason2 {
+  color: #4262FF;
   font-size: 30rpx;
   padding-top: 10rpx;
+}
+
+.bot {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}
+
+.tijiao {
+  width: 100% !important;
+  height: 110rpx;
+  line-height: 80rpx;
+  color: #fff;
+  display: block;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
 }

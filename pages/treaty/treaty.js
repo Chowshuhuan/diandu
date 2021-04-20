@@ -1,11 +1,12 @@
 // pages/treaty/treaty.js
+let app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    postUrl: app.globalData.postUrl
   },
 
   /**

@@ -70,8 +70,6 @@
     <text class="rightTime">{{list.create_time}}</text>
   </view>
   <view class="footer">
-    <!-- <text class="backK">驳回</text>
-      <text class="passS">通过</text> -->
     <view wx:if="{{showType}}">
       <text class="backK">驳回</text>
       <text class="passS">通过</text>
@@ -80,8 +78,6 @@
       <text class="back" bindtap="reject">驳回</text>
       <text class="pass" bindtap="pass">通过</text>
     </view>
-    <!-- <text class="{{showType?'backK':'back'}}" bindtap="{{showType?'':reject}}">驳回</text>
-    <text class="{{showType?'passS':'pass'}}" bindtap="{{showType?'':pass}}">通过</text> -->
   </view>
   <!-- 驳回的弹出框 -->
 

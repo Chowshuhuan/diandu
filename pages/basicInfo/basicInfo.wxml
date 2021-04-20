@@ -7,56 +7,49 @@
       <view class="imgBox">
         <text>姓名</text>
         <view class="flex">
-          <input style="text-align:right;padding-right:10px" placeholder="请填写" 
-            value="{{name}}" bindblur="setusername"></input>
+          <input style="text-align:right;padding-right:10px" placeholder="请填写" value="{{name}}"
+            bindinput="setusername"></input>
         </view>
       </view>
       <view class="imgBox">
         <text>性别</text>
         <view class="flex">
           <radio-group class="radio-group" bindchange="changeSex">
-            <radio class="radio" value="1">
-              <text>男</text>
-            </radio>
-            <radio class="radio" value="2">
-              <text>女</text>
-            </radio>
+            <label wx:for="{{sex}}" wx:key="index">
+               <radio class="radio" value="{{item.value}}"  checked="{{item.checked}}">{{item.name}}</radio>    
+            </label>
           </radio-group>
         </view>
       </view>
       <view class="imgBox">
         <text>身份证号码</text>
         <view class="flex">
-          <input  style="text-align:right;padding-right:10px" placeholder="请填写" 
-            value="{{id_num}}" bindblur="setId"></input>
+          <input style="text-align:right;padding-right:10px" placeholder="请填写" value="{{id_num}}"
+            bindinput="setId"></input>
         </view>
       </view>
-      <view class="imgBox" open-type="navigate" url="/pages/user/modifyNickname">
+      <view class="imgBox" bindtap="showDatePicker">
         <text>出生年月日</text>
         <view class="flex">
-          <picker mode="date"  start="1970-01-01" bindchange="changeDate">
-            <view class="tui-picker-detail">
-              {{brith_time}}
-            </view>
-          </picker>
+           <text class=" birth_time"> {{birth_time}}</text>
           <image class="return" src="/images/user/she.png" />
         </view>
       </view>
       <view class="imgBox">
         <text>年龄</text>
         <view class="flex">
-          <input style="text-align:right;padding-right:10px" bindblur="changeAge" placeholder="未知" 
+          <input style="text-align:right;padding-right:10px" bindinput="changeAge" placeholder="未知"
             value="{{age}}"></input>
         </view>
       </view>
       <view class="imgBox">
         <text>联系电话</text>
         <view class="flex">
-          <input style="text-align:right;padding-right:10px" bindblur="changPhone" placeholder="请填写" 
+          <input style="text-align:right;padding-right:10px" bindinput="changPhone" placeholder="请填写"
             value="{{phone}}"></input>
         </view>
       </view>
-      <view class="imgBox" open-type="navigate" url="/pages/user/modifyNickname">
+      <view class="imgBox">
         <text>户籍所在地</text>
         <view class="flex">
           <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
@@ -67,7 +60,24 @@
           <image class="return" src="/images/user/she.png" />
         </view>
       </view>
-
+      <view class="imgBox">
+        <text>居住所在地</text>
+        <view class="flex">
+          <picker mode="region" bindchange="bindDwellChange" value="{{region}}" custom-item="{{customItem1}}">
+            <view class="tui-picker-detail">
+              {{dwell_address1}} {{dwell_address2}} {{dwell_address3}}
+            </view>
+          </picker>
+          <image class="return" src="/images/user/she.png" />
+        </view>
+      </view>
+      <view class="imgBox3">
+        <text>详细地址</text>
+        <view class="section1">
+          <textarea class="txtArea" value="{{dwell_address_details}}" bindinput="bindTextdwell" auto-height
+            placeholder="如:道路 门牌 小区 楼栋号 单元室等" />
+          </view>
+				</view>
     </view>
     <!-- 求职信息 -->
     <view class="jobInfo">
@@ -78,48 +88,48 @@
         <text>曾经工作岗位</text>
         <view class="flex">
           <input  style="text-align:right;padding-right:10px" placeholder="请填写" bindblur="work"
-            value="{{before_work}}" bindinput="setusername"></input>
+            value="{{before_work}}" bindinput="work"></input>
         </view>
       </view>
       <view class="imgBox">
         <text>期望工资</text>
         <view class="flex">
           <input  style="text-align:right;" placeholder="请填写" 
-            value="{{compensation}}" bindblur="changeSalary"></input>
+            value="{{compensation}}" bindinput="changeSalary"></input>
         </view>
         <text>元/每月</text>
       </view>
       <view class="imgBox">
         <text>期望岗位</text>
-        <view class="flex check" bindtap="checkWork">
+        <view class="flex check" bindtap="toShowModal">
           <view class="tui-picker-detail">
-            请选择
+           {{ qiwang}}
           </view>
           <image class="return" src="/images/user/she.png" />
         </view>
       </view>
-      <!-- 弹出岗位 -->
-      <view class="work" wx:if="{{showWork}}">
-        <text checked="{{item.selected}}" class="{{item.selected? 'active' : 'txt'}}" wx:for="{{workTag}}" wx:key="index"
-        bindtap="checkTag" data-id="{{item.id}}" data-index="{{index}}">{{item.tag}}</text>
-        <!-- <block>
-          <text wx:for="{{list}}" wx:key="index">{{item.tag}}</text>
-        </block> -->
+      <!-- 上传证书 -->
+      <view class="imgBox"  bindtap="toZhengShu">
+        <text>相关技术证书</text>
+        <view class="jishuTxt2">
+          <text class="jishu" wx:for="{{jishu_prove}}" wx:key="index">{{item.name}}</text>
+          <image class="return5" src="/images/user/she.png" />
+        </view>
       </view>
       <view class="imgBox">
         <text>有无重大病史</text>
         <view class="flex">
           <radio-group wx:key="name" class="radio-group" bindchange="radioChange1">
-            <radio class="radio" wx:key="index" wx:for="{{illRadio}}" value="{{item.name}}" checked="{{item.checked}}">
-              <text>{{item.text}}</text>
-            </radio>
+            <label wx:for="{{illRadio}}" wx:key="index">
+               <radio class="radio" value="{{item.value}}"  checked="{{item.checked}}">{{item.text}}</radio>    
+            </label>
           </radio-group>
         </view>
       </view>
       <!-- 病史内容 -->
       <view class="content" wx:if="{{showIll}}">
         <text>详细病史</text>
-        <textarea bindblur="bindTextAreaBlur" value="{{ill_details}}" auto-height placeholder="如：心脏病、癫痫、手术等" />
+        <textarea bindinput="bindTextAreaBlur" value="{{ill_details}}" auto-height placeholder="如：心脏病、癫痫、手术等" />
         </view>
   </view>
   <!-- 提交按钮 -->
@@ -127,4 +137,25 @@
     <view class="add" bindtap="sureAdd">提交</view>
   </view>
   </form>
+  <view class="modal-mask" bindtap="hideModal" wx:if="{{showModal}}"></view>
+  <view wx:if="{{showModal}}">
+  <view class="modal-content">
+    <view class="topBtn">
+       <text class="cancel" bindtap="cancelJob">取消</text>
+       <text class="middleJob">期望岗位({{checkJob}}/{{all}})</text>
+       <text class="finsh" bindtap="sureJob">完成</text>
+    </view>
+    <view class="work" >
+        <text checked="{{item.selected}}" class="{{item.selected? 'active' : 'txt'}}" wx:for="{{workTag}}" wx:key="index"
+        bindtap="checkTag" data-id="{{item.id}}" data-index="{{index}}">{{item.tag}}</text>
+      </view>
+  </view>
+</view>
+<!-- 自定义时间选择器 -->
+<date-picker
+    id="date-picker"
+    value="{{datePickerValue}}" 
+    isShow="{{datePickerIsShow}}"
+    bindsureclick="datePickerOnSureClick"
+    bindcancelclick="datePickerOnCancelClick" />
 </view>

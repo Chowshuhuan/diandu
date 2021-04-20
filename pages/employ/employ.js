@@ -9,6 +9,7 @@ Page({
   data: {
     list: [],
     date: '2010-09',
+    index2:''
   },
   //  获取列表
   getList: function (e) {
@@ -17,12 +18,13 @@ Page({
       is_download: '',
       page: '',
       limit: '',
-      Authorization: wx.getStorageSync('token')
+      Authorization: wx.getStorageSync('token'),
+      word: ''
     }
     api.onJobList(data).then(res => {
       console.log(res.data)
       if (res.data.code == 200) {
-        if(res.data.data.data.length == 0){
+        if (res.data.data.data.length == 0) {
           wx.showToast({
             title: '在职人员列表为空',
             icon: 'none',
@@ -31,7 +33,7 @@ Page({
           this.setData({
             list: []
           })
-        }else{
+        } else {
           this.setData({
             list: res.data.data.data
           })
@@ -40,52 +42,24 @@ Page({
     })
   },
   // 选择时间
-  bindDateChange: function(e) {
-   let s1 = e.detail.value.substring(0,e.detail.value.length-3)
+  bindDateChange: function (e) {
+    let s1 = e.detail.value.substring(0, e.detail.value.length - 3)
     this.setData({
       date: s1
     })
     this.getList()
   },
-   //  下载文件
-   downLoad: function (e) {
-    let data = {
-      time: this.data.date,
-      is_download: '1',
-      page: '',
-      limit: '',
-      Authorization: wx.getStorageSync('token')
-    }
-    api.onJobList(data).then(res => {
-      if (res.data.code == 200) {
-        wx.downloadFile({
-          url: res.data.data,
-          success: function (res) {
-            if (res.errMsg == 'downloadFile:ok') {
-              let filePath = res.tempFilePath;
-              wx.openDocument({
-                filePath: filePath,
-                success: function (res) {
-                  wx.showToast({
-                    title: '打开成功',
-                    icon: 'none',
-                    duration: 1500
-                  })
-                }
-              })
-              // 文件下载成功
-            } else {
-              //  失败
-            }
-          }
-        })
-      } else {
-        wx.showToast({
-          title: res.data.msg,
-          icon: 'none',
-          duration: 1500
-        })
+  // 查看详情
+  forInfo(e) {
+    let index = e.currentTarget.dataset.index
+    wx.setStorageSync('employIndex', index + 1)
+    this.data.list.forEach(v => {
+      if (v.id == e.currentTarget.dataset.id) {
+        wx.setStorageSync('forEmploy', v)
       }
+    })
+    wx.navigateTo({
+      url: '../forEmploy/forEmploy'
     })
   },
   /**
@@ -98,7 +72,7 @@ Page({
     //获取月份  
     let M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1)
     this.setData({
-      date:JSON.stringify(Y)+'-'+M
+      date: JSON.stringify(Y) + '-' + M
     })
     this.getList()
   },

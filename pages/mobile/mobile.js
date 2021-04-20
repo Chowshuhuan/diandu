@@ -24,7 +24,7 @@ Page({
       wx.showToast({
         title: '请输入正确的手机号',
         icon: 'none',
-        duration: 2000
+        duration: 1000
       })
     } else {
       this.setData({
@@ -66,7 +66,6 @@ Page({
           }
         }, 1000)
       } else {
-        // console.log('2')
         wx.showToast({
           title: res.data.msg,
           icon: 'none',
@@ -121,6 +120,8 @@ Page({
         wx.setStorageSync('token', res.data.data.token)
         wx.setStorageSync('type', res.data.data.type)
         wx.setStorageSync('user_id', res.data.data.user_id)
+        wx.setStorageSync('cause', res.data.data.cause)
+        console.log(res.data.data)
         switch (res.data.data.type) {
           case 0:
             wx.switchTab({

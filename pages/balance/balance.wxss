@@ -2,123 +2,153 @@
 .balance {
   padding: 25rpx 25rpx;
 }
+
 .top {
-  background: linear-gradient(-39deg, #60DA75 0%, #A1F7AF 100%);
+  background: #fff;
   height: 280rpx;
   text-align: center;
   padding-top: 40rpx;
   border-radius: 15rpx;
-  color: #fff;
+  color: #333;
+  box-shadow: 0px 2px 20px 0px rgba(78, 78, 78, 0.18);
+  border-radius: 8px;
 }
-.top1{
- font-size: 30rpx;
- font-family: PingFang SC ;
- font-weight: Regular;
+
+.top1 {
+  font-size: 30rpx;
+  font-family: PingFang SC;
+  font-weight: bold;
 }
-.top2{
-  font-family: PingFang SC Bold;
+
+.top2 {
+  font-family: PingFang SC;
+  font-weight: 600;
   font-size: 50rpx;
   padding-top: 10rpx;
 }
-.top3{
- font-size: 30rpx;
+
+.top3 {
+  font-size: 30rpx;
   padding-top: 20rpx;
 }
-.top4{
- font-size: 30rpx;
+
+.top4 {
+  font-size: 30rpx;
   padding-top: 20rpx;
+}
+.allTwo{
+  margin-top: 40rpx;
+  background:#fff ;
+  box-shadow: 0px 2px 20px 0px rgba(78, 78, 78, 0.18);
 }
 .content {
   margin-top: 40rpx;
-  background: #fff;
-  height: 350rpx;
+  background: linear-gradient(177deg, #00BBFA 0%, #0067EC 100%); 
+  border-radius: 15px 15px 0px 0px;
+  color: #fff;
 }
-.checkIcon{
+
+.checkIcon {
   width: 22rpx;
   height: 15rpx;
   margin-left: 20rpx;
 }
-.month{
+
+.month {
   height: 220rpx;
-  background-color: #f5f5f5;
   border-radius: 10rpx;
-  padding:30rpx;
+  padding: 30rpx;
 }
-.month1{
+
+.month1 {
   font-size: 100rpx;
 }
-.monthBot{
+
+.monthBot {
   position: relative;
 }
-.right{
+
+.right {
   position: absolute;
   right: 0;
   top: 0;
 }
-.money{
+
+.money {
   padding-left: 20rpx;
 }
-.income{
+
+.income {
   padding-right: 20rpx;
 }
-.city1{
+
+.city1 {
   position: relative;
   border-bottom: 1rpx solid #f0f0f0;
   padding-bottom: 20rpx;
   height: 40rpx;
 }
-.cityImg{
-  width: 22rpx;
-  height: 15rpx;
+
+.cityImg {
+  width: 30rpx;
+  height: 40rpx;
+  position: absolute;
+  left: 0;
+  top: -3rpx;
 }
-.cityPlace{
-  padding-left: 20rpx;
+
+.cityPlace {
+  padding-left: 40rpx;
   font-weight: bold;
   font-size: 30rpx;
 }
-.cityMoney{
+
+.cityMoney {
   position: absolute;
   right: 30rpx;
   top: 0;
   font-weight: bold;
   font-size: 30rpx;
 }
-.infoList{
+
+.infoList {
   padding-top: 20rpx;
   position: relative;
 }
-.cityMoney2{
+
+.cityMoney2 {
   position: absolute;
   right: 20rpx;
   top: 40rpx;
 }
-.target{
+
+.target {
   margin-top: 30rpx;
   width: 170rpx;
-  height: 40rpx;
+  position: relative;
 }
-.xian{
+
+.xian {
   display: inline-block;
   font-size: 32rpx;
   padding-left: 20rpx;
   width: 100%;
 }
-.qu{
+
+.qu {
   display: inline-block;
   font-size: 30rpx;
   padding-left: 20rpx;
   width: 100%;
   position: relative;
 }
-.quQian{
-  /* display: inline-block;
-  font-size: 26rpx;
-  padding-left: 100rpx; */
-  /* width: 100%; */
+
+.quQian {
   position: absolute;
   right: 0;
 }
-.down{
+
+.down {
   height: 17rpx;
   width: 25rpx;
   position: absolute;
@@ -126,7 +156,8 @@
   transform: translateY(-50%);
   left: 25%;
 }
-.top10{
+
+.top10 {
   height: 90rpx;
   line-height: 90rpx;
   padding-left: 30rpx;

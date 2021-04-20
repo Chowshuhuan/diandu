@@ -162,7 +162,6 @@ Page({
   },
   tapDialogButton(e) {
     if (e.detail.item.text == "确定") {
-     
       wx.setStorageSync('locatecity', { city: this.data.linshi, time: new Date().getTime() });
       this.setData({
         dialogShow: false,
@@ -175,8 +174,6 @@ Page({
         dialogShow: false,
       })
     }
-
-
   },
 
   //点击城市字母

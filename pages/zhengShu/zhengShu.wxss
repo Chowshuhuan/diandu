@@ -1,0 +1,103 @@
+page {
+  background-color: white;
+  padding-bottom: 160rpx;
+}
+
+.container {
+  min-height: 100%;
+  padding: 20rpx 0rpx;
+}
+
+/* 列表 */
+.touch-item {
+  height: 200rpx;
+  margin-top: 20rpx;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.txt {
+  font-size: 30rpx;
+  color: #2A2E3F;
+  font-weight: 600;
+  position: absolute;
+  left: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.imgIcon {
+  width: 170rpx;
+  height: 116rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.content {
+  width: 100%;
+  padding: 10px;
+  line-height: 22px;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  margin-left: -90px;
+}
+.del {
+  width: 40rpx;
+  height: 36rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .content,
+.touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.xuxian {
+  margin-top: 40rpx;
+  height: 100rpx;
+  border: 1rpx dashed #4262FF;
+  color: #4262FF;
+  font-weight: bold;
+  font-size: 38rpx;
+  line-height: 100rpx;
+  text-align: center;
+  width: 80%;
+}
+
+.footer {
+  background: #fff;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  padding-bottom: 30rpx;
+  box-sizing: border-box;
+}
+
+.save {
+  color: #fff;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
+  border-radius: 5px;
+  width: 80% !important;
+}

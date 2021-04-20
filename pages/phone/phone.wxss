@@ -1,0 +1,60 @@
+.mobile {
+  font-family: PingFang SC;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+}
+
+.infoBox {
+  border-bottom: 2rpx solid #F0F0F0;
+  padding: 10rpx 10rpx;
+  position: relative;
+  height: 70rpx;
+}
+
+.num,
+.code {
+  padding-left: 175rpx;
+  height: 100%;
+}
+
+.baliu,
+.code2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: Bold;
+  font-size: 26rpx;
+  padding-left: 50rpx;
+}
+.input-placeholder {
+  font-size:24rpx;
+}
+
+.mt40 {
+  display: block;
+  margin-top: 160rpx;
+  background: linear-gradient(142deg, #00BBFA 0%, #4262FF 100%);
+  color: #fff;
+  font-family: PingFang SC;
+  font-weight: Medium;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+  width: 90% !important;
+  border-radius: 10rpx;
+  margin-left: 5%;
+}
+
+.mobileIcon{
+  height: 40rpx;
+  width: 26rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.yanmaIcon{
+  height: 34rpx;
+  width: 30rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

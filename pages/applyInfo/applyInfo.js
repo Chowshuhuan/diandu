@@ -15,16 +15,16 @@ Page({
     list: {},
     showType: false,
     cause: '', //驳回的内容
-    shenPi:'',
-    src:'',
-    src:'../../images/index/footer/9.png',
-    src1:'../../images/index/footer/12.png',
-    src2:'../../images/index/footer/pass.png',
+    shenPi: '',
+    src: '',
+    src: '../../images/index/footer/9.png',
+    src1: '../../images/index/footer/12.png',
+    src2: '../../images/index/footer/pass2.png',
   },
   // 获取列表
   getList: function (e) {
     let data = {
-       id:this.data.id,
+      id: this.data.id,
       // id: '6',
       Authorization: wx.getStorageSync('token')
     }
@@ -64,44 +64,44 @@ Page({
       switch (res.data.data.type) {
         case 0:
           this.setData({
-            showType:true,
-            shenPi:'已通过',
-            src:'../../images/index/footer/pass.png'
+            showType: true,
+            shenPi: '已通过',
+            src: '../../images/index/footer/pass2.png'
           })
           break;
         case 1:
           this.setData({
-            showType:false,
-            shenPi:'待审核',
-            src:'../../images/index/footer/9.png'
+            showType: false,
+            shenPi: '待审核',
+            src: '../../images/index/footer/9.png'
           })
           break;
         case 2:
           this.setData({
-            showType:false,
-            shenPi:'待审核',
-            src:'../../images/index/footer/9.png'
+            showType: false,
+            shenPi: '待审核',
+            src: '../../images/index/footer/9.png'
           })
           break;
         case 3:
           this.setData({
-            showType:false,
-            shenPi:'待审核',
-            src:'../../images/index/footer/9.png'
+            showType: false,
+            shenPi: '待审核',
+            src: '../../images/index/footer/9.png'
           })
           break;
         case 4:
           this.setData({
-            showType:true,
-            shenPi:'未通过',
-            src:'../../images/index/footer/12.png'
+            showType: true,
+            shenPi: '未通过',
+            src: '../../images/index/footer/12.png'
           })
           break;
         case 5:
           this.setData({
-            showType:false,
-            shenPi:'未申请入驻',
-            src:''
+            showType: false,
+            shenPi: '未申请入驻',
+            src: ''
           })
           break;
       }
@@ -172,7 +172,8 @@ Page({
     // 获取输入框内容的长度
     var len = parseInt(value.length);
     this.setData({
-      currentWordNumber: len //当前字数 
+      currentWordNumber: len, //当前字数 ，
+      cause: e.detail.value
     });
   },
   /**
@@ -184,7 +185,32 @@ Page({
     })
     this.getList()
   },
-
+  // 通过按钮
+  pass: function (e) {
+    let data = {
+      id: this.data.id,
+      type: '1',
+      cause: '',
+      Authorization: wx.getStorageSync('token')
+    }
+    api.setType(data).then(res => {
+      if (res.data.code == 200) {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+        this.getList()
+        // this.hideModal();
+      } else {
+        wx.showToast({
+          title: res.data.msg,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
